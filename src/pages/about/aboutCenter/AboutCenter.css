@@ -1,0 +1,60 @@
+.about__container {
+    margin-top: 42px;
+    margin-left: 135px;
+    display: flex;
+    justify-content: space-between;
+    gap: 75px;
+    align-items: center;
+}
+
+.abount-content {
+    width: 535px;
+    height: 336px;
+}
+
+.abount-content h1 {
+    font-size: 45px;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.about__map {
+    width: 605px;
+    height: 705px;
+
+}
+
+/* ******************************************* */
+@media screen and (min-width: 768px) and (max-width:900px) {
+    .about__container {
+        margin-top: 42px;
+        margin-left: 0px;
+        display: flex;
+        justify-content: space-between;
+        gap: 75px;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .abount-content h1 {
+        font-size: 30px;
+        font-family: 'Times New Roman', Times, serif;
+
+    }
+
+    .abount-content h4 {
+        font-size: 12px;
+        font-family: 'Times New Roman', Times, serif;
+
+    }
+
+    .about__container {
+        margin-top: 42px;
+        margin-left: 0px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "id" : "1",
+            "logo":"",
+            "image":"https://images.fpt.shop/unsafe/fit-in/800x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/8/1/638264850822189324_F-H1_800x300.png"
+        },
+        {
+            "id" : "2",
+            "image":"https://images.fpt.shop/unsafe/fit-in/800x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/7/18/638252716354326328_F-H1_800x300.png"
+        },
+        {
+            "id" : "3",    
+            "image":"https://images.fpt.shop/unsafe/fit-in/800x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/8/9/638271766155626006_F-H1_800x300.png"
+        },
+        {
+            "id" : "4",    
+            "image":"https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/07/banner/GLX-Watch6-720-220-720x220-1.png"
+        }
+        
+    ]
+}

@@ -1,0 +1,132 @@
+.contact__content {
+    width: 100%;
+    max-width: calc(100%-20px);
+}
+
+.contact__content {
+    margin-top: 80px;
+    display: flex;
+    gap: 50px;
+
+}
+
+.contact-left {
+    width: 340px;
+    height: 457px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+
+}
+
+.contact-left h4 {
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.right-icon {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 24px;
+
+}
+
+
+.contact-right {
+
+    width: 100%;
+}
+
+.a1 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.a1 input {
+    border: none;
+    width: auto;
+    padding-left: 20px;
+    height: 50px;
+    margin-bottom: 10px;
+    width: calc(30% - 27px)
+}
+
+.a1 input::placeholder {
+    color: grey;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.a2 textarea {
+    margin-top: 10px;
+    width: 100%;
+    max-width: calc(99% - 27px);
+    height: 277px;
+    border: none;
+    padding: 20px;
+}
+
+
+.a2 textarea::placeholder {
+    color: grey;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.a3 button {
+    float: right;
+    background-color: #DB4444;
+    width: 255px;
+    height: 56px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    margin-top: 32px;
+}
+
+/* ********************** */
+
+
+.a1 input:focus {
+    border: none;
+    outline: 1px solid #DB4444;
+    border-radius: 4px;
+
+}
+
+.a2 textarea:focus {
+    border: none;
+    outline: 1px solid #DB4444;
+    border-radius: 4px;
+}
+
+/* 
+******************************************
+*******************MEDIA******************* */
+@media screen and (max-width:900px) {
+
+    .contact__content {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .contact-left {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        border-right: none;
+    }
+
+    .Link__googlesheet {
+        display: none;
+    }
+
+}

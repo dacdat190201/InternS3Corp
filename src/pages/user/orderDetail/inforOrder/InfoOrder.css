@@ -1,0 +1,40 @@
+.inOrder__bottom {
+    margin-top: 20px;
+}
+
+.inOrder__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.inOrder__title h3 {
+    font-weight: 500;
+}
+
+.inOrder__title p {
+    font-size: 14px;
+    color: grey;
+}
+
+.inOrder__left {
+    width: 400px;
+
+}
+
+.inOrder__right {
+    flex: 1;
+    gap: 15px;
+    padding: 35px;
+    border-left: 1px solid rgb(211, 211, 211);
+}
+
+.inOrder__right-center {
+    display: flex;
+    gap: 10px;
+}
+
+.inOrder__rightList {}
+
+.inOrder__right-date {}

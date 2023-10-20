@@ -1,0 +1,168 @@
+.my__top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.my__top-title {
+    display: flex;
+    width: 500px;
+
+}
+
+.checkout__container {
+    margin-top: 50px;
+    margin-bottom: 140px;
+}
+
+.checkout__container h2 {
+    margin-bottom: 40px;
+}
+
+.checkout__ship {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.checkout__ship-item {
+    height: 40px;
+    width: 40px;
+    background-color: #DB4444;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkout__ship-hr {
+    width: 300px;
+    height: 2px;
+    border: 1px solid #DB4444;
+    background-color: #ffffff
+}
+
+.checkout__container-form {
+    display: flex;
+    justify-content: center;
+    gap: 173px;
+    margin-top: 48px;
+}
+
+.checkout-form {
+    width: 470px;
+
+}
+
+.checkout-font {
+    font-family: 'Times New Roman', Times, serif;
+    margin-right: 5px;
+}
+
+.checkout-label {
+    margin-top: 10px;
+}
+
+.form__input {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 500px;
+}
+
+.form__input input {
+    width: 100%;
+    border: none;
+    border-bottom: solid grey;
+    height: 32px;
+}
+
+.form__input input:focus {
+    border: none;
+    border-bottom: solid rgb(255, 0, 0);
+    height: 32px;
+    outline: 3px solid transparent;
+}
+
+/* *********************************************** */
+.checkout-list {
+
+
+    width: 427px;
+}
+
+.checkout-Items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.Items__Right {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+}
+
+.Items__Right img {
+    width: 54px;
+    height: 54px;
+}
+
+.checkout-container {
+    height: 136px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.rdo__bank {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button__placeOrder button {
+    width: 190px;
+    height: 56px;
+    background-color: #DB4444;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 32px;
+}
+
+/* ******************************************* */
+
+
+@media screen and (min-width: 768px) and (max-width:900px) {
+    .checkout__container-form {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .checkout__ship-hr {
+        max-width: 200px
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .checkout__container-form {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .checkout__ship-hr {
+        max-width: 200px
+    }
+}

@@ -1,0 +1,22 @@
+.signIn__btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.signIn-btnLogin {
+    width: 143px;
+    height: 56px;
+    background-color: #DB4444;
+    border: none;
+    color: #fff;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 5px;
+}
+
+.forgot_font {
+    text-decoration: none;
+    color: #DB4444;
+    font-weight: bold;
+}

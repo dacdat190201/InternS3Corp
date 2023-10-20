@@ -1,0 +1,44 @@
+.ProfileM__container {
+    margin: 0px 15px 40px 15px;
+}
+
+.ProfileM__searchIcon {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ProfileM__avatar {
+    margin-top: 24px;
+    display: flex;
+    gap: 19px;
+    align-items: center;
+}
+
+.ProfileM__avatar p {
+    color: rgb(167, 167, 167);
+    font-size: 14px;
+}
+
+.ProfileM__center {
+    margin-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 62px;
+    text-decoration: none;
+    color: #000;
+}
+
+.ProfileM__center-title p {
+    color: rgb(167, 167, 167);
+    font-size: 14px;
+}
+
+.ProfileM__center:hover {
+    background-color: rgb(146, 146, 146);
+    color: #fff
+}
+
+.ProfileM__center p:hover {
+    color: #fff
+}

@@ -1,0 +1,116 @@
+.billingInfor__container {
+    margin-top: 23px;
+}
+
+
+
+.mProfile__card {
+    max-height: 350px;
+    width: 350px;
+    border-radius: 10px;
+    background-image: linear-gradient(to right top, #01B8E3, #A4B4CB)
+}
+
+.mProfile__chip-image {
+    padding: 12px
+}
+
+.mProfile__chip {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    align-items: center;
+}
+
+.mProfile__chip-image img {
+    width: 50px
+}
+
+.mProfile__card-details {
+    padding: 0px 15px
+}
+
+.mProfile__card-number {
+    font-size: 25px;
+    color: #fff
+}
+
+.mProfile__date {
+    font-size: 15px;
+    padding: 4px 0px;
+    color: #fff
+}
+
+.mProfile__picture {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 24px
+}
+
+.mProfile__picture img {
+    width: 40px
+}
+
+/* **************************************** */
+.billing__taxDetails {
+    margin-top: 24px;
+
+}
+
+.tax__top {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.tax__top-input {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+}
+
+.tax__top-input input {
+    width: 270px;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid grey;
+}
+
+.tax__top-input label {
+    font-weight: 500;
+}
+
+/* ******************************* */
+.tax__center-input {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-right: 24px;
+}
+
+.tax__center-input label {
+    font-weight: 500;
+}
+
+.tax__center-input input {
+
+    width: 100%;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid grey;
+}
+
+@media screen and (min-width: 768px) and (max-width:900px) {
+    .tax__top-input input {
+        width: 200px;
+        padding: 10px;
+        border-radius: 7px;
+        border: 1px solid grey;
+    }
+
+}
+
+@media screen and (max-width: 767px) {}

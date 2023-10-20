@@ -1,0 +1,43 @@
+.filterMobile__container {
+    display: flex;
+    gap: 20px;
+
+    font-size: 12px;
+}
+
+.FMC__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 5px;
+    padding: 10px 3px;
+    margin: 10px 0px;
+}
+
+.FMC__item select {
+    height: 36px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 12px;
+}
+
+.FMC__item:hover {
+    outline: 1px solid rgb(211, 0, 0);
+    border: none;
+}
+
+/* ******************************************* */
+@media screen and (max-width:900px) {}
+
+@media screen and (max-width: 767px) {}
+
+@media screen and (max-width: 480px) {
+    .FMC__item select {
+        height: 36px;
+        width: 100px;
+        border-radius: 5px;
+        border: none;
+    }
+}

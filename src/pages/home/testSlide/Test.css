@@ -1,0 +1,19 @@
+.Test__main {
+    border: 1px solid;
+}
+
+.slick-slide {
+    padding: 0 15px;
+
+}
+
+.slick-list {
+    margin: 0 2em;
+    height: 350px;
+    min-width: 270px;
+}
+
+.prev {
+    border: none;
+    background-color: white;
+}

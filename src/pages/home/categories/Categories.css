@@ -1,0 +1,54 @@
+.cate_main {
+    display: flex;
+    gap: 30px;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    margin-bottom: 70px;
+}
+
+.cate__list {
+    border: 2px solid grey;
+    width: 170px;
+    height: 145px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: content-box;
+}
+
+.cate__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.cate__list:hover {
+    background-color: #BD4444;
+    color: white
+}
+
+.cate__list:hover .cate__item {
+    color: white
+}
+
+@media screen and (max-width: 767px) {
+    .cate__item {
+        width: 120px;
+        height: 85px;
+        gap: 12px;
+    }
+
+    .cate__list {
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+
+    .cate__page {
+        display: none;
+    }
+}

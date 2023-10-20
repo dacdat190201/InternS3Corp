@@ -1,0 +1,49 @@
+.NavbarMobile__container {
+    position: fixed;
+    z-index: 10000;
+    bottom: 0px;
+    background-color: #fff;
+    height: 56px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.NavbarMC__ListItem {
+    width: 76px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    text-decoration: none;
+}
+
+.NavbarMobile {
+
+    display: none;
+}
+
+.NavbarMobile__Click {
+    text-decoration: none;
+    width: 76px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #DB4444
+}
+
+@media screen and (max-width:767px) {
+    .NavbarMobile {
+        display: block;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .NavbarMobile {
+        display: block;
+    }
+}

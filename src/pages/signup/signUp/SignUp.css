@@ -1,0 +1,152 @@
+.signup__main {
+    margin-right: 135px;
+    margin-bottom: 140px;
+    margin-top: 60px;
+    display: flex;
+    gap: 129px;
+    align-items: center;
+}
+
+.signup__main img {
+    width: 50%;
+    max-width: 100%;
+}
+
+.signup__title {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.signup__form {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    min-width: 371px;
+
+
+}
+
+.signup__name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.signup__form input {
+    border: none;
+    border-bottom: solid grey;
+    height: 32px;
+
+}
+
+.signup__form input:focus {
+    border: none;
+    border-bottom: solid rgb(255, 0, 0);
+    height: 32px;
+    outline: 3px solid transparent;
+
+}
+
+
+.signup__btn {
+    display: flex;
+    flex-direction: column;
+    gap: 16px
+}
+
+.signup-btnCreate {
+    background-color: #DB4444;
+    height: 56px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signup-btnCGoogle {
+    background-color: #ffffff;
+    height: 56px;
+    font-size: 16px;
+    color: #000000;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.signup__nextpage {
+    margin-top: 38px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.btn_hide {
+    border: none;
+    position: relative;
+
+    height: 10px;
+    /* width: 15px;
+    height: 10px;
+    left: 330px; */
+    top: -30px;
+    left: 330px;
+    ;
+}
+
+.group__pass {
+    min-width: 371px;
+    height: 32px;
+}
+
+.group__pass input {
+    display: flex;
+    width: 100%;
+}
+
+.signup__name-check {
+    display: flex;
+    flex-direction: column;
+}
+
+.check__error {
+    color: red;
+    font-weight: bold;
+    font-size: 12px;
+
+}
+
+
+
+/* 
+******************************************
+*******************MEDIA******************* */
+@media screen and (min-width: 768px) and (max-width:900px) {
+
+    .signup__main {
+        margin-left: 135px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .signup__main img {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+
+    .signup__main img {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .signup__main {
+        margin-left: 135px;
+        display: flex;
+        flex-direction: column;
+    }
+}

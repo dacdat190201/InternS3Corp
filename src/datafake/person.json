@@ -1,0 +1,35 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "name": "Tom Cruise",
+      "position": "Founder & Chairman",
+      "image": "person1.png"
+    },
+    {
+      "id": "2",
+      "name": "Emma Watson",
+      "position": "Managing Director",
+      "image": "person2.png"
+    },
+    {
+      "id": "3",
+      "name": "Will Smith",
+      "position": "Product Design",
+      "image": "person3.png"
+    },
+    {
+      "id": "4",
+      "name": "Steven",
+      "position": "Project Manager",
+      "image": "person2.png"
+    },
+    {
+      "id": "5",
+      "name": "Dac Dat",
+      "position": "Intern & senior intern",
+      "image": "person3.png"
+    }
+  ],
+  "message": "true"
+}

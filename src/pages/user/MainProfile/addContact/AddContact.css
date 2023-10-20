@@ -1,0 +1,12 @@
+.addContact__bg {
+
+    right: 10%;
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    font-size: 40px;
+    text-align: center;
+    background-color: #d62b2b;
+    z-index: 2;
+    opacity: 1.0;
+}

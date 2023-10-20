@@ -1,0 +1,30 @@
+.my__container {
+    margin-left: 135px;
+    margin-right: 135px;
+
+}
+
+.home {
+    display: flex;
+
+}
+
+.homeContainer {
+
+    width: 85%;
+    max-width: calc(100% - 20px);
+    padding-top: 80px;
+    margin-left: 20px;
+}
+
+@media screen and (max-width:1440px) {
+    .my__container {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .homeContainer {
+        width: 80%;
+        max-width: calc(80% - 20px);
+    }
+}

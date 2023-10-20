@@ -1,0 +1,31 @@
+.contact__top {
+    display: flex;
+
+
+}
+
+.contact__top p {
+    font-weight: bold;
+
+}
+
+.main__contact {
+    margin: 80px 135px 140px 135px;
+}
+
+/* ******************************************* */
+@media screen and (max-width:900px) {
+    .main__contact {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .main__contact {
+
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}

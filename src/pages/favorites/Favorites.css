@@ -1,0 +1,114 @@
+.about__top {
+    margin-left: 135px;
+    display: flex;
+    margin-top: 85px;
+}
+
+.about__top p {
+    font-weight: bold;
+}
+
+.favorite__main {
+    margin: 80px 135px 140px 135px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px
+}
+
+.f__main-left {
+    width: calc(100% - 10%)
+}
+
+
+.f__main-right {
+    width: calc(360px - 20px);
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.f__main-right h2 {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    margin: auto;
+}
+
+.total__cost {
+    margin-top: 40px;
+
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.total__costNumber {
+    margin: 10px 20px 40px 20px;
+    height: 32px;
+    background-color: grey;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left__button button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    color: #fff;
+    background-color: #000;
+}
+
+/* ******************************************* */
+@media screen and (max-width:900px) {
+    .favorite__main {
+        margin: 80px 35px 40px 35px;
+        display: flex;
+        justify-content: space-between;
+        gap: 40px
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .favorite__main {
+        margin: 80px 35px 40px 35px;
+        display: flex;
+        justify-content: space-between;
+        gap: 40px
+    }
+
+    .cart__btn button {
+        width: 100px;
+        height: 40px;
+        background-color: #fff;
+        border: 1px solid grey;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .f__main-right {
+        width: calc(360px - 20px);
+
+        border: 1px solid grey;
+        border-radius: 5px;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .favorite__main {
+        margin: 80px 35px 40px 35px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px
+    }
+
+    .f__main-left {
+        width: 100%
+    }
+
+
+}

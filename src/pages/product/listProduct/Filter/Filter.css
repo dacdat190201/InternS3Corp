@@ -1,0 +1,101 @@
+.filter__container {}
+
+/* ********************TOP */
+.filter__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 23px;
+}
+
+.filter__logo {
+    color: #140342;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.filter-btnClear {
+    height: 25px;
+    width: 90px;
+    border-radius: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: lighter;
+    box-shadow: 2px 2px 2px grey;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+
+/* ********************CENTER */
+.filter__center {
+    height: 1174px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+}
+
+.filter__item {
+    background-color: aliceblue;
+    padding: 0 0 0 12px;
+
+
+}
+
+.filter-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #140342;
+    margin-bottom: 25px;
+}
+
+.filter__item-rdo {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.filter-rdo {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.filter__item-price {
+    display: flex;
+    justify-content: space-around;
+}
+
+.item-price-1 {
+    width: 75px;
+    height: 40px;
+
+    border: 0.5px solid;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.css-14pt78w-MuiSlider-rail {
+    display: block;
+    position: absolute;
+    border-radius: inherit;
+    background-color: currentColor;
+    opacity: 0.38;
+    width: 95%;
+    height: inherit;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+/* ******************************************* */
+@media screen and (min-width: 768px) and (max-width:900px) {}
+
+@media screen and (max-width: 767px) {}

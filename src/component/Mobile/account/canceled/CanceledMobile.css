@@ -1,0 +1,27 @@
+.cancelMobile {
+    display: flex;
+    height: 300px;
+    width: 320px;
+}
+
+.cancelMobile-btn button {
+    width: 100px;
+    height: 36px;
+    border-radius: 25px;
+    color: #fff;
+    background-color: #DB3022;
+
+}
+
+.cancelMobile-container {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.cancelMobile_rdo {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}

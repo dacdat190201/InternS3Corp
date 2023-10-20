@@ -1,0 +1,27 @@
+.history__Click-admin {
+    border-bottom: 5px solid darkblue;
+    width: 100%;
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.history__Item-admin {
+    width: 100%;
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 5px solid rgb(109, 109, 109);
+    cursor: pointer;
+}
+
+.history__a-admin {
+    margin-bottom: 20px;
+    font-weight: bold;
+
+}
