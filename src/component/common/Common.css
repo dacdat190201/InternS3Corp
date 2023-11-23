@@ -1,0 +1,296 @@
+.admin-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    background-color: #DB4444;
+    padding: 8px 28px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    border: none;
+    text-decoration: none;
+}
+
+.admin-button:hover {
+    background-color: #da7070;
+}
+
+.md-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    background-color: #DB4444;
+    padding: 16px 48px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    border: none;
+    text-decoration: none;
+}
+
+.md-button:hover {
+    background-color: #da7070;
+}
+
+.sm-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    padding: 8px 0px;
+    width: 220px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid #DB4444;
+    text-decoration: none;
+    color: #fff;
+    background-color: #DB4444;
+}
+
+.sm-button:hover {
+    background-color: #da7070;
+}
+
+.sm-button-white {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    padding: 8px 0px;
+    width: 220px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid #d4d4d4;
+    text-decoration: none;
+    color: #000000;
+
+}
+
+.sm-button-white:hover {
+    background-color: #d8d8d8;
+
+}
+
+.white-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    padding: 16px 48px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid rgb(218, 218, 218);
+    text-decoration: none;
+    color: #000;
+    background-color: #fff;
+}
+
+.mobile-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 25px;
+    padding: 11px 100px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid rgb(218, 218, 218);
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #DB4444;
+    margin-bottom: 40px;
+}
+
+/* *************************TITLE****************************** */
+.titleCata__container {
+    margin-top: 60px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.titleCata-block {
+    width: 20px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: #DB4444;
+}
+
+.titleCata-title {
+    color: #DB4444;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+/* ***************************DEVELI************************* */
+.develiry__main {
+    display: flex;
+    justify-content: center;
+    gap: 88px;
+}
+
+.develiry__Item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+}
+
+.develiry__Item h3 {
+    color: #000;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    margin-bottom: 8px;
+}
+
+.develiry__Item p {
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+}
+
+/* *******************BannerTitle************************* */
+.bannerTitle {
+    font-family: 'Inter';
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 48px;
+    letter-spacing: 1.44px;
+}
+
+/* ******************Breadcrumb-Navigation****************** */
+.breadcrum__main {
+    line-height: 21px;
+    font-size: 14px;
+    color: #000;
+    font-weight: 400;
+}
+
+.breadcrum__main span {
+    color: #000;
+    opacity: 0.5;
+}
+
+/* ********************************* */
+.backBar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+
+}
+
+.backBar h4 {
+    margin: 0 auto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
+}
+
+@media screen and (max-width: 1024px) {
+    .develiry__main {
+        gap: 30px;
+    }
+
+    .develiry__Item svg {
+        width: 61px;
+        height: 61px;
+    }
+
+    .develiry__Item h3 {
+        font-size: 18px;
+
+    }
+
+    .develiry__Item p {
+        font-size: 12px;
+
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .admin-button {
+        font-size: 14px;
+        padding: 8px 18px;
+
+    }
+
+    .md-button {
+        padding: 6px 28px;
+        font-size: 14px;
+
+    }
+
+    .white-button {
+        padding: 6px 28px;
+        font-size: 14px;
+
+    }
+
+    .bannerTitle {
+        font-family: 'Inter';
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 48px;
+        letter-spacing: 1.44px;
+    }
+
+    .titleCata-title {
+        color: #DB4444;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 20px;
+    }
+
+    .develiry__main {
+        margin-bottom: -30px;
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .develiry__Item h3 {
+        font-size: 14px;
+
+    }
+
+    .develiry__Item p {
+        font-size: 10px;
+
+    }
+
+    /* ***************TitleCata**************** */
+    .titleCata__container {
+        margin: 40px 0px 10px;
+
+    }
+
+}
+
+/* @media screen and (max-width: 768px) {
+    .titleCata__container {
+        margin-top: 10px;
+        margin-bottom: 0px;
+
+    }
+
+
+} */

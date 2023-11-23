@@ -1,7 +1,7 @@
 .ListOrder__Container {
     margin-top: 30px;
     padding: 18px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     border-radius: 8px;
 }
 
@@ -31,18 +31,20 @@
     display: flex;
     justify-content: space-between;
     margin-top: 14px;
+    align-items: center;
 }
 
 .ListOrder__bottom-btn {
     height: 36px;
     width: 98px;
-    border: 2px solid grey;
+    border: 1px solid rgb(204, 204, 204);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 24px;
     font-weight: 500;
     text-decoration: none;
+    color: #000;
 }
 
 .ListOrder__bottom-btnTitle {

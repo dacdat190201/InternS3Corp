@@ -27,19 +27,22 @@ const Account = () => {
     return (
         <div className="account__container">
             <div className="account__left">
-                <h2>
+                <h3>
                     {data?.firstName} {data?.lastName}
-                </h2>
-                <h4>{data?.email}</h4>
+                </h3>
+                <h3>{data?.email}</h3>
 
-                <Avatar alt="Remy Sharp" src={data?.image} sx={{ width: 150, height: 150 }} />
-                <div className="account__btn-delete">
-                    <i className="fa-solid fa-trash-can" style={{ color: '#000000' }}></i>
+                <div className="avatar__account">
+                    <Avatar alt="Remy Sharp" src={data?.image} sx={{ width: 100, height: 100 }} />
+                    <div className="account__btn-delete">
+                        <i className="fa-solid fa-trash-can" style={{ color: '#000000' }}></i>
+                    </div>
                 </div>
                 <input type="file" className="account__btn-file" />
 
                 <div className="account__title">
-                    <h4>University: </h4> {data?.university}
+                    <p> University:</p>
+                    <h3>&nbsp;{data?.university}</h3>
                 </div>
                 <button onClick={() => setShow(!show)}>
                     <i className="fa-solid fa-right-to-bracket"></i>

@@ -1,9 +1,6 @@
-.ViewCart__Top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.checkoutMobile {
+    min-height: 85vh;
     margin-bottom: 40px;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 0px 0px, rgba(0, 0, 0, 0.07) 0px 0px 0px, rgba(0, 0, 0, 0.07) 0px 0px 0px, rgba(0, 0, 0, 0.07) 0px 0px 0px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
 }
 
 .ShippingSave__IconButton {
@@ -22,27 +19,47 @@
 .ShippingSave__Icon {
     display: flex;
     justify-content: flex-end;
-    margin-top: 40px;
+
 }
 
 .shippingSave__Items {
-    margin-top: 16px;
     display: flex;
-
     justify-content: space-between;
     border-radius: 10px;
 
 }
 
 .shippingSave__List {
-    border-radius: 8px;
-    padding: 18px;
+    margin-top: 20px;
+    border-radius: 4px;
+    padding: 20px;
     box-shadow: rgba(51, 72, 82, 0.12) 0px 1px 2px 0px, rgba(57, 88, 102, 0.32)0px 1px 8px 0px;
 }
 
 .shippingSave-Ileft p {
+    font-size: 14px;
+    font-style: normal;
     font-weight: 500;
+    line-height: 20px;
     margin-bottom: 7px;
+}
+
+.shippingSave-Ileft span {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    /* 21px */
+    letter-spacing: -0.15px;
+}
+
+.shippingSave__List span {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    /* 21px */
+    letter-spacing: -0.15px;
 }
 
 .shippingSave__List input {
@@ -51,8 +68,11 @@
 }
 
 .shippingSave-Iright p {
-    color: #DB3022;
+    color: #2AA952;
+    font-size: 14px;
+    font-style: normal;
     font-weight: 500;
+    line-height: 20px;
 }
 
 .checkoutM__items-Total {

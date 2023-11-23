@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import instance from '../../../../services/axios/axiosDomain/axiosDomain';
-import { CircularProgress } from '@mui/material';
+import LoadingComponent from '../../../common/LoadingComponent';
 
 function Sidebar() {
     const [category, setCatagory] = useState();
@@ -20,7 +20,11 @@ function Sidebar() {
     }, []);
 
     if (loading === true) {
-        return <CircularProgress />;
+        return (
+            <>
+                <LoadingComponent loading={loading} />
+            </>
+        );
     }
     return (
         <div>
@@ -29,7 +33,7 @@ function Sidebar() {
                     <li className="menu_midle_item">
                         <div className="menu_midle_item-i" style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
                             <Link className="nav_midle_link-i" to={`/${category[15]}`}>
-                                Woman's Fashion
+                                <h3>Woman's Fashion</h3>
                             </Link>
 
                             <svg
@@ -51,22 +55,22 @@ function Sidebar() {
                         <ul className="menu2_list">
                             <li className="menu2_li">
                                 <Link className="nav_midle_link" to={`/${category[14]}`}>
-                                    {category[14].charAt(0).toUpperCase() + category[14].slice(1)}
+                                    <h3>{category[14].charAt(0).toUpperCase() + category[14].slice(1)}</h3>
                                 </Link>
                             </li>
                             <li className="menu2_li">
                                 <Link className="nav_midle_link" to={`/${category[13]}`}>
-                                    {category[13].charAt(0).toUpperCase() + category[13].slice(1)}
+                                    <h3>{category[13].charAt(0).toUpperCase() + category[13].slice(1)}</h3>
                                 </Link>
                             </li>
                             <li className="menu2_li">
                                 <Link className="nav_midle_link" to={`/${category[9]}`}>
-                                    {category[9].charAt(0).toUpperCase() + category[9].slice(1)}
+                                    <h3>{category[9].charAt(0).toUpperCase() + category[9].slice(1)}</h3>
                                 </Link>
                             </li>
                             <li className="menu2_li">
                                 <Link className="nav_midle_link" to={`/${category[8]}`}>
-                                    {category[8].charAt(0).toUpperCase() + category[8].slice(1)}
+                                    <h3>{category[8].charAt(0).toUpperCase() + category[8].slice(1)}</h3>
                                 </Link>
                             </li>
                         </ul>
@@ -74,7 +78,7 @@ function Sidebar() {
                     </li>
                     <li className="menu_midle_item">
                         <Link to={`/${category[10]}`} className="nav_midle_link">
-                            Men's Fashion
+                            <h3>Men's Fashion</h3>
                         </Link>
 
                         {/* <ul className="menu2_list">
@@ -95,14 +99,14 @@ function Sidebar() {
                         return (
                             <li className="menu_midle_item" key={key}>
                                 <Link to={`/${item}`} className="nav_midle_link">
-                                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                                    <h3>{item.charAt(0).toUpperCase() + item.slice(1)}</h3>
                                 </Link>
                             </li>
                         );
                     })}
                     <li className="menu_midle_item">
                         <Link style={{ textDecoration: 'underline' }} to={`/products`} className="nav_midle_link">
-                            Show more
+                            <h3>Show more</h3>
                         </Link>
                     </li>
                 </ul>

@@ -1,11 +1,8 @@
 .cancelConfirm {
     background-color: #fff;
+    position: relative;
+    width: 100%;
 
-    width: 500px;
-    left: 544px;
-    height: 390px;
-    top: 621px;
-    box-shadow: 10px 10px 10px rgb(145, 145, 145);
 
 }
 
@@ -17,44 +14,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    top: 5px;
-    left: 471px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    ;
     cursor: pointer;
 }
 
 .cancelConfirm-container {
     margin: 30px;
-
+    text-align: center;
 }
 
 .cancelConfirm-container h3 {
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .cancelConfirm_rdo {
     display: flex;
     gap: 9px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .cancelConfirm-btn {
     text-align: center;
-}
-
-.cancelConfirm-btn button {
-    height: 56px;
-    width: 210px;
-    background-color: rgb(238, 77, 45);
-    color: #fff;
-    font-size: 15px;
-    border-radius: 10px;
-
-}
-
-.cancelConfirm-btn button:hover {
-    background-color: #d73211;
-    border-color: #ba2b0f;
-
 }

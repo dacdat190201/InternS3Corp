@@ -1,66 +1,32 @@
 .account__container {
     display: flex;
-    gap: 32px;
-    margin: 32px 0px 32px 0px;
+    gap: 20px;
 }
 
 .account__left {
-
-    width: 525px;
-    height: 500px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     box-shadow: 10px 5px 5px grey;
-    padding: 32px;
+    gap: 20px;
+    padding: 20px;
     justify-content: space-between;
-    border-radius: 15px;
+    border-radius: 4px;
 }
 
 .account__right {
     width: 100%;
 }
 
-.account__title {
-    border-radius: 10px;
-    border: 1px solid grey;
-    height: 100px;
-    width: 340px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.account__btn-file {
-    height: 28px;
-    background-color: white;
-    outline: none;
-    box-shadow: 5px 5px 10px black;
-    border-radius: 10px;
-    border: 1px solid grey;
-
-
-}
-
-.account__btn-file::-webkit-file-upload-button {
-    padding: 6px 6px 6px 12px;
-    background-image: linear-gradient(to right top, #3E79E5, #01B8E3);
-
-}
-
-.account__left button {
-    height: 26px;
-    width: 26px;
-    border-radius: 50%;
-    background-image: linear-gradient(to right top, #3E79E5, #01B8E3);
-    display: flex;
-    align-items: center;
+.avatar__account {
+    position: relative;
 }
 
 .account__btn-delete {
-    position: relative;
-    top: -165px;
-    left: 34px;
+    position: absolute;
+    top: 0;
+    right: 0;
     width: 30px;
     height: 30px;
     background-color: white;
@@ -68,9 +34,51 @@
     border-radius: 50%;
     cursor: pointer;
     margin-bottom: -40px;
-    border: 1px solid grey;
+    border: 1px solid rgb(224, 224, 224);
 
 }
+
+.account__title {
+    border-radius: 10px;
+    border: 1px solid rgb(206, 206, 206);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.account__title h3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.account__btn-file {
+    background-color: white;
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid rgb(206, 206, 206)
+}
+
+.account__btn-file::-webkit-file-upload-button {
+    padding: 6px;
+    background-image: linear-gradient(to right top, #3E79E5, #01B8E3);
+    border: none;
+}
+
+.account__left button {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-image: linear-gradient(to right top, #3E79E5, #01B8E3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 
 /* ******************************************* */
 

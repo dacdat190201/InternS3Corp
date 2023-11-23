@@ -1,5 +1,10 @@
+.history__listItem li {
+    min-width: 20%;
+    height: 56px;
+}
+
 .history__Click-admin {
-    border-bottom: 5px solid darkblue;
+    border-bottom: 5px solid #DB4444;
     width: 100%;
     list-style: none;
     text-decoration: none;
@@ -24,4 +29,18 @@
     margin-bottom: 20px;
     font-weight: bold;
 
+}
+
+.history__listItem li h3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+
+}
+
+.OrderMainMobile__main {
+    display: none;
 }

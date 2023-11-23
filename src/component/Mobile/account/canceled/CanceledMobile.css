@@ -2,6 +2,7 @@
     display: flex;
     height: 300px;
     width: 320px;
+    padding: 20px;
 }
 
 .cancelMobile-btn button {
@@ -9,7 +10,8 @@
     height: 36px;
     border-radius: 25px;
     color: #fff;
-    background-color: #DB3022;
+    background-color: #DB4444;
+    border: none;
 
 }
 
@@ -24,4 +26,5 @@
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
+    align-items: center;
 }

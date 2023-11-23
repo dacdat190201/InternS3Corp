@@ -1,18 +1,17 @@
-import React, { Suspense, useContext } from 'react';
+import React, { useContext } from 'react';
 import './Footer.css';
-import { CircularProgress } from '@mui/material';
 import AuthContext from '../../../services/auth/context/AuthContext';
 const MapFooter = React.lazy(() => import('./MapFooter'));
 export default function Footer() {
     const { role } = useContext(AuthContext);
     return (
         <footer className="footer_main">
-            <div className="body__footer">
+            <div className="container-md container body__footer">
                 <ul className="body_menu">
                     <li className="footer_li">
-                        <h3 className="footer-title">Excludesive</h3>
+                        <div className="logo text-white">Exclusive</div>
                         <h4>Subcricbe</h4>
-                        <p>Get 10% off your first order </p>
+                        <h3>Get 10% off your first order </h3>
                         <div style={{ display: 'flex' }}>
                             <input type="text" placeholder="Enter your email" id="input__footer" />
                             <svg
@@ -34,84 +33,98 @@ export default function Footer() {
                         </div>
                     </li>
                     <li className="footer_li">
-                        <h3 className="footer-title">Support</h3>
-                        <p>111 Bijoy sarani, Dhaka, DH1515, Bangladesh</p>
-                        <p>dacdat@gmail.com</p>
-                        <p>0966519397-8888-9999 </p>
+                        <h4>Support</h4>
+                        <div className="footer_li-item">
+                            <h3>
+                                111 Bijoy sarani, Dhaka,<br></br> DH 1515, Bangladesh.
+                            </h3>
+                            <h3>dacdat@gmail.com</h3>
+                            <h3>09665-8888-9999 </h3>
+                        </div>
                     </li>
                     <li className="footer_li">
-                        <h3 className="footer-title">Account</h3>
+                        <h4>Account</h4>
                         <ul className="footer_subList">
                             <li className="footer_subLi">
-                                <a href="#/" className="footer_subItem">
+                                <h3 href="#/" className="footer_subItem">
                                     My Account
-                                </a>
+                                </h3>
                             </li>
                             <li className="footer_subLi">
-                                <a href="#/" className="footer_subItem">
+                                <h3 href="#/" className="footer_subItem">
                                     Login / Register
-                                </a>
+                                </h3>
                             </li>
                             <li className="footer_subLi">
-                                <a href="#/" className="footer_subItem">
+                                <h3 href="#/" className="footer_subItem">
                                     Cart
-                                </a>
+                                </h3>
                             </li>
                             <li className="footer_subLi">
-                                <a href="#/" className="footer_subItem">
+                                <h3 href="#/" className="footer_subItem">
                                     WishList
-                                </a>
+                                </h3>
                             </li>
                             <li className="footer_subLi">
-                                <a href="#/" className="footer_subItem">
+                                <h3 href="#/" className="footer_subItem">
                                     Shop
-                                </a>
+                                </h3>
                             </li>
                         </ul>
                     </li>
                     <li className="footer_li">
-                        <h3 className="footer-title">Quick Link</h3>
+                        <h4>Quick Link</h4>
                         <ul className="footer_subList">
                             <li className="footer_subLi">
-                                <a href="#/" className="footer_subItem">
+                                <h3 href="#/" className="footer_subItem">
                                     Privacy Policy
-                                </a>
+                                </h3>
                             </li>
                             <li className="footer_subLi">
-                                <a href="#/" className="footer_subItem">
+                                <h3 href="#/" className="footer_subItem">
                                     Terms Of use
-                                </a>
+                                </h3>
                             </li>
                             <li className="footer_subLi">
-                                <a href="#/" className="footer_subItem">
+                                <h3 href="#/" className="footer_subItem">
                                     FAQ
-                                </a>
+                                </h3>
                             </li>
                             <li className="footer_subLi">
-                                <a href="#/" className="footer_subItem">
+                                <h3 href="#/" className="footer_subItem">
                                     Contact
-                                </a>
+                                </h3>
                             </li>
                             <li className="footer_subLi">
-                                <button style={{ backgroundColor: 'grey' }} onClick={() => role()}>
+                                <button
+                                    style={{
+                                        backgroundColor: 'grey',
+                                        border: 'none',
+                                        borderRadius: 5,
+                                        padding: '0 12px',
+                                    }}
+                                    onClick={() => role()}
+                                >
                                     role
                                 </button>
                             </li>
                         </ul>
                     </li>
                     <li className="footer_li">
-                        <h3 className="footer-title">Dowload App</h3>
-                        <p style={{ color: 'grey' }}>Save S3 with App New User Only </p>
-                        <div className="food__qrcode">
-                            <div className="food__qrcode-left">
-                                <img src={require('../../../assets/logo/QRCode.png')} alt="qrcode" />
-                            </div>
-                            <div className="food__qrcode-right">
-                                <div className="qrcode-top">
-                                    <img src={require('../../../assets/logo/CHPlay.png')} alt="chplay" />
+                        <h3>Dowload App</h3>
+                        <div className="food__qrcode-main">
+                            <p>Save S3 with App New User Only </p>
+                            <div className="food__qrcode">
+                                <div className="food__qrcode-left">
+                                    <img src={require('../../../assets/logo/QRCode.png')} alt="qrcode" />
                                 </div>
-                                <div className="qrcode-bottom">
-                                    <img src={require('../../../assets/logo/AppStore.png')} alt="chplay" />
+                                <div className="food__qrcode-right">
+                                    <div className="qrcode-top">
+                                        <img src={require('../../../assets/logo/CHPlay.png')} alt="chplay" />
+                                    </div>
+                                    <div className="qrcode-bottom">
+                                        <img src={require('../../../assets/logo/AppStore.png')} alt="chplay" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -196,10 +209,29 @@ export default function Footer() {
                         </ul>
                     </li>
                 </ul>
-                <Suspense fallback={<CircularProgress />}>
+                <div className="abcs">
                     <MapFooter />
-                </Suspense>
-                <div className="footer__copyright">CopyRight 2023, All right reserved.</div>
+                </div>
+
+                <div className="footer__copyright">
+                    <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.5 18.3332C15.1024 18.3332 18.8334 14.6022 18.8334 9.99984C18.8334 5.39746 15.1024 1.6665 10.5 1.6665C5.89765 1.6665 2.16669 5.39746 2.16669 9.99984C2.16669 14.6022 5.89765 18.3332 10.5 18.3332Z"
+                            stroke="white"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                        <path
+                            d="M13 8.14799C13 8.14799 11.9706 6.6665 10.2549 6.6665C8.53924 6.6665 7.16669 8.14799 7.16669 9.99984C7.16669 11.8517 8.53924 13.3332 10.2549 13.3332C11.9706 13.3332 13 11.8517 13 11.8517"
+                            stroke="white"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                    </svg>
+                    CopyRight 2023, All right reserved.
+                </div>
             </div>
         </footer>
     );

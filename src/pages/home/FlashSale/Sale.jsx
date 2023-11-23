@@ -6,7 +6,13 @@ import { useRef } from 'react';
 import instance from '../../../services/axios/axiosDomain/axiosDomain';
 import { Link } from 'react-router-dom';
 import AuthContext from '../../../services/auth/context/AuthContext';
+import ButtonView from '../../../component/common/ButtonView';
+import TitleCata from '../../../component/common/TitleCata';
+import BannerTitle from '../../../component/common/BannerTitle';
+import LoadingComponent from '../../../component/common/LoadingComponent';
+import { Rating } from '@mui/material';
 function Sale() {
+    const [loading, setLoading] = useState(true);
     const slider = useRef();
     const next = useCallback(() => {
         slider.current.slickNext();
@@ -18,8 +24,9 @@ function Sale() {
     useEffect(() => {
         const fetch = async () => {
             try {
-                const res = await instance.get('/products?limit=20&skip=10');
+                const res = await instance.get('/products?limit=30&skip=5');
                 setData(res.data);
+                setLoading(false);
             } catch (error) {}
         };
         fetch();
@@ -41,46 +48,58 @@ function Sale() {
         [addFavorite],
     );
     const settings = {
+        arrows: false,
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 5,
-        slidesToScroll: 2,
-        variableWidth: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        // variableWidth: true,
+        autoplaySpeed: 3000,
         autoplay: true,
-        autoplaySpeed: 2500,
         responsive: [
             {
-                breakpoint: 900,
+                breakpoint: 1024,
                 settings: {
                     slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToScroll: 1,
                     infinite: true,
                     arrows: false,
                 },
             },
             {
-                breakpoint: 700,
+                breakpoint: 768,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    arrows: false,
+                },
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
                     arrows: false,
                 },
             },
         ],
     };
-    return (
-        <div>
-            <div className="sale__top">
-                <div className="sale__top-item"></div>
-                <div className="sale__top-title">Today's</div>
+    if (loading === true) {
+        return (
+            <div className="sale__container">
+                <LoadingComponent loading={loading} />;
             </div>
+        );
+    }
+    return (
+        <div className="sale__container">
+            <TitleCata props="Today's" />
             <div className="sale__midle">
                 <div className="sale__midle-left">
-                    <div className="sale__midle-title">
-                        <h1>Flash Sale</h1>
-                    </div>
+                    <BannerTitle props="Flash Sale" />
                     {/* <div className="sale__midle-title">
                         <h1>23h : 19m : 56s</h1>
                     </div> */}
@@ -128,25 +147,25 @@ function Sale() {
             <div className="sale__product">
                 <Slider ref={(c) => (slider.current = c)} {...settings}>
                     {data &&
-                        data.products.map((item, key) => {
-                            return (
-                                <div className="sale_product" key={key}>
-                                    <div>
-                                        <div className="sale_product-discount">
-                                            <p>- {item.discountPercentage} %</p>
+                        data.products.map((item, key) => (
+                            <div className="sale__subItem" key={key}>
+                                <div className="sale__subItem-top">
+                                    <div className="sale__subItem-discount titleDiscount">
+                                        -{item.discountPercentage}%
+                                    </div>
+                                    <div className="sale__subItem-svg">
+                                        <div className="background__svg">
                                             <svg
-                                                className="sale__product-like"
-                                                width="34"
-                                                height="34"
-                                                viewBox="0 0 34 34"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
                                                 onClick={() => handleFavorite(item)}
-                                                style={{ cursor: 'pointer' }}
+                                                className="svg__like"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="#fff"
+                                                xmlns="http://www.w3.org/2000/svg"
                                             >
-                                                <circle cx="17" cy="17" r="17" fill="white" />
                                                 <path
-                                                    d="M13 10C10.7912 10 9 11.7396 9 13.8859C9 15.6185 9.7 19.7305 16.5904 23.8873C16.7138 23.961 16.8555 24 17 24C17.1445 24 17.2862 23.961 17.4096 23.8873C24.3 19.7305 25 15.6185 25 13.8859C25 11.7396 23.2088 10 21 10C18.7912 10 17 12.3551 17 12.3551C17 12.3551 15.2088 10 13 10Z"
+                                                    d="M8 5C5.7912 5 4 6.73964 4 8.88594C4 10.6185 4.7 14.7305 11.5904 18.8873C11.7138 18.961 11.8555 19 12 19C12.1445 19 12.2862 18.961 12.4096 18.8873C19.3 14.7305 20 10.6185 20 8.88594C20 6.73964 18.2088 5 16 5C13.7912 5 12 7.35511 12 7.35511C12 7.35511 10.2088 5 8 5Z"
                                                     stroke="black"
                                                     strokeWidth="1.5"
                                                     strokeLinecap="round"
@@ -154,32 +173,68 @@ function Sale() {
                                                 />
                                             </svg>
                                         </div>
-                                        <div className="sale_product-img">
-                                            <Link to={`/products/${item.id}`}>
-                                                <img src={item.images[0]} alt={item.title} loading="lazy" />
-                                            </Link>
-                                        </div>
-                                        <button className="sale_product-btn" onClick={() => handleAddToCart(item)}>
-                                            <h4>Add To Cart</h4>
-                                        </button>
-                                        <div className="sale_product-body">
-                                            <h4>{item.title}</h4>
-                                            <span>Price: {item.price}$ </span>
+                                        <div className="background__svg">
+                                            <svg
+                                                className="svg__eyes"
+                                                width="22"
+                                                height="16"
+                                                viewBox="0 0 22 16"
+                                                fill="#fff"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M20.257 6.962C20.731 7.582 20.731 8.419 20.257 9.038C18.764 10.987 15.182 15 11 15C6.81801 15 3.23601 10.987 1.74301 9.038C1.51239 8.74113 1.38721 8.37592 1.38721 8C1.38721 7.62408 1.51239 7.25887 1.74301 6.962C3.23601 5.013 6.81801 1 11 1C15.182 1 18.764 5.013 20.257 6.962V6.962Z"
+                                                    stroke="black"
+                                                    strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                />
+                                                <path
+                                                    d="M11 11C12.6569 11 14 9.65685 14 8C14 6.34315 12.6569 5 11 5C9.34315 5 8 6.34315 8 8C8 9.65685 9.34315 11 11 11Z"
+                                                    stroke="black"
+                                                    strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                />
+                                            </svg>
                                         </div>
                                     </div>
                                 </div>
-                            );
-                        })}
+                                <Link to={`/products/${item.id}`} className="sale__subItem-img">
+                                    <img src={item.images[0]} alt="product1" />
+                                </Link>
+                                <div className="sale__subItem-btn">
+                                    <div className="sale__subItem-button" onClick={() => handleAddToCart(item)}>
+                                        Add To Cart
+                                    </div>
+                                </div>
+
+                                <div className="sale__subItem-title">
+                                    <div className="titleItem500">{item.title}</div>
+                                    <div className="PriceName" style={{ color: '#DB4444' }}>
+                                        ${item.price}
+                                    </div>
+                                    <div className="sale__subItem-rating">
+                                        <Rating
+                                            size="small"
+                                            name={`simple-controlled-${item.id}`}
+                                            value={item.rating}
+                                            id={`simple-controller-${item.id}`}
+                                            autoComplete="billing postal-code"
+                                        />
+                                        &nbsp;<p className="titleSubItem600">({item.stock})</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                 </Slider>
             </div>
             <div className="sale_product-btnAll">
-                <Link to="/products">
-                    <button className="sale-btnAll">
-                        <h2>View All Product</h2>
-                    </button>
+                <Link to="/products" style={{ textDecoration: 'none' }}>
+                    <ButtonView props="View All Products" />
                 </Link>
             </div>
-            <div>
+            <div style={{ opacity: '0.3' }}>
                 <hr></hr>
             </div>
         </div>

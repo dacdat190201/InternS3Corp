@@ -1,11 +1,12 @@
 import React from 'react';
 import './ContactContent.css';
 import RightContent from './RightContent';
+
 function ContactContent() {
     return (
         <div className="contact__content">
             <div className="contact-left">
-                <div>
+                <div className="contact__title-main">
                     <div className="right-icon">
                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="40" height="40" rx="20" fill="#DB4444" />
@@ -17,13 +18,13 @@ function ContactContent() {
                                 strokeLinejoin="round"
                             />
                         </svg>
-                        <h3>Call to us</h3>
+                        <div className="Pop16-500 text-black">Call to us</div>
                     </div>
-                    <h4>We are available 24/7, 7 days a week</h4>
-                    <h4>Phone: +8455523121547</h4>
+                    <h3>We are available 24/7, 7 days a week.</h3>
+                    <h3>Phone: +8455523121547</h3>
                 </div>
                 <hr></hr>
-                <div>
+                <div className="contact__title-main">
                     <div className="right-icon">
                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="40" height="40" rx="20" fill="#DB4444" />
@@ -36,11 +37,11 @@ function ContactContent() {
                             />
                         </svg>
 
-                        <h3>Write to US</h3>
+                        <div className="Pop16-500 text-black">Write to US</div>
                     </div>
-                    <h4>Fill out our form and we will contact you withinwithin 24 hours</h4>
-                    <h4>Email: dacdat@gmail.com</h4>
-                    <h4>Email: h@s3corp.com.vn</h4>
+                    <h3>Fill out our form and we will contact you within 24 hours.</h3>
+                    <h3>Email: dacdat@gmail.com</h3>
+                    <h3>Email: h@s3corp.com.vn</h3>
                 </div>
             </div>
             <div className="contact-right">

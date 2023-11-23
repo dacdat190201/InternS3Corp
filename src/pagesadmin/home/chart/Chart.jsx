@@ -1,11 +1,11 @@
 import React from 'react';
 import './Chart.css';
-import { LineChart, PieChart } from '@mui/x-charts';
+import { PieChart } from '@mui/x-charts';
 
 const Chart = () => {
     return (
         <div className="chart__container">
-            <div>
+            <div className="chart__circle">
                 <PieChart
                     series={[
                         {
@@ -33,18 +33,6 @@ const Chart = () => {
                     ]}
                     width={400}
                     height={200}
-                />
-            </div>
-            <div>
-                <LineChart
-                    xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
-                    series={[
-                        {
-                            data: [2, 5.5, 2, 8.5, 1.5, 5],
-                        },
-                    ]}
-                    width={1000}
-                    height={430}
                 />
             </div>
         </div>

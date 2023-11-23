@@ -7,6 +7,7 @@ import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined
 import GppGoodOutlinedIcon from '@mui/icons-material/GppGoodOutlined';
 import '../../../viewcart/ViewCartMobile.css';
 import '../DetailMobile.css';
+import BarBack from '../../../../../common/BarBack';
 const HistoryShipping = () => {
     const { token, inforUser, convertDate } = useContext(AuthContext);
     const [filter, setFilter] = useState('');
@@ -24,16 +25,11 @@ const HistoryShipping = () => {
     }, [token.token, navigate, inforUser, param.id]);
 
     return (
-        <div className="ProfileM__container" ref={ref}>
-            <div className="ViewCart__Top">
-                <Link style={{ color: 'black' }} to={`/myorder/detail/${param.id}`}>
-                    <ArrowBackIosIcon />
-                </Link>
-                <h4>History</h4>
-                <SearchIcon />
-            </div>
-            <div className="orDetail__title">
-                <span style={{ fontWeight: 500, display: 'flex', alignItems: 'center' }}>
+        <div className="ProfileM__container" ref={ref} style={{ marginBottom: 40 }}>
+            <BarBack title="History" link={`myorder/detail/${param.id}`} />
+
+            <div className="BreadName orDetail__title">
+                <span style={{ fontWeight: 500, display: 'flex', gap: 8, alignItems: 'center' }}>
                     <LocalShippingOutlinedIcon />
                     Shipping information
                 </span>
@@ -53,6 +49,7 @@ const HistoryShipping = () => {
                 filter?.status.message.map((item, key) => {
                     return (
                         <div
+                            className="titleItem500"
                             style={{
                                 borderLeft: '1px solid grey',
                                 padding: 8,

@@ -10,22 +10,13 @@
 }
 
 .main__contact {
-    margin: 80px 135px 140px 135px;
+    margin-top: 70px;
+    margin-bottom: 50px;
 }
 
-/* ******************************************* */
-@media screen and (max-width:900px) {
+@media screen and (max-width:768px) {
     .main__contact {
-        margin-left: 40px;
-        margin-right: 40px;
+        margin-top: 0px;
     }
-}
 
-@media screen and (max-width: 767px) {
-
-    .main__contact {
-
-        margin-left: 10px;
-        margin-right: 10px;
-    }
 }

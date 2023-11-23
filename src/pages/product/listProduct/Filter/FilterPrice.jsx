@@ -13,7 +13,7 @@ const FilterPrice = () => {
 
     return (
         <div className="filter__item">
-            <div className="filter-title">Price</div>
+            <div className="filter-title BreadName">Price</div>
 
             <Box width={300}>
                 <Slider

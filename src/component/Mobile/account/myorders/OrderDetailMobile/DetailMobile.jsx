@@ -1,18 +1,16 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import SearchIcon from '@mui/icons-material/Search';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import AuthContext from '../../../../../services/auth/context/AuthContext';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import './DetailMobile.css';
 import { Dialog } from '@mui/material';
 import CanceledMobile from '../../canceled/CanceledMobile';
 import '../../viewcart/ViewCartMobile.css';
+import BarBack from '../../../../common/BarBack';
 const DetailMobile = () => {
     const { token, inforUser, confirmMobile, convertDate } = useContext(AuthContext);
     const [filter, setFilter] = useState('');
     const [open, setOpen] = React.useState(false);
-    const ref = useRef();
     const navigate = useNavigate();
     const param = useParams();
     useEffect(() => {
@@ -21,7 +19,6 @@ const DetailMobile = () => {
         if (!token.token) {
             navigate('/');
         }
-        ref.current?.scrollIntoView({ behavior: 'smooth' });
     }, [token.token, navigate, inforUser, param.id]);
     const total = (item) => {
         return item.quantity * item.item.price;
@@ -34,25 +31,22 @@ const DetailMobile = () => {
         setOpen(false);
     };
     return (
-        <div className="ProfileM__container" ref={ref}>
-            <div className="ViewCart__Top">
-                <Link style={{ color: 'black' }} to={'/myorder'}>
-                    <ArrowBackIosIcon />
-                </Link>
-                <h4> Order detail</h4>
-                <SearchIcon />
+        <div className="ProfileM__container">
+            <BarBack title=" Order detail" link="myorder" />
+
+            <div className="BreadName orDetail__title">
+                <div>Order: {param.id}</div>
+                <div> {convertDate(filter?.status?.message[0]?.date)}</div>
             </div>
             <div className="orDetail__title">
-                <h4>Order: {param.id}</h4>
-                <p> {convertDate(filter?.status?.message[0]?.date)}</p>
-            </div>
-            <div className="orDetail__title">
-                <span style={{ color: 'grey' }}>
+                <div className="titleDescrip">
                     Tracking Number: <span style={{ color: 'black', fontWeight: 500 }}>IW1305203651</span>
-                </span>
-                <p style={{ color: '#2AA952', fontWeight: 500 }}>{filter?.status?.name}</p>
+                </div>
+                <div className="titleItem500" style={{ color: '#2AA952' }}>
+                    {filter?.status?.name.charAt(0).toUpperCase() + filter?.status?.name.slice(1)}
+                </div>
             </div>
-            <div className="orDetail__title">
+            <div className="titleItem500 orDetail__title">
                 <span style={{ fontWeight: 500 }}>{filter?.item?.cart.length} item</span>
             </div>
             <div className="orDetail__List">
@@ -63,28 +57,38 @@ const DetailMobile = () => {
                                 <img src={prop?.item?.thumbnail} alt={prop?.item?.title} />
                             </div>
                             <div className="orDetail__content">
-                                <h4>{prop?.item?.title}</h4>
-                                <p>{prop?.item?.description}</p>
-                                <p>Cate: {prop?.item?.category}</p>
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <p>quantity: {prop?.quantity}</p>
-                                    <h4>{total(prop)}$</h4>
+                                <div className="titleItem500 titlenameCheckM">{prop?.item?.title}</div>
+                                {/* <div className="titleDescrip" style={{ WebkitLineClamp: 1 }}>
+                                    {prop?.item?.description}
+                                </div> */}
+                                <div className="titleDescrip">Cate: {prop?.item?.category}</div>
+                                <p>quantity: {prop?.quantity}</p>
+                                <div className="PriceName" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                    {total(prop)}$
                                 </div>
+                                {/* <div
+                                    className="titleDescrip"
+                                    style={{ display: 'flex', justifyContent: 'space-between' }}
+                                >
+                                    <p>quantity: {prop?.quantity}</p>
+                                    <div className="PriceName">{total(prop)}$</div>
+                                </div> */}
                             </div>
                         </div>
                     );
                 })}
             </div>
-            <div className="orDetail__title">
-                <span style={{ fontWeight: 500, display: 'flex', alignItems: 'center' }}>
+            <div className=" orDetail__title">
+                <span className="BreadName" style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                     <LocalShippingOutlinedIcon />
                     Shipping information
                 </span>
                 <Link
+                    className="BreadName"
                     to={`/myorder/detail/${param.id}/shipping`}
                     style={{
                         color: '#2AA952',
-                        fontWeight: 500,
+
                         display: 'flex',
                         alignItems: 'center',
                         textDecoration: 'none',
@@ -93,38 +97,58 @@ const DetailMobile = () => {
                     Detail
                 </Link>
             </div>
-            <div style={{ borderLeft: '1px solid grey', padding: 8, marginBottom: 24 }}>
-                <div style={{ color: 'rgb(42, 169, 82)', marginBottom: 12 }}>{filter?.status?.message[0]?.title}</div>
-                <div style={{ fontSize: 12 }}>{convertDate(filter?.status?.message[0]?.date)}</div>
+            <div style={{ borderLeft: '1px solid grey', padding: 8, marginBottom: 15 }}>
+                <div className="titleItem500" style={{ color: 'rgb(42, 169, 82)', marginBottom: 12 }}>
+                    {filter?.status?.message[0]?.title}
+                </div>
+                <div className="titleItem500" style={{ fontSize: 12 }}>
+                    {convertDate(filter?.status?.message[0]?.date)}
+                </div>
             </div>
-            <div className="orDetail__title">
+
+            <div className="BreadName orDetail__title">
                 <span style={{ fontWeight: 500 }}>Order information</span>
             </div>
             <div className="orDetail__information">
-                <div className="orDetail__info-left">Name</div>
-                <div className="orDetail__info-right">
+                <div className="titleItem500 orDetail__info-left">Name</div>
+                <div style={{ textAlign: 'end' }} className="titleItem500 orDetail__info-right">
                     {filter?.item?.first_name} &nbsp;{filter?.item?.from_name}
                 </div>
             </div>
+            <hr></hr>
             <div className="orDetail__information">
-                <div className="orDetail__info-left">Shipping Address</div>
-                <div className="orDetail__info-right">{filter?.item?.address}</div>
+                <div className="titleItem500 orDetail__info-left">Shipping Address</div>
+                <div style={{ textAlign: 'end' }} className="titleItem500 orDetail__info-right">
+                    {filter?.item?.address}
+                </div>
             </div>
-            <div className="orDetail__information">
+            <hr></hr>
+            <div className="titleItem500 orDetail__information">
                 <div className="orDetail__info-left">Payment Method</div>
-                <div className="orDetail__info-right">{filter?.item?.payment}</div>
+                <div style={{ textAlign: 'end' }} className="orDetail__info-right">
+                    {filter?.item?.payment}
+                </div>
             </div>
-            <div className="orDetail__information">
+            <hr></hr>
+            <div className="titleItem500 orDetail__information">
                 <div className="orDetail__info-left">Delivery Method</div>
-                <div className="orDetail__info-right">Free</div>
+                <div style={{ textAlign: 'end' }} className="orDetail__info-right">
+                    Free
+                </div>
             </div>
-            <div className="orDetail__information">
+            <hr></hr>
+            <div className="titleItem500 orDetail__information">
                 <div className="orDetail__info-left">Discount</div>
-                <div className="orDetail__info-right">{filter?.item?.my_discount}</div>
+                <div style={{ textAlign: 'end' }} className="orDetail__info-right">
+                    {filter?.item?.my_discount}
+                </div>
             </div>
-            <div className="orDetail__information">
+            <hr></hr>
+            <div className="titleItem500 orDetail__information">
                 <div className="orDetail__info-left">Total Amount</div>
-                <div className="orDetail__info-right">{filter?.item?.total}$</div>
+                <div style={{ textAlign: 'end' }} className=" PriceTotal orDetail__info-right">
+                    {filter?.item?.total}$
+                </div>
             </div>
             {filter?.status?.name === 'confirm' ? (
                 <div className="orDetail__infor-btn">

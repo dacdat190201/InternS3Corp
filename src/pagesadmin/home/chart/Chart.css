@@ -1,7 +1,27 @@
 .chart__container {
-    margin: 20px;
+    margin: 70px 0px;
     display: flex;
     gap: 20px;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+
+
+}
+
+.chart__circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+@media screen and (max-width:1024px) {
+    .chart__circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+        flex-direction: column;
+    }
 }

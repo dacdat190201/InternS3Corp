@@ -1,18 +1,33 @@
 .filterMobile__container {
     display: flex;
     gap: 20px;
-
     font-size: 12px;
+    align-items: center;
+    width: 100%;
 }
 
+.MuiFormLabel-root {
+    font-size: 12px !important;
+}
+
+
+
+
+
+
 .FMC__item {
+    word-break: break-all;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid rgb(187, 187, 187);
-    border-radius: 5px;
-    padding: 10px 3px;
-    margin: 10px 0px;
+    border-radius: 4px;
+    padding: 6px 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .FMC__item select {
@@ -20,24 +35,93 @@
     border-radius: 5px;
     border: none;
     outline: none;
-    font-size: 12px;
+
 }
 
 .FMC__item:hover {
-    outline: 1px solid rgb(211, 0, 0);
+    outline: 1px solid rgb(33, 105, 212);
     border: none;
 }
 
+/* .Cate-select {
+    width: 200px;
+    height: 36.5px;
+    border-radius: 4px;
+    border: 1px solid rgb(187, 187, 187);
+    background-color: #fff;
+} */
+.Cate-select {
+    width: 250px;
+}
+
+.Cate-select>.dropdown-menu {
+
+    animation: .5s slideDrop;
+}
+
+
+@keyframes slideDrop {
+    from {
+        transform: translateY(5%);
+    }
+
+    to {
+        transform: translateY(38px);
+    }
+}
+
+
+
+.Cate-select button {
+    width: 100%;
+    padding: 6px 6px 6px 18px;
+    background-color: #fff;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: 4px;
+    border: 1px solid rgb(231, 231, 231);
+}
+
+.Cate-select button:focus {
+    outline: 1px solid rgb(148, 181, 211);
+    border: none;
+
+}
+
+.Cate-select>ul {
+    width: 250px;
+    height: 350px;
+    overflow-x: auto;
+
+}
+
+.Cate-select button {
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /* ******************************************* */
-@media screen and (max-width:900px) {}
 
-@media screen and (max-width: 767px) {}
+@media screen and (max-width: 768px) {
 
-@media screen and (max-width: 480px) {
+
+
     .FMC__item select {
         height: 36px;
         width: 100px;
         border-radius: 5px;
         border: none;
     }
+
+    @keyframes slideDrop {
+        from {
+            transform: translateY(5%);
+        }
+
+        to {
+            transform: translateY(37px);
+        }
+    }
+
 }

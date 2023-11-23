@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import LineStyleIcon from '@mui/icons-material/LineStyle';
 import TimelineIcon from '@mui/icons-material/Timeline';
@@ -14,6 +14,11 @@ import ReportIcon from '@mui/icons-material/Report';
 import './SideBar.css';
 
 const SideBar = () => {
+    const currentURL = window.location.href;
+    const pathSegments = currentURL.split('/');
+    const currentNav = pathSegments[pathSegments.length - 1];
+    const [activeMenu, setActiveMenu] = useState(currentNav);
+
     return (
         <div className="sidebar-admin">
             <div className="sidebarWrapper">
@@ -21,19 +26,37 @@ const SideBar = () => {
                     <h3 className="sidebarTitle">Dashboard</h3>
                     <ul className="sidebarList">
                         <Link to="/Admin" className="Admin__Link-item">
-                            <li className="sidebarListItem active">
+                            <li
+                                className={
+                                    'sidebarListItem ' +
+                                    (activeMenu === 'Admin' ? 'sidebarListItem active' : 'sidebarListItem')
+                                }
+                                onClick={() => setActiveMenu('Admin')}
+                            >
                                 <LineStyleIcon className="sidebarIcon" />
                                 Home
                             </li>
                         </Link>
                         <Link to="/Admin/orders" className="Admin__Link-item">
-                            <li className="sidebarListItem">
+                            <li
+                                className={
+                                    'sidebarListItem ' +
+                                    (activeMenu === 'order' ? 'sidebarListItem active' : 'sidebarListItem')
+                                }
+                                onClick={() => setActiveMenu('order')}
+                            >
                                 <DynamicFeedIcon className="sidebarIcon" />
                                 Orders
                             </li>
                         </Link>
                         <Link className="Admin__Link-item">
-                            <li className="sidebarListItem">
+                            <li
+                                className={
+                                    'sidebarListItem ' +
+                                    (activeMenu === 'chart' ? 'sidebarListItem active' : 'sidebarListItem')
+                                }
+                                onClick={() => setActiveMenu('chart')}
+                            >
                                 <TimelineIcon className="sidebarIcon" />
                                 Chart
                             </li>

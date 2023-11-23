@@ -1,8 +1,6 @@
 .user__sidebar {
+    width: 100%;
 
-    border-right: 0.5px solid rgb(214, 206, 206);
-    width: 252px;
-    padding-top: 80px;
 }
 
 .user__logo {
@@ -67,25 +65,9 @@
 
 .user__hover-none {
     text-decoration: none;
-
-}
-
-/* ******************************************* */
-@media screen and (min-width: 768px) and (max-width:900px) {
-    .user__sidebar {
-
-        border-right: 0.5px solid rgb(214, 206, 206);
-        width: 160px;
-        padding-top: 80px;
-    }
-}
-
-@media screen and (max-width: 767px) {
-
-    .user__sidebar {
-
-        border-right: 0.5px solid rgb(214, 206, 206);
-        width: 100px;
-        padding-top: 80px;
-    }
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }

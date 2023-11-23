@@ -1,84 +1,62 @@
-import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
-import React, { memo, useEffect, useState } from 'react';
-import { CLIENT_ID } from './services/config/Config';
+import React, { useEffect, useState } from 'react';
+import instance from './services/axios/axiosDomain/axiosDomain';
+
 const Test = () => {
-    const [show, setShow] = useState(false);
-    const [success, setSuccess] = useState(false);
-    const [ErrorMessage, setErrorMessage] = useState('');
-    const [orderID, setOrderID] = useState(false);
-
-    // creates a paypal order
-    const createOrder = (data, actions) => {
-        return actions.order
-            .create({
-                purchase_units: [
-                    {
-                        description: 'Sunflower',
-                        amount: {
-                            currency_code: 'USD',
-                            value: 20,
-                        },
-                    },
-                ],
-            })
-            .then((orderID) => {
-                setOrderID(orderID);
-                return orderID;
-            });
-    };
-
-    // check Approval
-    const onApprove = (data, actions) => {
-        return actions.order.capture().then(function (details) {
-            const { payer } = details;
-            setSuccess(true);
-        });
-    };
-
-    //capture likely error
-    const onError = (data, actions) => {
-        setErrorMessage('An Error occured with your payment ');
-    };
+    const [data, setData] = useState('');
 
     useEffect(() => {
-        if (success) {
-            alert('Payment successful!!');
-            console.log('Order successful . Your order id is--', orderID);
-        }
-    }, [success]);
-
-    return (
-        <PayPalScriptProvider options={{ 'client-id': CLIENT_ID }}>
-            <div>
-                <div className="wrapper">
-                    <div className="product-img">
-                        <img
-                            src="https://cdn.pixabay.com/photo/2021/08/15/06/54/sunflower-6546993_1280.jpg"
-                            alt="SunFlower"
-                            height="320"
-                            width="300"
-                        />
-                    </div>
-                    <div className="product-info">
-                        <div className="product-text">
-                            <h1>Sunflower</h1>
-                        </div>
-                        <div className="product-price-btn">
-                            <p>$20</p>
-                            <br></br>
-                            <button className="buy-btn" type="submit" onClick={() => setShow(true)}>
-                                Buy now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <br></br>
-                {show ? (
-                    <PayPalButtons style={{ layout: 'vertical' }} createOrder={createOrder} onApprove={onApprove} />
-                ) : null}
-            </div>
-        </PayPalScriptProvider>
-    );
+        const fetch = async () => {
+            let i = 0;
+            try {
+                const res = await instance.get('/products/categories', {
+                    timeout: 1500, // 1.5 seconds
+                });
+                console.log(res.data.map((item) => item === 'smartphones'));
+                return setData(
+                    res.data.map((item) => {
+                        if (item === 'smartphones') {
+                            return { name: item, img: 'Sphone' };
+                        }
+                        if (item === 'laptops') {
+                            return { name: item, img: 'Slaptop' };
+                        }
+                        if (item === 'fragrances') {
+                            return { name: item, img: 'Sfragrabces' };
+                        }
+                        if (item === 'skincare') {
+                            return { name: item, img: 'Sgroceries' };
+                        }
+                        if (item === 'groceries') {
+                            return { name: item, img: 'Sgroceries' };
+                        }
+                        if (item === 'home-decoration') {
+                            return { name: item, img: 'Shome-decoration' };
+                        } else {
+                            return { name: item, img: 'none' };
+                        }
+                    }),
+                );
+                // return setData(
+                //     res.data.map((item) => ({
+                //         id: i++,
+                //         name: item,
+                //         img: 'phone.png',
+                //     })),
+                // );
+            } catch (error) {
+                if (error.code === 'ECONNABORTED') {
+                    // Retry the request after 5 seconds
+                    await new Promise((resolve) => setTimeout(resolve, 3000));
+                    return fetch();
+                } else {
+                    throw error;
+                }
+            }
+        };
+        fetch();
+    }, []);
+    console.log(data);
+    return <div className="app">{/* <ul>{myComponentList}</ul> */}</div>;
 };
 
-export default memo(Test);
+export default Test;

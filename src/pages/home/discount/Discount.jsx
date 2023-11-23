@@ -3,7 +3,8 @@ import './Discount.css';
 import json from '../../../datafake/chudeData.json';
 import { ToastContainer, toast } from 'react-toastify';
 import '../../../pages/product/listProduct/ProductMain/ProductMain.css';
-import { Link } from 'react-router-dom';
+import BreadcurmbNavigation from '../../../component/common/BreadcurmbNavigation';
+import BannerTitle from '../../../component/common/BannerTitle';
 const Discount = () => {
     const [data, setData] = useState();
     //const [bttnText, setBttnText] = useState("COPY CODE");
@@ -41,18 +42,10 @@ const Discount = () => {
         <div className="discount__homepage">
             <div className="sale__midle">
                 <div className="sale__midle-left">
-                    <div className="sale__midle-title">
-                        <h1>Discount Month</h1>
-                    </div>
+                    <BannerTitle props="Discount Month" />
                 </div>
-                <div className="sale__midle-right">
-                    <Link to="/discounts" style={{ textDecoration: 'none', color: 'black' }}>
-                        {' '}
-                        <div className="thismonth__top-btn">
-                            <h3>View All</h3>
-                        </div>
-                    </Link>
-                </div>
+
+                <BreadcurmbNavigation props={Discount} />
             </div>
             <div className="discount__container">
                 <ToastContainer />
@@ -61,7 +54,7 @@ const Discount = () => {
                         return (
                             <div className="contai" key={key}>
                                 <div className="coupon-card">
-                                    <h3>{item.name}</h3>
+                                    {/* <h3>{item.name}</h3>
                                     <h5>Describe: {item.describe}.</h5>
                                     <div className="coupon-row">
                                         <span id="cpnCode">{item.id}</span>
@@ -72,7 +65,7 @@ const Discount = () => {
                                     <p>Date: {item.date}</p>
 
                                     <div className="circle1"></div>
-                                    <div className="circle2"></div>
+                                    <div className="circle2"></div> */}
                                 </div>
                             </div>
                         );

@@ -11,6 +11,7 @@ function Header() {
             <>
                 <NavbarMobile />
             </>
+            <hr style={{ opacity: 0.3, margin: 0 }}></hr>
         </div>
     );
 }

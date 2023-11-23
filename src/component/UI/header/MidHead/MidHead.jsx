@@ -1,51 +1,36 @@
 import React, { Suspense, useContext, useState } from 'react';
 import './Midhead.css';
-import MobileMidle from './mobile_midle/MobileMidle';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { Link } from 'react-router-dom';
-import { Avatar, Badge, Button, CircularProgress, Menu, MenuItem, Stack } from '@mui/material';
+import { Avatar, Badge, CircularProgress } from '@mui/material';
 import AuthContext from '../../../../services/auth/context/AuthContext';
-import { KeyboardArrowDown } from '@mui/icons-material';
 import '../MidHead/navMenuPhone/NavMenuPhone.css';
+import NavMenuPhone from './navMenuPhone/NavMenuPhone';
 const Search = React.lazy(() => import('../../searching/Search'));
 
 function MidHead() {
     const currentURL = window.location.href;
     const pathSegments = currentURL.split('/');
     const currentNav = pathSegments[pathSegments.length - 1];
-    const [show, setShow] = useState(false);
     const [activeMenu, setActiveMenu] = useState(currentNav);
     const { token, logout, getCartQuantify, getLengthFavorites } = useContext(AuthContext);
 
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handle = () => {
-        setShow(!show);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
     const handleLogout = () => {
         logout(token);
     };
-
     return (
-        <div className="main">
+        <div className="container-md" style={{ maxWidth: 1170 }}>
             <div className="navbar" id="nav-repsonse">
-                <div className="logo">
-                    <h2>
-                        <Link
-                            to="/home"
-                            style={{ textDecoration: 'none', color: 'black' }}
-                            className={activeMenu === 'logo' ? '' : ''}
-                            onClick={() => setActiveMenu('logo')}
-                        >
-                            Exclusive
-                        </Link>
-                    </h2>
-                </div>
+                <h4 className="mb-0 logo" to="/home">
+                    <Link
+                        to="/"
+                        style={{ textDecoration: 'none', color: 'black' }}
+                        className={activeMenu === 'logo' ? '' : ''}
+                        onClick={() => setActiveMenu('logo')}
+                    >
+                        Exclusive
+                    </Link>
+                </h4>
                 <div className="logo__mobile">
                     <h2>
                         <Link
@@ -59,44 +44,41 @@ function MidHead() {
                     </h2>
                 </div>
                 <div className="menu">
-                    <ul className="nav_menu">
-                        <li className="nav_li">
-                            <Link
-                                to={'/home'}
-                                className={'nav_link ' + (activeMenu === 'home' ? 'nav-active' : 'nav_link')}
+                    <ul className="nav__menu">
+                        <Link className="nav__li" to={'/home'}>
+                            <h3
+                                className={'nav__link ' + (activeMenu === 'home' ? 'nav-active' : 'nav__link')}
                                 onClick={() => setActiveMenu('home')}
                             >
                                 Home
-                            </Link>
-                        </li>
-                        <li className="nav_li">
-                            <Link
-                                to={'/contact'}
-                                className={'nav_link ' + (activeMenu === 'contact' ? 'nav-active' : 'nav_link')}
+                            </h3>
+                        </Link>
+                        <Link className="nav__li" to={'/contact'}>
+                            <h3
+                                className={'nav__link ' + (activeMenu === 'contact' ? 'nav-active' : 'nav__link')}
                                 onClick={() => setActiveMenu('contact')}
                             >
                                 Contact
-                            </Link>
-                        </li>
-                        <li className="nav_li">
-                            <Link
-                                to="/about"
-                                className={'nav_link ' + (activeMenu === 'about' ? 'nav-active' : 'nav_link')}
+                            </h3>
+                        </Link>
+                        <Link className="nav__li" to="/about">
+                            <h3
+                                className={'nav__link ' + (activeMenu === 'about' ? 'nav-active' : 'nav__link')}
                                 onClick={() => setActiveMenu('about')}
                             >
                                 About
-                            </Link>
-                        </li>
+                            </h3>
+                        </Link>
                         {token.token ? null : (
-                            <li className="nav_li">
+                            <Link className="nav__li">
                                 <Link
                                     to="/signup"
-                                    className={'nav_link ' + (activeMenu === 'signup' ? 'nav-active' : 'nav_link')}
+                                    className={'nav__link ' + (activeMenu === 'signup' ? 'nav-active' : 'nav__link')}
                                     onClick={() => setActiveMenu('signup')}
                                 >
-                                    Sign Up / Sign In
+                                    Sign Up
                                 </Link>
-                            </li>
+                            </Link>
                         )}
                     </ul>
                 </div>
@@ -104,10 +86,10 @@ function MidHead() {
                     <Suspense fallback={<CircularProgress />}>
                         <Search />
                     </Suspense>
+
                     <div className="searchbox-btn">
-                        <MobileMidle />
                         <Badge badgeContent={getLengthFavorites()} color="primary">
-                            <Link to="/favorites">
+                            <Link to="/favorites" className="display__icon">
                                 <svg
                                     width="32"
                                     height="32"
@@ -129,7 +111,7 @@ function MidHead() {
                         <Badge badgeContent={getCartQuantify()} color="primary">
                             <Link
                                 to="/cart"
-                                className={activeMenu === 'logo' ? '' : ''}
+                                className={activeMenu === 'logo' ? 'display__icon' : 'display__icon'}
                                 onClick={() => setActiveMenu('logo')}
                             >
                                 <svg
@@ -173,146 +155,137 @@ function MidHead() {
 
                         {token.token ? (
                             <div className="web__avatar-token">
-                                <Stack
-                                    direction="row"
-                                    alignItems="center"
-                                    spacing={{ xs: 0.5, sm: 1.5 }}
-                                    sx={{ color: 'black' }}
-                                >
-                                    <Button
-                                        onClick={handleClick}
-                                        endIcon={<KeyboardArrowDown />}
-                                        id="basic-button"
-                                        aria-controls={open ? 'basic-menu' : undefined}
+                                <div className="btn-group">
+                                    <button
+                                        className="btn btn-secondary btn-sm p-0 rounded-circle"
+                                        id="dropdownMenuButton"
+                                        type="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"
                                         aria-haspopup="true"
-                                        aria-expanded={open ? 'true' : undefined}
-                                        sx={{ color: 'black' }}
                                     >
                                         <Avatar alt={token.username} src={token.image} />
-                                    </Button>
-                                    <Menu
-                                        id="basic-menu"
-                                        anchorEl={anchorEl}
-                                        open={open}
-                                        onClose={handleClose}
-                                        MenuListProps={{
-                                            'aria-labelledby': 'basic-button',
-                                        }}
-                                    >
-                                        <Link
-                                            to={`/myaccount/profile/${token.username}`}
-                                            style={{ textDecoration: 'none', color: 'black' }}
+                                    </button>
+                                    <ul className="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
+                                        {/* <li className="dropdown-item">
+                                            <Link
+                                                to={`/myaccount`}
+                                                style={{ textDecoration: 'none', color: 'black' }}
+                                                onClick={handleClose}
+                                            >
+                                                Main
+                                            </Link>
+                                        </li> */}
+                                        {/* <li className="dropdown-item">
+                                            <Link
+                                                to={`/myaccount/profile/${token.username}`}
+                                                style={{ textDecoration: 'none', color: 'black' }}
+                                                onClick={handleClose}
+                                            >
+                                                Profile
+                                            </Link>
+                                        </li> */}
+                                        <li className="dropdown-item" role="button">
+                                            <Link
+                                                to={`/myaccount/${token.username}/history`}
+                                                style={{ textDecoration: 'none', color: 'black' }}
+                                            >
+                                                Order History
+                                            </Link>
+                                        </li>
+                                        {/* <li className="dropdown-item" role="button">
+                                            <Link
+                                                to={`/myaccount/profile/${token.username}`}
+                                                style={{ textDecoration: 'none', color: 'black' }}
+                                            >
+                                                Checkout2
+                                            </Link>
+                                        </li> */}
+                                        <li className="dropdown-item" role="button">
+                                            <Link
+                                                to={`/myaccount/${token.username}/checkout`}
+                                                style={{ textDecoration: 'none', color: 'black' }}
+                                            >
+                                                View Cart
+                                            </Link>
+                                        </li>
+
+                                        <li
+                                            className="dropdown-item"
+                                            onClick={handleLogout}
+                                            style={{ cursor: 'pointer' }}
+                                            role="button"
                                         >
-                                            <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                        </Link>
-                                        <Link to={`/myaccount`} style={{ textDecoration: 'none', color: 'black' }}>
-                                            <MenuItem onClick={handleClose}>My account</MenuItem>
-                                        </Link>
-
-                                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                                    </Menu>
-                                </Stack>
+                                            Logout
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        ) : null}
-                    </div>
-                    <div
-                        className="bar_mobile-icon"
-                        onClick={() => {
-                            handle();
-                        }}
-                        //onClick={handleClickOpen}
-                    >
-                        <svg
-                            className="bar_mobile-btn"
-                            xmlns="http://www.w3.org/2000/svg"
-                            height="1.5em"
-                            viewBox="0 0 448 512"
-                        >
-                            <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
-                        </svg>
-                    </div>
-                    {/* <Dialog
-                        open={open1}
-                        onClose={handleClickClose}
-                        aria-labelledby="alert-dialog-title"
-                        aria-describedby="alert-dialog-description"
-                    >
-                        <div className="nav_menu_mobile">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                height="1em"
-                                viewBox="0 0 512 512"
-                                onClick={handleClickClose}
-                            >
-                                <path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z" />
-                            </svg>
+                        ) : // <div className="web__avatar-token">
+                        //     <Stack
+                        //         direction="row"
+                        //         alignItems="center"
+                        //         spacing={{ xs: 0.5, sm: 1.5 }}
+                        //         sx={{ color: 'black' }}
+                        //     >
+                        //         <Button
+                        //             onClick={handleClick}
+                        //             endIcon={<KeyboardArrowDown />}
+                        //             id="basic-button"
+                        //             aria-controls={open ? 'basic-menu' : undefined}
+                        //             aria-haspopup="true"
+                        //             aria-expanded={open ? 'true' : undefined}
+                        //             sx={{ color: 'black' }}
+                        //         >
+                        //             <Avatar alt={token.username} src={token.image} />
+                        //         </Button>
+                        //         <Menu
+                        //             id="basic-menu"
+                        //             anchorEl={anchorEl}
+                        //             open={open}
+                        //             onClose={handleClose}
+                        //             MenuListProps={{
+                        //                 'aria-labelledby': 'basic-button',
+                        //             }}
+                        //         >
+                        //             <Link
+                        //                 to={`/myaccount`}
+                        //                 style={{ textDecoration: 'none', color: 'black' }}
+                        //                 onClick={handleClose}
+                        //             >
+                        //                 <MenuItem>Main</MenuItem>
+                        //             </Link>
+                        //             <Link
+                        //                 to={`/myaccount/profile/${token.username}`}
+                        //                 style={{ textDecoration: 'none', color: 'black' }}
+                        //                 onClick={handleClose}
+                        //             >
+                        //                 <MenuItem>Profile</MenuItem>
+                        //             </Link>
 
-                            <ul className="nav_menu_mobile-ul" id="test">
-                                <Button className="nav_menu_mobile-li" onClick={handleClickClose}>
-                                    <Link to="/home" className="nav_menu_mobile-link" onClick={handleClickClose}>
-                                        Home
-                                    </Link>
-                                </Button>
-                                <Button className="nav_menu_mobile-li" onClick={handleClickClose}>
-                                    <Link to="/contact" className="nav_menu_mobile-link" onClick={handleClickClose}>
-                                        Contact
-                                    </Link>
-                                </Button>
-                                <Button className="nav_menu_mobile-li" onClick={handleClickClose}>
-                                    <Link to="/about" className="nav_menu_mobile-link" onClick={handleClickClose}>
-                                        About
-                                    </Link>
-                                </Button>
-                                <Button className="nav_menu_mobile-li" onClick={handleClickClose}>
-                                    {token.token ? (
-                                        <div onClick={handleLogout} className="nav_menu_mobile-link">
-                                            Logout
-                                        </div>
-                                    ) : (
-                                        <Link to="/signup" className="nav_menu_mobile-link" onClick={handleClickClose}>
-                                            SIGNUP
-                                        </Link>
-                                    )}
-                                </Button>
-                            </ul>
-                        </div>
-                    </Dialog> */}
-                    {show ? (
-                        <div className="nav_menu_mobile">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" onClick={handle}>
-                                <path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z" />
-                            </svg>
+                        //             <Link
+                        //                 to={`/myaccount/${token.username}/checkout`}
+                        //                 style={{ textDecoration: 'none', color: 'black' }}
+                        //                 onClick={handleClose}
+                        //             >
+                        //                 <MenuItem>View Cart</MenuItem>
+                        //             </Link>
+                        //             <Link
+                        //                 to={`/myaccount/${token.username}/history`}
+                        //                 style={{ textDecoration: 'none', color: 'black' }}
+                        //                 onClick={handleClose}
+                        //             >
+                        //                 <MenuItem>Order History</MenuItem>
+                        //             </Link>
 
-                            <ul className="nav_menu_mobile-ul" id="test">
-                                <Button className="nav_menu_mobile-li">
-                                    <Link to="/home" className="nav_menu_mobile-link" onClick={() => handle()}>
-                                        Home
-                                    </Link>
-                                </Button>
-                                <Button className="nav_menu_mobile-li">
-                                    <Link to="/contact" className="nav_menu_mobile-link" onClick={() => handle()}>
-                                        Contact
-                                    </Link>
-                                </Button>
-                                <Button className="nav_menu_mobile-li">
-                                    <Link to="/about" className="nav_menu_mobile-link" onClick={() => handle()}>
-                                        About
-                                    </Link>
-                                </Button>
-                                <Button className="nav_menu_mobile-li">
-                                    {token.token ? (
-                                        <div onClick={handleLogout} className="nav_menu_mobile-link">
-                                            Logout
-                                        </div>
-                                    ) : (
-                                        <Link to="/signup" className="nav_menu_mobile-link" onClick={() => handle()}>
-                                            SIGNUP
-                                        </Link>
-                                    )}
-                                </Button>
-                            </ul>
-                        </div>
-                    ) : null}
+                        //             <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                        //         </Menu>
+                        //     </Stack>
+                        // </div>
+                        null}
+                    </div>
+
+                    <NavMenuPhone />
                 </div>
             </div>
         </div>

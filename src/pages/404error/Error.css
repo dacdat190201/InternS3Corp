@@ -1,5 +1,19 @@
+.main__error {
+    min-height: 60vh;
+    margin-top: 70px;
+}
+
 .error__404 {
     margin-top: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.error__404-mobile {
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,6 +47,36 @@
     cursor: pointer;
 }
 
+.main__error-mobile {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .main__error-mobile {
+        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 70vh;
+    }
+
+    .main__error {
+        display: none;
+    }
+
+    .error__404 {
+
+        height: 90vh;
+        margin-top: -130px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+}
+
 @media screen and (max-width: 480px) {
 
     .error__container h1 {
@@ -42,7 +86,7 @@
 
     .error-btn button {
         margin-top: 80px;
-        width: 154px;
+        width: 180px;
         height: 36px;
         background-color: #DB4444;
         color: #fff;

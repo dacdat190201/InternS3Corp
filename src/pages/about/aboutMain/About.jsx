@@ -1,15 +1,12 @@
 import React from 'react';
 import './About.css';
 import AboutCenter from '../aboutCenter/AboutCenter';
-import AboutBottom from '../aboutBottom/AboutBottom';
-
+import DeveliryIcon from '../../../component/common/DeveliryIcon';
+import BreadcurmbNavigation from '../../../component/common/BreadcurmbNavigation';
 function About() {
     return (
-        <div>
-            <hr></hr>
-            <div className="about__top">
-                Home/<p> About</p>
-            </div>
+        <div className="about__main">
+            <BreadcurmbNavigation props="About" />
             <AboutCenter />
             <div className="about__bar">
                 <div className="about__bar-btn">
@@ -53,8 +50,10 @@ function About() {
                                 strokeMiterlimit="16"
                             />
                         </svg>
-                        <h1>10K5</h1>
-                        <h4>Saller active out side</h4>
+                        <div className="about__bar-title">
+                            <h1>10K5</h1>
+                            <h4>Saller active out side</h4>
+                        </div>
                     </div>
                 </div>
                 <div className="about__bar-btn">
@@ -88,8 +87,10 @@ function About() {
                                 strokeLinejoin="round"
                             />
                         </svg>
-                        <h1>33K </h1>
-                        <h4>Monthly Product Sale</h4>
+                        <div className="about__bar-title">
+                            <h1>33K </h1>
+                            <h4>Monthly Product Sale</h4>
+                        </div>
                     </div>
                 </div>
                 <div className="about__bar-btn">
@@ -107,8 +108,10 @@ function About() {
                             />
                         </svg>
 
-                        <h1>45.5K</h1>
-                        <h4>Custom active in our site</h4>
+                        <div className="about__bar-title">
+                            <h1>45.5K</h1>
+                            <h4>Custom active in our site</h4>
+                        </div>
                     </div>
                 </div>
                 <div className="about__bar-btn">
@@ -132,12 +135,14 @@ function About() {
                             />
                         </svg>
 
-                        <h1>25K</h1>
-                        <h4>Saller active out side</h4>
+                        <div>
+                            <h1>25K</h1>
+                            <h4>Saller active out side</h4>
+                        </div>
                     </div>
                 </div>
             </div>
-            <AboutBottom />
+            <DeveliryIcon />
         </div>
     );
 }

@@ -1,9 +1,6 @@
 .sidebar-admin {
-    flex: 1;
-    height: calc(100vh - 20px);
-    background-color: rgb(251, 251, 255);
-    position: sticky;
-    top: 50px;
+    width: 100%;
+
 }
 
 .sidebarWrapper {
@@ -35,7 +32,7 @@
 
 .sidebarListItem.active,
 .sidebarListItem:hover {
-    background-color: rgb(240, 240, 255);
+    background-color: rgb(225, 225, 255);
 }
 
 .sidebarIcon {

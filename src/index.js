@@ -1,4 +1,6 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -7,11 +9,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import UserLayout from './layout/userlayout/UserLayout';
 import Test2 from './Test2';
 import { CircularProgress } from '@mui/material';
+import NotFound from './component/UI/notfound/NotFound';
+import LoadingComponent from './component/common/LoadingComponent';
+import WaitingOrders from './pages/user/checkout/waiting/WaitingOrders';
+
 const AuthProvider = React.lazy(() => import('./services/auth/provider/AuthProvider'));
 const ProductMain = React.lazy(() => import('./pages/product/listProduct/ProductMain/ProductMain'));
-const CartEmpty = React.lazy(() => import('./pages/cart/cartEmpty/CartEmpty'));
 const SearchPage = React.lazy(() => import('./pages/search/SearchPage'));
-const CartLogin = React.lazy(() => import('./pages/cart/cartEmpty/CartLogin'));
 const ListDiscount = React.lazy(() => import('./pages/home/discount/ListDiscount'));
 const MyAccount = React.lazy(() => import('./pages/user/myaccount/MyAccount'));
 const CheckoutMain = React.lazy(() => import('./pages/user/checkout/CheckoutMain'));
@@ -37,7 +41,7 @@ const HistoryShipping = React.lazy(() =>
     import('./component/Mobile/account/myorders/OrderDetailMobile/HistoryShipping/HistoryShipping'),
 );
 const Home = React.lazy(() => import('./pages/home/HomeMain/Home'));
-const ProductDetail = lazy(() => import('./pages/product/productDetail/ProductDetail'));
+const ProductDetail = React.lazy(() => import('./pages/product/productDetail/ProductDetail'));
 const SignUp = React.lazy(() => import('./pages/signup/signUp/SignUp'));
 const SignIn = React.lazy(() => import('./pages/signup/signIn/SignIn'));
 const About = React.lazy(() => import('./pages/about/aboutMain/About'));
@@ -50,7 +54,7 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <AuthProvider>
-                <Suspense fallback={<CircularProgress />}>
+                <Suspense fallback={<LoadingComponent loading={true} />}>
                     <Routes>
                         <Route path="/" element={<App />}>
                             <Route index element={<Home />} />
@@ -62,19 +66,10 @@ root.render(
                             <Route path="/404" element={<Error />} />
                             <Route path="/cart" element={<Cart />} />
                             <Route path="/search" element={<SearchPage />} />
-                            <Route path="/cart404" element={<CartEmpty />} />
                             <Route path="/favorites" element={<Favorites />} />
                             <Route path="/discounts" element={<ListDiscount />} />
-                            <Route path="/isLogin" element={<CartLogin />} />
                             <Route path="/:category" element={<ProductMain />} />
-                            <Route
-                                path="/products/:id"
-                                element={
-                                    <Suspense fallback={<CircularProgress />}>
-                                        <ProductDetail />
-                                    </Suspense>
-                                }
-                            />
+                            <Route path="/products/:id" element={<ProductDetail />} />
                             <Route path="/test" element={<Test />} />
                             <Route path="/test2" element={<Test2 />} />
                             {/* ************************MOBILE USER******************************** */}
@@ -92,10 +87,9 @@ root.render(
                         <Route path="/">
                             <Route path="/myaccount" element={<UserLayout />}>
                                 <Route index element={<MainProfile />} />
-                                <Route path="/myaccount/:username/checkout" element={<CheckoutMain />} />
+                                {/* <Route path="/myaccount/:username/checkout" element={<CheckoutMain />} /> */}
+                                <Route path="/myaccount/:username/checkout" element={<WaitingOrders />} />
                                 <Route path="/myaccount/:username/checkout/confirm" element={<Confirm />} />
-                                <Route path="/myaccount/:username/checkout/confirm" element={<Confirm />} />
-                                <Route path="/myaccount/profile/:username" element={<MyAccount />} />
                                 <Route path="/myaccount/:username/history" element={<OrderHistory />} />
                                 <Route path="/myaccount/user/order/:id" element={<OrderDetail />} />
                             </Route>
@@ -112,6 +106,7 @@ root.render(
                                 <Route path="/admin/orders/:id" element={<DetailOrders />} />
                             </Route>
                         </Route>
+                        <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Suspense>
             </AuthProvider>

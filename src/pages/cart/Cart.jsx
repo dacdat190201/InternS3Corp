@@ -1,24 +1,35 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import './Cart.css';
 import '../../pages/about/aboutMain/About.css';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { useEffect } from 'react';
 import AuthContext from '../../services/auth/context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
-import CartEmpty from '../../pages/cart/cartEmpty/CartEmpty';
 import json from '../../datafake/chudeData.json';
 import ViewCartMobile from '../../component/Mobile/account/viewcart/ViewCartMobile';
+import Error from '../404error/Error';
+import BreadcurmbNavigation from '../../component/common/BreadcurmbNavigation';
+import ButtonView from '../../component/common/ButtonView';
+import { ShowAlert, ShowError } from '../../utils/ToastAlert';
 const Cart = () => {
     const { token, getCartTotal, cartItems, clearCart, removeCart } = useContext(AuthContext);
     const [discount, setDiscount] = useState('');
     const [text, setText] = useState('');
     const [dis, setDis] = useState('');
     const navigate = useNavigate();
+    const ref = useRef(false);
     useEffect(() => {
-        if (!token.token) {
-            navigate('/signin');
+        if (ref.current) {
+            if (!token.token) {
+                navigate('/signin');
+                ShowError('You need to log in to perform this function');
+            }
         }
+        return () => {
+            ref.current = true;
+        };
     }, [token.token, navigate]);
+
     useEffect(() => {
         setDiscount(json.data);
     }, []);
@@ -47,35 +58,33 @@ const Cart = () => {
     if (cartItems.length === 0)
         return (
             <div>
-                <CartEmpty />
+                <Error props="My cart is empty" button="Go to Shopping" title="My Cart" />
             </div>
         );
 
     return (
         <>
             <div className="cart__AllMain">
-                <hr></hr>
-                <div className="about__top">
-                    Home/<p> Cart</p>
-                </div>
-
+                <BreadcurmbNavigation props="My Cart" />
                 <div className="cart__main">
                     <TableContainer component={Paper}>
                         <Table aria-label="simple table">
                             <TableHead>
                                 <TableRow>
-                                    <TableCell style={{ fontWeight: 'bolder' }}>Product</TableCell>
-                                    <TableCell style={{ fontWeight: 'bolder', textAlign: 'center' }} align="right">
-                                        Price
+                                    <TableCell style={{ fontWeight: 'bolder' }}>
+                                        <div className="titleTable">Product</div>
                                     </TableCell>
                                     <TableCell style={{ fontWeight: 'bolder', textAlign: 'center' }} align="right">
-                                        Quantity
+                                        <div className="titleTable">Price</div>
                                     </TableCell>
                                     <TableCell style={{ fontWeight: 'bolder', textAlign: 'center' }} align="right">
-                                        Subtotal
+                                        <div className="titleTable">Quantity</div>
                                     </TableCell>
                                     <TableCell style={{ fontWeight: 'bolder', textAlign: 'center' }} align="right">
-                                        Handle
+                                        <div className="titleTable">Subtotal</div>
+                                    </TableCell>
+                                    <TableCell style={{ fontWeight: 'bolder', textAlign: 'center' }} align="right">
+                                        <div className="titleTable">Handle</div>
                                     </TableCell>
                                 </TableRow>
                             </TableHead>
@@ -96,25 +105,28 @@ const Cart = () => {
                                                         }}
                                                         className="cart_ImageTitle"
                                                     >
-                                                        <img src={item.item.images[0]} alt="" width={54} height={54} />
-                                                        {item.item.title}
+                                                        <div className="cart__img">
+                                                            <img src={item.item.images[0]} alt="" />
+                                                        </div>
+                                                        <div className="titleItem500">{item.item.title}</div>
                                                     </div>
                                                 </Link>
                                             </TableCell>
 
                                             <TableCell style={{ textAlign: 'center' }} align="right">
-                                                {item.item.price}
+                                                <h3>${item.item.price}</h3>
                                             </TableCell>
                                             <TableCell style={{ textAlign: 'center' }} align="right">
-                                                {item.quantity}
+                                                <h3>{item.quantity}</h3>
                                             </TableCell>
                                             <TableCell style={{ textAlign: 'center' }} align="right">
-                                                ${subTotal(item)}
+                                                <h3>${subTotal(item)}</h3>
                                             </TableCell>
                                             <TableCell style={{ textAlign: 'center' }} align="right">
                                                 <i
                                                     className="fa-solid fa-trash"
                                                     onClick={() => removeCart(item.item.id)}
+                                                    style={{ cursor: 'pointer' }}
                                                 ></i>
                                             </TableCell>
                                         </TableRow>
@@ -124,44 +136,31 @@ const Cart = () => {
                     </TableContainer>
                     <div className="cart__btn">
                         <Link to="/products" style={{ color: 'black', textDecoration: 'none' }}>
-                            <button>
-                                <h3>Return to shop</h3>
-                            </button>
+                            <ButtonView props="Return to shop" size="white" />
                         </Link>
 
-                        <button
+                        <div
                             onClick={() => {
                                 clearCart();
-                                alert('Cart Empty, Return to Card');
+                                ShowAlert('Cart Empty, Return to Card');
                             }}
                         >
-                            <h3>Clear Cart</h3>
-                        </button>
+                            <ButtonView props="Clear Cart" size="white" />
+                        </div>
                     </div>
                     <div className="cart__bottom">
-                        {/* <div className="cart-coupon">
-                            <input
-                                type="text"
-                                placeholder="Coupon Code"
-                                onChange={(e) => setText(e.target.value)}
-                                name="coupon_cart"
-                                id="coupon_cart"
-                            />
-                            <button onClick={() => getDiscount()}>Apply Coupon</button>
-                        </div> */}
-
                         <div className="cart-total">
                             <div className="cart-container">
-                                <h3>Cart total</h3>
+                                <div className="BreadName">Cart total</div>
                                 <div className="cart-center">
-                                    <div>Subtotal:</div>
+                                    <h3>Subtotal:</h3>
                                     <div>${getCartTotal()}</div>
                                 </div>
                                 <hr></hr>
                                 {dis ? (
                                     <>
                                         <div className="cart-center">
-                                            <div>Discount:</div>
+                                            <h3>Discount:</h3>
                                             <div>${dis.discount}</div>
                                         </div>
                                         <hr></hr>
@@ -169,12 +168,12 @@ const Cart = () => {
                                 ) : null}
 
                                 <div className="cart-center">
-                                    <div>Total:</div>
+                                    <h3>Total:</h3>
                                     <div style={{ fontWeight: 'bold', color: 'red' }}>${allTotal()}</div>
                                 </div>
                                 <div className="cart-btn">
                                     <Link to={`/myaccount/${token.username}/checkout`}>
-                                        <button>Process to checkout</button>
+                                        <ButtonView props="Process to checkout" />
                                     </Link>
                                 </div>
                             </div>

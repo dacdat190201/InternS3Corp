@@ -2,6 +2,8 @@ import React from 'react';
 import './ThisMonth.css';
 import Discount from '../discount/Discount';
 import { Link } from 'react-router-dom';
+import TitleCata from '../../../component/common/TitleCata';
+import ButtonView from '../../../component/common/ButtonView';
 function calculateTimeLeft() {
     const year = new Date().getFullYear();
     const difference = +new Date(`${year}-12-1`) - +new Date();
@@ -32,46 +34,48 @@ function ThisMonth() {
     });
 
     return (
-        <div>
-            <div className="sale__top">
-                <div className="sale__top-item"></div>
-                <div className="sale__top-title">This Month</div>
-            </div>
-
-            <Discount />
+        <div className="thismonth__container">
+            <TitleCata props="This Month" />
+            {/* <Discount /> */}
             <div className="bg__thismount">
                 <div className="bg__thismount-content">
-                    <h4>Category</h4>
-                    <h1>Enhance Your</h1>
-                    <h1>Music Experience</h1>
-                    <div className="bg__time">
-                        <div className="bg__time-countdow">
-                            <div style={{ fontWeight: 'bold' }}>{timeLeft.hours} </div>
-                            <div style={{ fontSize: 12 }}>Hours</div>
-                        </div>
-                        <div className="bg__time-countdow">
-                            <div style={{ fontWeight: 'bold' }}>{timeLeft.days}</div>
-                            <div style={{ fontSize: 12 }}>Days</div>
-                        </div>
+                    <div className="bg__thismount-title">
+                        <h4>Category</h4>
+                        <h1 className="textBanner">
+                            Enhance Your<br></br> Music Experience
+                        </h1>
 
-                        <div className="bg__time-countdow">
-                            <div style={{ fontWeight: 'bold' }}>{timeLeft.minutes} </div>
-                            <div style={{ fontSize: 12 }}>Minutes</div>
-                        </div>
-                        <div className="bg__time-countdow">
-                            <div style={{ fontWeight: 'bold' }}>{timeLeft.seconds} </div>
-                            <div style={{ fontSize: 12 }}>Seconds</div>
+                        <div className="bg__time">
+                            <div className="bg__time-countdow">
+                                <div className="time__countdowsTitle">{timeLeft.hours}</div>
+                                <div className="font__bg-time">Hours</div>
+                            </div>
+                            <div className="bg__time-countdow">
+                                <div className="time__countdowsTitle">{timeLeft.days}</div>
+                                <div className="font__bg-time">Days</div>
+                            </div>
+
+                            <div className="bg__time-countdow">
+                                <div className="time__countdowsTitle">{timeLeft.minutes}</div>
+                                <div className="font__bg-time">Minutes</div>
+                            </div>
+                            <div className="bg__time-countdow">
+                                <div className="time__countdowsTitle">{timeLeft.seconds}</div>
+                                <div className="font__bg-time">Seconds</div>
+                            </div>
                         </div>
                     </div>
                     <Link style={{ textDecoration: 'none' }} to={'/products/86'}>
-                        <button style={{ fontSize: 17 }}>Buy Now!</button>
+                        <ButtonView props="Buy Now!" />
                     </Link>
                 </div>
-                <img
-                    src={require('../../../assets/images/ThumbailJBL.webp')}
-                    alt="QC_speakJBL"
-                    className="bg__thismount-img"
-                />
+                <div className="Thismonth__Shadow">
+                    <img
+                        src={require('../../../assets/images/ThumbailJBL.webp')}
+                        alt="QC_speakJBL"
+                        className="bg__thismount-img"
+                    />
+                </div>
             </div>
         </div>
     );

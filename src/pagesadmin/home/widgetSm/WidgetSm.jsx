@@ -19,9 +19,9 @@ const WidgetSm = () => {
             <span className="widgetSmTitle">New Menber</span>
             <ul className="widgetSmList">
                 {data &&
-                    data?.users?.slice(0, 5).map((item) => {
+                    data?.users?.slice(0, 5).map((item, key) => {
                         return (
-                            <li className="widgetSmListItem">
+                            <li className="widgetSmListItem" key={key}>
                                 <img src={`${item.image}`} alt="" className="widgetSmImg" />
                                 <div className="widgetSmUser">
                                     <span className="widgetSmUsername">

@@ -1,7 +1,17 @@
+.searchbox_input input[type=text] {
+    font-family: 'Poppins';
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
 .searching__background {
-    margin-top: 30px;
+    margin-left: -14px;
+    margin-top: 23px;
     position: absolute;
-    background-color: #fff;
+    border-radius: 10px;
+    z-index: 0;
+    background-color: #F3F3F3;
 }
 
 .searching-title {
@@ -21,12 +31,27 @@
     display: flex;
     gap: 12px;
     text-decoration: none;
-    justify-content: space-between;
-    width: 390px;
+    align-items: center;
+    width: 320px;
+    padding: 10px;
+
+
+}
+
+.searching__container img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
 }
 
 .searching__container:hover {
-    background-color: grey;
+    background-color: rgb(224, 224, 224);
+    color: #fff;
+}
+
+.searching__container:last-child:hover {
+    background-color: rgb(224, 224, 224);
+    border-radius: 0px 10px 10px 0px;
     color: #fff;
 }
 
@@ -34,21 +59,173 @@
     color: #fff;
 }
 
-@media screen and (max-width: 767px) {
-    .searching__background {
-        margin-top: 50px;
+/* *********************Tippy********************* */
+.search__tippy {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    width: 231px;
+    gap: 5px;
+    background: var(--Secondary, #F5F5F5);
+    margin-left: -12px;
+    padding-right: 20px;
+}
 
+.search__tippy input {
+    height: 100%;
+    width: 100%;
+    padding: 7px 12px 7px 20px;
+    border-radius: 4px;
+    background: var(--Secondary, #F5F5F5);
+    border: none;
+    outline: none;
+}
+
+.search__tippy button {
+    background: hsla(0, 0%, 100%, 0.1);
+    position: absolute;
+    margin-left: 170px;
+    border: none;
+
+}
+
+.search__tippy-loading {
+    animation: spinner 1s linear infinite
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+
+    to {
+        transform: translateY(-50%) rotate(360deg);
     }
 }
 
-@media screen and (max-width:900px) {
+.search__tippy .search__tippy-loading {
+    border: none;
+    margin-top: 15px;
+}
+
+.searchbox_input,
+.wrapper_search {
+    width: 231px;
+}
+
+
+.search-title {
+    color: rgb(22, 24, 35);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.search-results {
+    width: 120%;
+    max-height: min((50vh - 96px) - 60px, 734px);
+    min-height: 60px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 12%) 0px 2px 12px;
+    border-radius: 8px;
+    padding: 8px;
+    overflow-y: auto;
+
+}
+
+.searchItem {
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.searchItem img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.search-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(82, 77, 77)
+}
+
+.search-price {
+    font-size: 12px;
+    color: rgb(22, 24, 35, 0.5)
+}
+
+.searchBar__icon {
+    display: none;
+    margin-right: 12px;
+}
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
     .searching__background {
-        margin-top: 50px;
-        right: 40px;
+        margin-left: -14px;
+        margin-top: 23px;
+        position: absolute;
+        border-radius: 10px;
+        z-index: 0;
+        background-color: #F3F3F3;
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .searchbox_input input {
+        display: none;
     }
 
-    .searching__container {
-        width: 335px;
-        background-color: rgb(211, 211, 211);
+    .searchBar__icon {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .searchbox_input input {
+        display: block;
+    }
+
+    .searchBar__icon {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .searchbox_input input {
+        display: block;
+    }
+
+    .searchBar__icon {
+        display: none;
+    }
+
+    .search__tippy {
+        display: flex;
+        align-items: center;
+        width: 231px;
+        gap: 5px;
+        background: var(--Secondary, #F5F5F5);
+        margin-left: -12px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .searchbox_input {
+        display: none;
+    }
+
+    .searchBar__icon {
+        display: block;
     }
 }

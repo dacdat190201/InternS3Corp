@@ -6,14 +6,18 @@ import instance from '../../../../services/axios/axiosDomain/axiosDomain';
 import FilterLimit from './FilterLimit';
 import { Link } from 'react-router-dom';
 
-const Filter = ({ setLimit }) => {
-    const [list, setList] = useState();
+const Filter = ({ setLimit, param }) => {
+    const [list, setList] = useState('');
     const [next, setNext] = useState(5);
+    const [selectedList, setSelectedList] = useState({ id: param.category });
     const loadMore = useCallback(() => {
         const sum = next + next;
         return setNext(sum);
     }, [next]);
-
+    const loadLess = useCallback(() => {
+        const less = next - 15;
+        return setNext(less);
+    }, [next]);
     useEffect(() => {
         const fetch = async () => {
             try {
@@ -27,46 +31,76 @@ const Filter = ({ setLimit }) => {
     return (
         <div className="filter__container">
             <div className="filter__top">
-                <div className="filter__logo">Filter</div>
+                <div className="BreadName">Filter</div>
                 <div>
                     <Link to={'/products'} style={{ textDecoration: 'none' }}>
-                        <button className="filter-btnClear">Clear</button>
+                        <button
+                            className="filter-btnClear"
+                            onClick={() => {
+                                setSelectedList({});
+                            }}
+                        >
+                            Clear All
+                        </button>
                     </Link>
                 </div>
             </div>
             <div className="filter__center">
                 <div className="filter__item">
-                    <div className="filter-title">Category</div>
+                    <div className="filter-title BreadName">Category</div>
                     {list &&
                         list.slice(0, next).map((item, key) => {
                             return (
                                 <div className="filter__item-rdo" key={key}>
                                     <Link
-                                        style={{ color: 'black', textDecoration: 'none' }}
+                                        style={{ textDecoration: 'none' }}
                                         to={`/${item}`}
-                                        className="filter-rdo"
+                                        className={
+                                            'filter-rdo ' +
+                                            (item === selectedList.id ? 'filter-rdo_link' : 'filter-rdo')
+                                        }
+                                        onClick={() => setSelectedList({ id: item })}
                                     >
                                         {item.charAt(0).toUpperCase() + item.slice(1)}
                                     </Link>
-                                    <div className="filter-number">(100)</div>
+                                    <div
+                                        className={
+                                            'filter-number ' +
+                                            (item === selectedList.id ? 'filter-rdo_link' : 'filter-number')
+                                        }
+                                    >
+                                        (100)
+                                    </div>
                                 </div>
                             );
                         })}
-                    <div
-                        style={{
-                            fontWeight: 'bold',
-                            cursor: 'pointer',
-                            textDecoration: 'underline',
-                        }}
-                        className="filter__item-rdo"
-                        onClick={() => loadMore()}
-                    >
-                        show more
-                    </div>
+                    {next === Number(list.length) ? (
+                        <div
+                            style={{
+                                cursor: 'pointer',
+                                textDecoration: 'underline',
+                            }}
+                            className="filter__item-rdo"
+                            onClick={() => loadLess()}
+                        >
+                            show Less
+                        </div>
+                    ) : (
+                        <div
+                            style={{
+                                cursor: 'pointer',
+                                textDecoration: 'underline',
+                            }}
+                            className="filter__item-rdo"
+                            onClick={() => loadMore()}
+                        >
+                            show more
+                        </div>
+                    )}
                 </div>
 
                 <div className="filter__item">
-                    <div className="filter-title">Rating</div>
+                    <div className="filter-title BreadName">Rating</div>
                     <div className=" filter__item-rdo">
                         <div className="filter-rdo">
                             <input type="radio" name="topping" value="Regular" id="regular" />
@@ -85,7 +119,6 @@ const Filter = ({ setLimit }) => {
                         <div className="filter-rdo">
                             <input type="radio" name="topping" value="Medium" id="medium1" />
                             <div htmlFor="medium1">
-                                {' '}
                                 <i className="fa-solid fa-star" style={{ color: '#E59819' }}></i>
                                 <i className="fa-solid fa-star" style={{ color: '#E59819' }}></i>
                                 <i className="fa-solid fa-star" style={{ color: '#E59819' }}></i>
@@ -99,7 +132,6 @@ const Filter = ({ setLimit }) => {
                         <div className="filter-rdo">
                             <input type="radio" name="topping" value="Large" id="large2" />
                             <div htmlFor="large2">
-                                {' '}
                                 <i className="fa-solid fa-star" style={{ color: '#E59819' }}></i>
                                 <i className="fa-solid fa-star" style={{ color: '#E59819' }}></i>
                                 <i className="fa-solid fa-star" style={{ color: '#E59819' }}></i>

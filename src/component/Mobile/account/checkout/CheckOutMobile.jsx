@@ -1,32 +1,60 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './CheckoutMobile.css';
 import '../viewcart/ViewCartMobile.css';
 import '../../../../pages/signup/signUp/SignUp.css';
 import { Link, useNavigate } from 'react-router-dom';
-import SearchIcon from '@mui/icons-material/Search';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import BarBack from '../../../common/BarBack';
 import AuthContext from '../../../../services/auth/context/AuthContext';
+import '../../../../pages/404error/Error.css';
+import ButtonView from '../../../common/ButtonView';
 import emailjs from '@emailjs/browser';
-import { CircularProgress } from '@mui/material';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import json from '../../../../datafake/chudeData.json';
+import LoadingComponent from '../../../../component/common/LoadingComponent';
+import { ShowAlert } from '../../../../utils/ToastAlert';
+import { ShowError } from '../../../../utils/ToastAlert';
 const CheckOutMobile = () => {
-    const { token, clearCart, cartItems, addInfor, getCartTotal, history, inforUser } = useContext(AuthContext);
+    const { token, clearCart, cartItems, addInfor, getCartTotal, history } = useContext(AuthContext);
     const inforAddress = history.find((item) => item.primary === true);
-    const ref = useRef();
+
     const navigate = useNavigate();
     // const [checkRdo, setCheckRdo] = useState("Cash on delivery");
+    const [discount, setDiscount] = useState('');
+    const [text, setText] = useState('');
+    const [dis, setDis] = useState('');
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         if (!token.token) {
             navigate('/');
         }
-        ref.current?.scrollIntoView({ behavior: 'smooth' });
-        emailjs.init('lKX4rEAkNvWvc6ljz');
+        setDiscount(json.data);
+        emailjs.init('rs02wz8JPvIUnJrNB');
     }, [token.token, navigate]);
+    const getDiscount = () => {
+        if (!text) {
+            ShowError('Please enter discount code');
+
+            setDis(0);
+        } else if (!discount.find((item) => item.id === text)) {
+            ShowError('No discount code found');
+
+            setDis(0);
+        } else {
+            if (discount.find((item) => item.allowance < getCartTotal())) {
+                setDis(discount.find((item) => item.id === text));
+            } else ShowError('The condition is not satisfied');
+        }
+    };
+    const allTotal = () => {
+        if (dis) {
+            return getCartTotal() - dis.discount;
+        } else return getCartTotal();
+    };
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const serviceId = 'service_at226mk';
-        const templateId = 'template_dqu6x0y';
+        const serviceId = 'service_k19plts';
+        const templateId = 'template_7pzoq0l';
         try {
             setLoading(true);
             await emailjs.send(serviceId, templateId, {
@@ -39,10 +67,10 @@ const CheckOutMobile = () => {
                 my_email: inforAddress.my_email,
                 item_name: cartItems.map((item) => item.item.title),
                 // item_qty: totalQty(),
-                // my_discount: dis.discount,
+                my_discount: dis.discount,
                 item_total: getCartTotal(),
                 date: new Date(),
-                // total: allTotal(),
+                total: allTotal(),
                 payment: 'Cash on delivery',
                 userToken: token.username,
             });
@@ -56,10 +84,10 @@ const CheckOutMobile = () => {
                     phone_number: inforAddress.phone_number,
                     my_email: inforAddress.my_email,
                     cart: cartItems,
-                    // my_discount: dis.discount,
+                    my_discount: dis.discount,
                     item_total: getCartTotal(),
                     date: new Date(),
-                    total: getCartTotal(),
+                    total: allTotal(),
                     payment: 'Cash on delivery',
                 },
                 status: {
@@ -67,10 +95,10 @@ const CheckOutMobile = () => {
                     message: [{ title: 'Please confirm your order', date: new Date() }],
                 },
             });
+            ShowAlert('email successfully sent check inbox');
             clearCart();
-            alert('email successfully sent check inbox');
         } catch (error) {
-            alert(error);
+            ShowError('Please check the information again');
         } finally {
             setLoading(false);
         }
@@ -78,88 +106,48 @@ const CheckOutMobile = () => {
     if (loading) {
         return (
             <>
-                <CircularProgress />
+                <LoadingComponent loading={loading} />
             </>
         );
     }
-    if (inforUser.length === 0 && cartItems.length === 0) {
+    if (cartItems.length === 0) {
         return (
-            <div className="checkoutMobile" ref={ref}>
-                <div className="ViewCart__Top">
-                    <Link style={{ color: 'black' }} to={'/viewcart'}>
-                        <ArrowBackIosIcon />
-                    </Link>
-                    <h4>Checkout</h4>
-                    <SearchIcon />
+            <div style={{ marginBottom: 80 }}>
+                <div>
+                    <BarBack link="home" />
                 </div>
-                <div className="checkoutM-items">
-                    <div style={{ marginBottom: 80 }}>
-                        <div className="error__404">
-                            <div className="error__container">
-                                <img src={require('../../../../assets/slide/bags.png')} alt="shopping none" />
-                            </div>
-                            <div className="error-btn">
-                                <Link to="/products" style={{ color: 'black', textDecoration: 'none' }}>
-                                    <button>Go to Shopping</button>
-                                </Link>
-                            </div>
-                        </div>
+                <div className="error__404">
+                    <div className="error__container">
+                        <img src={require('../../../../assets/slide/bags.png')} alt="shopping none" />
+                    </div>
+                    <div className="error-btn">
+                        <Link to="/products" style={{ color: 'black', textDecoration: 'none' }}>
+                            <button>Go to Shopping</button>
+                        </Link>
                     </div>
                 </div>
             </div>
         );
-    }
-    if (cartItems.length === 0 && inforUser[0].status.name === 'confirm') {
+    } else {
         return (
-            <div className="checkoutMobile" ref={ref}>
-                <div className="ViewCart__Top">
-                    <Link style={{ color: 'black' }} to={'/viewcart'}>
-                        <ArrowBackIosIcon />
-                    </Link>
-                    <h4>Checkout</h4>
-                    <SearchIcon />
+            <div className="checkoutMobile">
+                <div>
+                    <BarBack link="cart" title="CheckOut" search={true} />
                 </div>
                 <div className="checkoutM-items">
-                    <div style={{ marginBottom: 80 }}>
-                        <div className="error__404">
-                            <div className="error__container">
-                                <img src={require('../../../../assets/slide/bags.png')} alt="shopping none" />
-                            </div>
-                            <div className="error-btn">
-                                <Link to="/products" style={{ color: 'black', textDecoration: 'none' }}>
-                                    <button>Go to Shopping</button>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-    if (!loading) {
-        return (
-            <div className="checkoutMobile" ref={ref}>
-                <div className="ViewCart__Top">
-                    <Link style={{ color: 'black' }} to={'/viewcart'}>
-                        <ArrowBackIosIcon />
-                    </Link>
-                    <h4>Checkout</h4>
-                    <SearchIcon />
-                </div>
-                <div className="checkoutM-items">
-                    <h4>Shipping Address</h4>
+                    <div className="BreadName">Shipping Address</div>
                     {inforAddress ? (
                         <div className="checkoutM__items-address">
                             <div className="checkoutM__address-left">
-                                <p>
+                                <div className="titleItem500">
                                     {inforAddress?.first_name}&nbsp;
                                     {inforAddress?.company_name}
-                                </p>
-                                <span>{inforAddress?.address}</span>
-                                <br></br>
-                                <span>{inforAddress?.town_city}</span>
-                                <br></br>
-                                <span>{inforAddress?.my_email}</span>
+                                </div>
+                                <div className="titleSubItem600">{inforAddress?.address}</div>
+
+                                <div className="titleSubItem600">{inforAddress?.town_city}</div>
+
+                                <div className="titleSubItem600">{inforAddress?.my_email}</div>
                             </div>
                             <Link
                                 to={'/ShippingSave'}
@@ -186,7 +174,7 @@ const CheckOutMobile = () => {
 
                     <div className="checkoutM__items-payment">
                         <div className="checkoutM__address-left">
-                            <h4>Payment</h4>
+                            <div className="BreadName">Payment</div>
                         </div>
                         <Link
                             to={'/payment+method'}
@@ -220,12 +208,27 @@ const CheckOutMobile = () => {
                             </defs>
                         </svg>
                         <div>
-                            <p>**** **** **** 5826</p>
+                            <div className="titleItem500">**** **** **** 5826</div>
                         </div>
                     </div>
                     <div className="checkoutM__items-payment">
                         <div className="checkoutM__address-left">
-                            <h4>Delivery method</h4>
+                            <div className="BreadName">Discount</div>
+                        </div>
+
+                        <Link target="_blank" to="/discounts" className="checkout__getcoupon">
+                            Get Coupon
+                        </Link>
+                    </div>
+                    <div className="checkoutM__items-Discount">
+                        <input type="text" placeholder="Coupon Code" onChange={(e) => setText(e.target.value)} />
+                        <div className="VC__discount-btn" onClick={() => getDiscount()}>
+                            <ArrowForwardIcon />
+                        </div>
+                    </div>
+                    <div className="checkoutM__items-payment">
+                        <div className="checkoutM__address-left">
+                            <div className="BreadName">Delivery method</div>
                         </div>
                     </div>
                     <div className="checkoutM__items-Delivery">
@@ -378,34 +381,50 @@ const CheckOutMobile = () => {
                             </defs>
                         </svg>
                     </div>
+
                     <div className="checkoutM__items-ListTotal">
                         <div className="checkoutM__items-Total">
                             <div className="checkoutM__total-left">
                                 <p>Order</p>
                             </div>
-                            <div className="checkoutM__address-right">
-                                <p style={{ color: 'black' }}>112$</p>
+                            <div>
+                                <div className="PriceName">{getCartTotal()}$</div>
+                            </div>
+                        </div>
+                        <div className="checkoutM__items-Total">
+                            <div className="checkoutM__total-left">
+                                <p>Discount</p>
+                            </div>
+                            <div>
+                                <p style={{ color: 'black' }}>
+                                    {dis ? (
+                                        <>
+                                            <div>{dis.discount}$</div>
+                                        </>
+                                    ) : null}
+                                </p>
                             </div>
                         </div>
                         <div className="checkoutM__items-Total">
                             <div className="checkoutM__total-left">
                                 <p>Delivery</p>
                             </div>
-                            <div className="checkoutM__address-right">
+                            <div>
                                 <p style={{ color: 'black' }}>Free</p>
                             </div>
                         </div>
+
                         <div className="checkoutM__items-Total">
-                            <div className="checkoutM__address-left">
+                            <div>
                                 <p>Sumary</p>
                             </div>
-                            <div className="checkoutM__address-right">
-                                <p style={{ color: 'black' }}>112$</p>
+                            <div>
+                                <div className="PriceTotal">{allTotal()}$</div>
                             </div>
                         </div>
                     </div>
-                    <div className="checkoutM__Btn" onClick={handleSubmit}>
-                        SUBMIT ORDER
+                    <div onClick={handleSubmit} style={{ display: 'flex', justifyContent: 'center' }}>
+                        <ButtonView props="Submit Order" size="mobile" />
                     </div>
                 </div>
             </div>

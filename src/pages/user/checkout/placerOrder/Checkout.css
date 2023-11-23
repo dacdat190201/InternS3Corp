@@ -1,6 +1,10 @@
+.checkout__main {
+    margin-top: 70px;
+}
+
 .my__top {
     display: flex;
-    justify-content: center;
+
     align-items: center;
 
 }
@@ -11,8 +15,17 @@
 
 }
 
+.my__top-title p {
+    color: var(--Text2, #000);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    opacity: 0.5;
+
+}
+
 .checkout__container {
-    margin-top: 50px;
+    margin-top: 80px;
     margin-bottom: 140px;
 }
 
@@ -47,16 +60,18 @@
 }
 
 .checkout__container-form {
-    display: flex;
-    justify-content: center;
-    gap: 173px;
-    margin-top: 48px;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 173px;
+
 }
 
 .checkout-form {
-    width: 470px;
+    width: 100%;
 
 }
+
 
 .checkout-font {
     font-family: 'Times New Roman', Times, serif;
@@ -64,36 +79,44 @@
 }
 
 .checkout-label {
-    margin-top: 10px;
+    /* margin-top: 10px; */
+    display: flex;
+    align-items: center;
+
+}
+
+.checkout-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+    padding: 0;
+    accent-color: #DB4444
 }
 
 .form__input {
+    height: 50vh;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    height: 500px;
+
 }
 
 .form__input input {
     width: 100%;
     border: none;
-    border-bottom: solid grey;
+    border-bottom: solid #c0c3c7;
     height: 32px;
 }
 
 .form__input input:focus {
     border: none;
-    border-bottom: solid rgb(255, 0, 0);
+    border-bottom: solid #a6c6e5;
     height: 32px;
     outline: 3px solid transparent;
 }
 
 /* *********************************************** */
-.checkout-list {
-
-
-    width: 427px;
-}
+.checkout-list {}
 
 .checkout-Items {
     display: flex;
@@ -107,11 +130,22 @@
     gap: 24px;
     justify-content: center;
     align-items: center;
+
 }
 
-.Items__Right img {
-    width: 54px;
+.Item__right-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+}
+
+.Item__right-img {
+    background-color: aliceblue;
+    max-width: 54px;
     height: 54px;
+
+
 }
 
 .checkout-container {
@@ -126,24 +160,76 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
 }
 
+.rdo__bank input[type='radio'] {
+    width: 20px;
+    height: 20px;
+    accent-color: rgb(0, 0, 0);
+}
+
+
+
 .button__placeOrder button {
-    width: 190px;
-    height: 56px;
-    background-color: #DB4444;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
     margin-top: 32px;
+
+}
+
+.Checkout__coupon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px
+}
+
+.Checkout__coupon input {
+
+    padding: 14px 70px 14px 24px;
+
+
+}
+
+.Checkout__coupon button {
+    width: 211px;
+    height: 56px;
+
+}
+
+.form-control {
+    border-radius: 0px !important;
+    border: none !important;
+    border-bottom: 1px solid grey !important;
+
+}
+
+.form-control:focus {
+    border-radius: 0px !important;
+    border: none !important;
+    border-bottom: 1px solid #a6c6e5 !important;
+
+}
+
+.checkout-form>.form-floating {
+    height: 90px;
+
 }
 
 /* ******************************************* */
 
 
-@media screen and (min-width: 768px) and (max-width:900px) {
+@media screen and (max-width:1024px) {
+    .checkout-list-main {
+        width: 100%;
+    }
+
+    .checkout-list {
+        width: 100%;
+        margin-top: 110px;
+    }
+
     .checkout__container-form {
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -152,9 +238,23 @@
     .checkout__ship-hr {
         max-width: 200px
     }
+
+    .checkout-form {
+
+        width: 100%;
+    }
+
+    .button__placeOrder {
+        display: flex;
+        justify-content: flex-end;
+    }
+
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
+    .checkout__main {
+        display: none;
+    }
 
     .checkout__container-form {
         flex-direction: column;

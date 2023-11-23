@@ -1,55 +1,56 @@
 .footer_main {
     background-color: black;
+    color: #FAFAFA
 }
 
 .body__footer {
-    padding: 40px 135px 24px 135px;
-    color: white;
-    background-color: rgb(0, 0, 0);
+    max-width: 1170px;
+    padding: 80px 10.5px 0px;
 }
 
 .body_menu {
     display: flex;
     flex-wrap: wrap;
-    gap: 87px;
     margin-bottom: 24px;
+    justify-content: space-between;
 }
 
 .footer_li {
-    flex: 1;
+    display: flex;
+    /* flex: 1; */
     list-style: none;
+    gap: 24px;
+    flex-direction: column;
 
 }
 
-.footer-title {
-    margin-bottom: 24px;
-    font-size: 24px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.footer_li-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .footer_li h4 {
-    font-size: 18px;
-}
-
-.footer_li p {
-    font-size: 18px;
-    margin-top: 24px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
 }
 
 .footer__li-icon {
-    top: 33px;
+    top: 5px;
     position: relative;
     margin-left: -35px;
 
 }
 
 .footer_li input {
-    min-width: 217px;
-    margin-top: 24px;
+
+    margin-top: -8px;
     background-color: rgb(0, 0, 0);
     color: #fff;
     border-radius: 4px;
-    padding: 12px;
+    padding: 12px 16px;
+    border: 1.5px solid var(--Text, #FAFAFA);
 }
 
 .footer_listIcon {
@@ -58,28 +59,25 @@
     list-style: none;
 }
 
-
-
 .footer_subLi {
     list-style: none;
     margin-bottom: 16px;
 }
 
-.footer_subLi .footer_subItem {
-    text-decoration: none;
-    color: white;
-}
-
 .footer_subItem:hover {
     color: gray;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .footer__copyright {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.5;
+    height: 56px;
+    border-top: 1px solid #ffffff;
     margin-top: 60px;
-    border-top: 2px solid #cacaca;
-    color: grey;
 }
 
 .abcs {
@@ -88,11 +86,17 @@
 
 }
 
+.food__qrcode-main p {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    opacity: 0.7;
+}
+
 .food__qrcode {
     display: flex;
     gap: 8px;
     align-items: center;
-    margin-bottom: 24px;
     margin-top: 8px;
 }
 
@@ -115,54 +119,75 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    gap: 4px
+    gap: 8px
+}
+
+.abcs {
+    width: 100%;
 }
 
 /* ******************************************* */
-@media screen and (min-width: 901px) and (max-width:1440px) {
+
+
+@media screen and (max-width:1024px) {
+    .body_menu {
+        padding-top: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+        justify-content: space-between;
+    }
+
+    .footer_li:last-child {
+        display: none;
+    }
+
     .abcs {
-        width: 100%;
-        height: 200px;
-        max-width: calc(100% - 20px);
+        display: none;
     }
 }
 
-@media screen and (min-width: 768px) and (max-width:900px) {
-    .abcs {
+@media screen and (max-width:768px) {
+    .body_menu {
+        padding-top: 0px;
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+        justify-content: center;
+    }
 
-        width: 100%;
-        height: 200px;
-        max-width: calc(100% - 20px);
+    .footer_li {
+        flex: 1 0 50%;
+        margin-bottom: 24px;
+    }
+
+    .footer__copyright {
+        display: none;
     }
 }
 
-@media screen and (max-width: 767px) {
-
-    .abcs {
-
-        width: 100%;
-        height: 200px;
-        max-width: calc(100% - 20px);
+@media screen and (max-width:480px) {
+    .body_menu {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+        justify-content: center;
     }
 
-    .body__footer {
-        padding: 40px 35px 135px 35px;
-        color: white;
-        background-color: rgb(0, 0, 0);
-
+    .footer_li {
+        flex: 1 0 50%;
+        margin-bottom: 24px;
     }
 
-
-}
-
-@media screen and (max-width: 480px) {
-    .abcs {
-
-        width: 100%;
-        height: 200px;
-        max-width: calc(100% - 20px);
-
+    .footer_li:nth-child(1) {
+        display: none;
     }
 
+    .footer_subLi:nth-child(4) {
+        display: none;
+    }
 
+    .footer_li:nth-child(3) {
+        display: none;
+    }
 }

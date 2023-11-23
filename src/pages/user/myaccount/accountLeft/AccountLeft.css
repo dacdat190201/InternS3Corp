@@ -1,22 +1,21 @@
 .accountLeft__container {
     height: 100%;
-    box-shadow: 10px 5px 5px 5px grey;
+    box-shadow: 10px 5px 5px grey;
 
 }
 
 .accountLeft__main {
-    padding: 32px;
+    padding: 20px;
 }
 
 .account__tabs {
-    margin-top: 32px;
+    margin-top: 20px;
     display: flex;
     gap: 12px;
 }
 
 .userInfor-btn {
     border-bottom: 2px solid #3E79E5;
-
     padding: 0px 0px 5px 0px;
     font-weight: bold;
 }

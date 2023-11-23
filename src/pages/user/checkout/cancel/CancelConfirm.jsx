@@ -1,16 +1,14 @@
 import React, { useContext, useState } from 'react';
 import './CancelConfirm.css';
 import AuthContext from '../../../../services/auth/context/AuthContext';
+import ButtonView from '../../../../component/common/ButtonView';
 const CancelConfirm = ({ conDetail, props, setClick, btnCancel }) => {
     const [value, setValue] = useState();
     const { canceledInfor } = useContext(AuthContext);
     return (
         <div className="cancelConfirm">
-            <div className="cancelConfirm-X" onClick={() => setClick(false)}>
-                <i className="fa-solid fa-x"></i>
-            </div>
             <div className="cancelConfirm-container">
-                <h3>Reason for canceling this order</h3>
+                <h2 style={{ fontSize: 18 }}>Reason for canceling this order</h2>
                 <div>
                     <div className="cancelConfirm_rdo">
                         <input
@@ -54,14 +52,12 @@ const CancelConfirm = ({ conDetail, props, setClick, btnCancel }) => {
                         <div htmlFor="large2">Other reasons</div>
                     </div>
                 </div>
-                <div className="cancelConfirm-btn">
-                    <button
-                        onClick={() => {
-                            canceledInfor(conDetail ? conDetail : props, value);
-                        }}
-                    >
-                        Send
-                    </button>
+                <div
+                    onClick={() => {
+                        canceledInfor(conDetail ? conDetail : props, value);
+                    }}
+                >
+                    <ButtonView size={'sm'} props="Send" />
                 </div>
             </div>
         </div>

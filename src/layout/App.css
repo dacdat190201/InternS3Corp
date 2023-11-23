@@ -2,3 +2,48 @@
     margin: 0;
     padding: 0;
 }
+
+
+/* .App__container {
+    margin: 70px 135px 140px 135px;
+} */
+.margin__container {
+    margin-bottom: 140px;
+}
+
+.container-md {}
+
+@media screen and (max-width: 1024px) {
+    .container-md {
+        padding: 0px 40px;
+
+    }
+
+    .margin__container {
+        margin-bottom: 140px;
+    }
+
+
+}
+
+@media screen and (max-width: 768px) {
+    .margin__container {
+        margin-bottom: 0px;
+    }
+
+    .container-md {
+        padding: 30px;
+
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .margin__container {
+        margin-bottom: 0px;
+    }
+
+    .container-md {
+
+        padding: 20px
+    }
+}

@@ -1,4 +1,9 @@
+.history__main {
+    display: block;
+}
+
 .history__order-top {
+    margin-top: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,8 +17,8 @@
 }
 
 .history__container {
-    margin-top: 50px;
-    margin-left: 35px;
+    margin-top: 40px;
+
 
 }
 
@@ -36,13 +41,13 @@
 }
 
 .history__a {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-weight: bold;
 }
 
 .history__Click {
 
-    border-bottom: 5px solid rgb(238, 77, 45);
+    border-bottom: 5px solid #DB4444;
     width: 100%;
     list-style: none;
     text-decoration: none;
@@ -50,4 +55,11 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+}
+
+@media screen and (max-width:768px) {
+
+    .history__main {
+        display: none;
+    }
 }

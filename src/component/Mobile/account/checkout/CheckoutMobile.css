@@ -1,46 +1,72 @@
 .checkoutMobile {
-    margin: 16px;
+    display: none;
 }
 
 .checkoutM-items h4 {
-    font-weight: 600;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal
 }
 
 .checkoutM__items-address {
-    margin-top: 16px;
+    margin-top: 20px;
     display: flex;
-    padding: 18px;
+    padding: 20px;
     justify-content: space-between;
-    border-radius: 10px;
+    border-radius: 4px;
     box-shadow: rgba(51, 72, 82, 0.12) 0px 1px 2px 0px, rgba(57, 88, 102, 0.32)0px 1px 8px 0px;
 }
 
 .checkoutM__address-right p {
-    color: #DB3022;
+    color: #DB4444;
+    font-size: 14px;
+    font-style: normal;
     font-weight: 500;
+    line-height: 20px;
+}
+
+.checkout__getcoupon {
+    color: #DB4444;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
 }
 
 .checkoutM__address-left p {
+    font-size: 14px;
+    font-style: normal;
     font-weight: 500;
+    line-height: 20px;
 }
 
 .checkoutM__items-payment {
     display: flex;
     justify-content: space-between;
-    padding: 18px 18px 18px 0px;
+    align-items: center;
+    padding: 20px 20px 20px 0px;
 }
 
 .checkoutM__items-PayItems {
+    align-items: center;
     display: flex;
-    gap: 33px
+    gap: 33px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    /* 21px */
+    letter-spacing: -0.15px;
+
 }
 
 .checkoutM__items-Delivery {
     display: flex;
-    padding: 18px;
+    padding: 20px;
     justify-content: space-between;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-    margin-bottom: 52px;
+    margin-bottom: 40px;
 }
 
 .checkoutM__items-Total {
@@ -48,13 +74,58 @@
     justify-content: space-between;
 }
 
+.checkoutM__items-Discount {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+.checkoutM__items-Discount input {
+    width: 100%;
+    padding: 6px 20px;
+    border-radius: 25px;
+    border: none;
+    outline: 1px solid #ffffff;
+
+}
+
+.checkoutM__items-Discount input:focus {
+    border: none;
+    outline: 1px solid #a6c6e5;
+}
+
+.VC__discount-btn {
+    cursor: pointer;
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    background-color: black;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    right: 0;
+}
+
 .checkoutM__total-left p {
-    color: grey;
+    color: var(--Gray, #9B9B9B);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
 
 }
 
 .checkoutM__items-Total {
-    margin: 0px 0px 14px 0px;
+    margin: 0px 0px 20px 0px;
+    color: var(--Gray, #9B9B9B);
+    /* 16px */
+    font-family: Metropolis;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 
 .checkoutM__Btn {
@@ -74,5 +145,11 @@
 }
 
 .shippingSave__List {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .checkoutMobile {
+        display: block;
+    }
 }

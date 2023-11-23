@@ -3,11 +3,12 @@ import './ProductDetail.css';
 import { Link, useParams } from 'react-router-dom';
 import instance from '../../../services/axios/axiosDomain/axiosDomain';
 import './ProductDetail.css';
-import { CircularProgress, Rating } from '@mui/material';
+import { Rating } from '@mui/material';
+import LoadingComponent from '../../../component/common/LoadingComponent';
 import ListRandom from './ListRandom';
 import AuthContext from '../../../services/auth/context/AuthContext';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-
+import { ShowError } from '../../../utils/ToastAlert';
 const ProductDetail = () => {
     const param = useParams('');
     const [loading, setLoading] = useState(true);
@@ -16,11 +17,18 @@ const ProductDetail = () => {
     const { addToCart, addFavorite } = useContext(AuthContext);
     const [value, setValue] = useState(1);
     const bottomRef = useRef(null);
+    // const isNumber = !isNaN(value);
     // const param = useMemo(() => {
     //     return getparam;
     // }, [getparam]);
     function handleChange(event) {
-        setValue(Number(event.target.value));
+        const re = /^[0-9]+$/;
+
+        if (event.target.value === '' || re.test(event.target.value)) {
+            if (event.target.value > 0) {
+                setValue(Number(event.target.value));
+            }
+        }
     }
 
     const handlePlus = (e) => {
@@ -40,11 +48,20 @@ const ProductDetail = () => {
         });
     };
     const handleAddToCart = (item) => {
-        addToCart({
-            item,
-            quantity: value,
-        });
+        if (value !== 0 && value > 0) {
+            addToCart({
+                item,
+                quantity: value,
+            });
+        } else {
+            ShowError('The value must be from one to positive');
+        }
     };
+    // const handleChange = (event) => {
+    //     const result = event.target.value.replace(/\D/g, '');
+
+    //     setValue(result);
+    // };
     useEffect(() => {
         const fetch = async () => {
             try {
@@ -64,93 +81,114 @@ const ProductDetail = () => {
     //     handle();
     // }, []);
     if (loading === true) {
-        return <CircularProgress />;
+        return <LoadingComponent loading={loading} />;
     }
 
     return (
         <div ref={bottomRef}>
-            <hr></hr>
             <div className="product__container">
                 <div className="product__title">
                     <Link to={`/products`} style={{ textDecoration: 'none', color: 'black' }}>
                         Product
                     </Link>
-                    /
-                    <p>
-                        <Link to={`/${data.category}`} style={{ textDecoration: 'none', color: 'black' }}>
-                            &nbsp;{data.category}
-                        </Link>
-                        / {data.title}
-                    </p>
+                    &nbsp;/
+                    <Link
+                        to={`/${data.category}`}
+                        style={{ textDecoration: 'none', color: 'black', wordBreak: 'break-all' }}
+                    >
+                        &nbsp;{data.category}
+                    </Link>
+                    <p style={{ opacity: 1 }}>&nbsp;/ {data.title}</p>
                 </div>
             </div>
             <div className="product__detail">
-                <div className="product__detail-listImg">
-                    {data.images?.slice(0, 5).map((item, key) => {
-                        return (
-                            <div onClick={() => handle(item)} key={key}>
-                                {/* <LazyLoadImage src={item} alt={image.title} className="product__detail-IMGItem" /> */}
-                                <img src={item} alt="" className="product__detail-IMGItem" loading="lazy" />
-                            </div>
-                        );
-                    })}
-                </div>
-                <div className="product_detail-img">
-                    {image ? (
-                        // <img src={`${image}`} alt={data.title} />
-                        <LazyLoadImage src={`${image}`} alt={data.title} />
-                    ) : (
-                        <LazyLoadImage src={`${image.images[0]}`} alt={data.title} />
-                        // <img src={`${image.images[0]}`} alt={image.title} />
-                    )}
+                <div className="IMG__png">
+                    <div className="product__detail-listImg">
+                        {data.images?.slice(0, 4).map((item, key) => {
+                            return (
+                                <div onClick={() => handle(item)} key={key}>
+                                    {/* <LazyLoadImage src={item} alt={image.title} className="product__detail-IMGItem" /> */}
+                                    <img src={item} alt="" className="product__detail-IMGItem" loading="lazy" />
+                                </div>
+                            );
+                        })}
+                    </div>
+                    <div className="product_detail-img">
+                        {image ? (
+                            // <img src={`${image}`} alt={data.title} />
+                            <LazyLoadImage src={`${image}`} alt={data.title} />
+                        ) : (
+                            <LazyLoadImage src={`${image.images[0]}`} alt={data.title} />
+                            // <img src={`${image.images[0]}`} alt={image.title} />
+                        )}
+                    </div>
                 </div>
                 <div className="product__detail-content">
                     <div className="product__detail-title">
-                        <h2>{data.title}</h2>
+                        <div className="Inter600-24">{data.title}</div>
                         <div className="product__detail-rating">
-                            <Rating name="simple-controlled" value={data.rating} />
+                            <Rating name="simple-controlled" size="small" value={data.rating} />
                             <p>({data.stock} Reviewer)</p> |
                             <span className="detail-titleColor">In Stock {data.brand}</span>
                         </div>
 
-                        <div>
-                            <p className="detail__price">$ {data.price}</p>
-                            <p style={{ margin: 0 }}> (-{data.discountPercentage}%)</p>
+                        <div style={{ display: 'flex', gap: 12, alignItems: 'center', fontWeight: 400 }}>
+                            <p style={{ fontWeight: 400 }} className="Inter600-24">
+                                ${data.price}
+                            </p>
+                            <p style={{ fontWeight: 400, margin: 0 }} className="Inter600-24">
+                                (-{data.discountPercentage}%)
+                            </p>
                         </div>
                     </div>
-                    <div className="detail__description">
-                        <div className="detail__description-des">{data.description}</div>
-                        <hr color="grey" style={{ marginTop: 24, marginBottom: 24 }}></hr>
-                    </div>
-                    <div className="detail__btn">
-                        <div className="detail__btn-quantity">
-                            <button onClick={handleLess}>-</button>
+                    <div className="detail__content">
+                        <div className="Popin-16400 ">{data.description}</div>
+                        <hr color="grey"></hr>
+                        <div className="detail__btn">
+                            <div className="detail__btn-quantity">
+                                <button className="btn__Minus" onClick={handleLess}>
+                                    -
+                                </button>
 
-                            <input type="number" min={1} value={value} onChange={handleChange} inputMode="numeric" />
-
-                            <button onClick={handlePlus}>+</button>
-                        </div>
-                        <div className="detail__btn-buy">
-                            <button onClick={() => handleAddToCart(data)}>Buy Now</button>
-                        </div>
-                        <div className="detail__btn-like">
-                            <button onClick={() => handleAddFavorite(data)}>
-                                <svg
-                                    width="32"
-                                    height="32"
-                                    viewBox="0 0 32 32"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M11 7C8.239 7 6 9.216 6 11.95C6 14.157 6.875 19.395 15.488 24.69C15.6423 24.7839 15.8194 24.8335 16 24.8335C16.1806 24.8335 16.3577 24.7839 16.512 24.69C25.125 19.395 26 14.157 26 11.95C26 9.216 23.761 7 21 7C18.239 7 16 10 16 10C16 10 13.761 7 11 7Z"
-                                        stroke="black"
-                                        strokeWidth="1.5"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                </svg>
-                            </button>
+                                <input
+                                    type="number"
+                                    min={1}
+                                    value={value}
+                                    onChange={handleChange}
+                                    inputMode="numeric"
+                                    className="value__btn"
+                                />
+                                {/* {value && (
+                                    <p className={isNumber ? 'number-text' : 'not-number-text'}>
+                                        {isNumber ? 'It is a number.' : 'It is not a number.'}
+                                    </p>
+                                )} */}
+                                <button className="btn__plus" onClick={handlePlus}>
+                                    +
+                                </button>
+                            </div>
+                            <div className="detail__btn-buy">
+                                <button onClick={() => handleAddToCart(data)}>Buy Now</button>
+                            </div>
+                            <div className="detail__btn-like">
+                                <button onClick={() => handleAddFavorite(data)}>
+                                    <svg
+                                        width="32"
+                                        height="32"
+                                        viewBox="0 0 32 32"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M11 7C8.239 7 6 9.216 6 11.95C6 14.157 6.875 19.395 15.488 24.69C15.6423 24.7839 15.8194 24.8335 16 24.8335C16.1806 24.8335 16.3577 24.7839 16.512 24.69C25.125 19.395 26 14.157 26 11.95C26 9.216 23.761 7 21 7C18.239 7 16 10 16 10C16 10 13.761 7 11 7Z"
+                                            stroke="black"
+                                            strokeWidth="1.5"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div className="detail__bottom">
@@ -223,10 +261,10 @@ const ProductDetail = () => {
                             </div>
                             <div>
                                 <p>Free Delivery</p>
-                                <p>Enter your postal code for Delivery Availability</p>
+                                <h4>Enter your postal code for Delivery Availability</h4>
                             </div>
                         </div>
-                        <hr color="grey"></hr>
+                        <hr color="grey" style={{ margin: 0 }}></hr>
                         <div className="detail__shipcar">
                             <div>
                                 <svg
@@ -261,7 +299,7 @@ const ProductDetail = () => {
                             </div>
                             <div>
                                 <p>Return Delivery</p>
-                                <p>Free 30 Days Delivery Returns, Details</p>
+                                <h4>Free 30 Days Delivery Returns, Details</h4>
                             </div>
                         </div>
                     </div>

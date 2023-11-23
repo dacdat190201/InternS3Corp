@@ -57,7 +57,7 @@ const UserInfor = ({ props }) => {
                     </div>
                 </div>
             </div>
-            <div className="userInfor__bottom">
+            {/* <div className="userInfor__bottom">
                 <h2>Social Profile</h2>
                 <div className="userInfor__botton-input">
                     <div className="user__button-input">
@@ -73,7 +73,7 @@ const UserInfor = ({ props }) => {
                         <input type="text" placeholder="link twitter......." name="LinkTwitter" />
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className="userInfor__bottom">
                 <button className="userInfor__button-update">Update Info</button>
             </div>

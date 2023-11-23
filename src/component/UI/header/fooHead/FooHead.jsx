@@ -51,18 +51,34 @@ const FooHead = () => {
     return (
         <div className="container_grid">
             <Sidebar />
-
             <div className="item-3 item">
                 <div className="slideFood_main">
                     <div className="slide_content">
                         <div className="slide_content-logo">
                             <img src={require('../../../../assets/logo/logoIphone.png')} alt="logo_thumbnail" />
-                            <p>Iphone 14 Series</p>
+                            <h3>Iphone 14 Series</h3>
                         </div>
-                        <div className="slide_content-discount">{text}</div>
-                        <Link to={'/smartphones'} className="slide_content-buy">
-                            Shop Now
-                        </Link>
+                        <div className="slide_content-discount textBanner">{text}</div>
+                        <div className="cover__button-btn">
+                            <Link to={'/smartphones'} className="slide_content-buy">
+                                Shop Now
+                            </Link>
+                            <svg
+                                width="19"
+                                height="16"
+                                viewBox="0 0 19 16"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M1.5 8H18M18 8L11 1M18 8L11 15"
+                                    stroke="#FAFAFA"
+                                    strokeWidth="1.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+                            </svg>
+                        </div>
                     </div>
                     <div></div>
                     <div className="slide_bg">

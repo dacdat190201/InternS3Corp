@@ -1,9 +1,14 @@
+.sale__container {
+    margin-top: 140px;
+}
+
 .sale__top {
     margin-top: 80px;
     display: flex;
     gap: 16px;
     align-items: center;
     color: black;
+
 }
 
 .sale__top-item {
@@ -20,14 +25,14 @@
 
 /* **************************midle************************ */
 .sale__midle {
-    margin-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 .sale_midle-icon2 {
+    margin-left: 8px;
     transform: rotate(180deg);
 }
 
@@ -41,6 +46,10 @@
     gap: 87px
 }
 
+.sale__midle-right {
+    cursor: pointer;
+}
+
 /* *****************************Product************************ */
 /* .sale__product {
     margin-top: 40px;
@@ -52,117 +61,33 @@
 
 .sale_product-btnAll {
     text-align: center;
+    margin-bottom: 60px;
+    margin-top: 60px;
 }
 
-.sale-btnAll {
-    background-color: #BD4444;
-    font-family: 'Times New Roman', Times, serif;
-    color: #fff;
-    width: 234px;
-    height: 56px;
-    text-align: center;
-    border-radius: 4px;
-    align-items: center;
-    border: none;
-    margin: 60px 0px;
-    cursor: pointer;
+.slick-arrow .slick-prev button {
+    display: none;
 }
 
-.sale-btnAll:hover {
-    background-color: rgb(151, 51, 51);
+.slick-arrow .slick-next button {
+    display: none;
 }
 
-.slick-slide {
-    padding: 0 15px;
-    width: 270px;
-    height: 350px;
-}
-
-.slick-list {
-    margin: 0 2em;
-    width: 100%;
-    left: -31px;
-    height: 350px;
-}
-
-.slick-slider {
-    height: 370px;
-}
-
-@media screen and (max-width: 767px) {
-
-    .sale__midle-title h1 {
-        font-size: 18px;
-    }
-
-    .sale__midle-left {
-        gap: 8px;
-    }
-
-    .slick-slide {
-        padding: 0 15px;
-        width: 182px;
-        height: 300px;
-    }
-
-    .sale_product-btnAll {
-        display: flex;
-        justify-content: center;
-        margin-right: 10px;
-    }
-
-    .sale-btnAll {
-        width: 130px;
-        height: 42px;
-        font-size: 10px;
-
-    }
-
-    .slick-slider {
-        height: 300px;
-    }
-
-    .slick-list {
-        margin: 0 2em;
-        width: 100%;
-        left: -31px;
-        height: 310px;
-    }
-
-}
-
-@media screen and (max-width: 480px) {
-    .sale__top {
-        margin-top: 0px;
-
-    }
-
-    .sale__top-item {
-        height: 20px;
-        width: 20px;
-        background-color: #BD4444;
-        border-radius: 5px;
+@media screen and (max-width:768px) {
+    .sale__container {
+        margin-top: 40px;
     }
 
     .sale__midle {
-        margin-top: 0px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 5px;
+        margin-bottom: 20px;
     }
 
-
-
-    .sale_midle-icon1 {
-        width: 26px;
-        height: 26px;
-        margin-right: 10px;
-
+    .sale_product-btnAll {
+        margin: 40px 0;
     }
 
-    .sale_midle-icon2 {
-        width: 26px;
-        height: 26px;
+    .sale__midle-right svg {
+        width: 30px;
+        height: 30px;
     }
 }

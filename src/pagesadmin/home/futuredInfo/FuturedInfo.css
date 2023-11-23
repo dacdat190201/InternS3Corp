@@ -1,12 +1,10 @@
 .featured {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
 }
 
 .featuredItem {
-    flex: 1;
-    margin: 0px 20px;
     padding: 30px;
     border-radius: 10px;
     cursor: pointer;
@@ -22,6 +20,11 @@
     margin: 10px 0px;
     display: flex;
     align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .featuredMoney {
@@ -48,4 +51,22 @@
 .featuredSub {
     font-size: 15px;
     color: gray;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+@media screen and (max-width:768px) {
+    .featuredItem {
+        padding: 10px;
+
+    }
+
+    .featured {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
 }

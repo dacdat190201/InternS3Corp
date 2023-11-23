@@ -1,29 +1,25 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './ViewCartMobile.css';
 import '../../../../pages/404error/Error.css';
-import SearchIcon from '@mui/icons-material/Search';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../../../../services/auth/context/AuthContext';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import BarBack from '../../../common/BarBack';
+import ButtonView from '../../../common/ButtonView';
 const ViewCartMobile = () => {
     const { getCartTotal, cartItems, inforUser, token, removeCart } = useContext(AuthContext);
-    const ref = useRef();
     const navigate = useNavigate();
-    const [click, setClick] = useState(false);
     useEffect(() => {
         if (!token.token) {
             navigate('/');
         }
-        ref.current?.scrollIntoView({ behavior: 'smooth' });
     }, [token.token, navigate]);
     const subtotal = (item) => {
         return item.item.price * item.quantity;
     };
     if (inforUser.length === 0 && cartItems.length === 0) {
         return (
-            <div style={{ marginBottom: 80 }}>
+            <div className="ProfileM__container">
                 <div className="error__404">
                     <div className="error__container">
                         <img src={require('../../../../assets/slide/bags.png')} alt="shopping none" />
@@ -39,14 +35,11 @@ const ViewCartMobile = () => {
     }
     if (cartItems.length === 0) {
         return (
-            <div className="ProfileM__container" ref={ref}>
-                <div className="ViewCart__Top">
-                    <Link style={{ color: 'black' }} to={'/profile'}>
-                        <ArrowBackIosIcon />
-                    </Link>
-                    <SearchIcon />
+            <div className="ProfileM__container">
+                <div>
+                    <BarBack link="home" />
                 </div>
-                <h2>Billing Details</h2>
+
                 <div className="viewCart__ListItem">
                     <div style={{ marginBottom: 80 }}>
                         <div className="error__404">
@@ -65,52 +58,41 @@ const ViewCartMobile = () => {
         );
     }
     return (
-        <div className="ProfileM__container" ref={ref}>
-            <div className="ViewCart__Top">
-                <Link style={{ color: 'black' }} to={'/profile'}>
-                    <ArrowBackIosIcon />
-                </Link>
-                <SearchIcon />
+        <div className="ProfileM__container">
+            <div>
+                <BarBack link="home" title="View Cart" />
             </div>
-            <h2>Billing Details</h2>
+
             <div className="viewCart__ListItem">
                 {cartItems.map((item, key) => {
                     return (
                         <div className="viewCart-Items" key={key}>
-                            <div className="viewCart__Items-img">
+                            <Link to={`/products/${item.item.id}`} className="viewCart__Items-img">
                                 <img src={item.item.thumbnail} alt={item.item.title} />
-                            </div>
+                            </Link>
                             <div className="viewCart__Items-content">
                                 <div className="viewCart__Items-title">
-                                    <h4>{item.item.title}</h4>
-                                    <DeleteForeverIcon onClick={() => removeCart(item.item.id)} />
+                                    <div className="titleItem500 titlenameCheckM">{item.item.title}</div>
+                                    <DeleteForeverIcon
+                                        onClick={() => removeCart(item.item.id)}
+                                        style={{ cursor: 'pointer' }}
+                                    />
                                 </div>
-                                <div className="viewCart__Items-color">
-                                    <p>Discount :10%</p>
-                                </div>
-                                <div className="viewCart__Items-color">
-                                    <p>quantity: {item.quantity}</p>
-                                </div>
-                                <div className="viewCart__Items-total">{subtotal(item)}$</div>
+                                <div className="titleDescrip">Discount : {item.item.discountPercentage} %</div>
+                                <div className="titleDescrip">quantity: {item.quantity}</div>
+                                <div className="viewCart__Items-total PriceName">{subtotal(item)}$</div>
                             </div>
                         </div>
                     );
                 })}
             </div>
-            <div className="viewCart__discount">
-                <input type="text" onClick={() => setClick(!click)} />
 
-                <div className="VC__discount-btn">
-                    <ArrowForwardIcon />
-                </div>
-            </div>
-            {click && <div className="VC__discount-panelDiscount">abs</div>}
             <div className="VC__discount-total">
                 <p>Total amount</p>
-                <h4>{getCartTotal()}$</h4>
+                <div className="PriceTotal">{getCartTotal()}$</div>
             </div>
             <Link to="/viewcart/checkout" className="VC__discount-btnCheckout">
-                CHECK OUT
+                <ButtonView props="Check Out" size="mobile" />
             </Link>
         </div>
     );

@@ -1,4 +1,14 @@
+.ProfileM__container {
+    display: none;
+}
+
 .MyOrder {
     margin-top: 24px;
-    margin-bottom: 24px;
+    margin-bottom: 40px;
+}
+
+@media screen and (max-width: 768px) {
+    .ProfileM__container {
+        display: block;
+    }
 }

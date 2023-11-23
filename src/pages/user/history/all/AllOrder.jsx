@@ -28,14 +28,15 @@ const AllOrder = ({ total, props, confirmInfor, convertDate }) => {
                                         <div className="allOrder__Top-Left">
                                             <i className="fa-solid fa-store"></i>
                                             <div>Exclude</div>
-                                            <Link to={`/contact`}>
+                                            <Link to={`/contact`} style={{ textDecoration: 'none' }}>
                                                 <button>
-                                                    <i className="fa-regular fa-comment"></i>Chat
+                                                    <p>Chat </p>
+                                                    <i className="fa-regular fa-comment"></i>
                                                 </button>
                                             </Link>
                                         </div>
                                         <div className="allOrder__Top-Right">
-                                            {item?.status.message[0].title}
+                                            <h3>{item?.status.message[0].title}</h3>
                                             {item?.status.message && (
                                                 <Tooltip
                                                     title={
@@ -49,18 +50,18 @@ const AllOrder = ({ total, props, confirmInfor, convertDate }) => {
                                                     <i
                                                         className="fa-solid fa-pen order__Top-i"
                                                         style={{
-                                                            border: '1px solid grey',
-                                                            borderRadius: '50%',
-                                                            marginLeft: 5,
+                                                            width: 18,
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                            justifyContent: 'center',
                                                         }}
                                                     ></i>
                                                 </Tooltip>
                                             )}
-                                            &nbsp; |
+                                            <div>|</div>
                                             <div style={{ color: '#ee4d2d', fontWeight: 'bold' }}>
-                                                {item?.status.name}
+                                                <h3>{item?.status.name}</h3>
                                             </div>
-                                            <div className="order__Top-newUpdate">dâdada</div>
                                         </div>
                                     </div>
 
@@ -89,22 +90,38 @@ const AllOrder = ({ total, props, confirmInfor, convertDate }) => {
                                                         <div className="all__Left-img">
                                                             <img src={item.item.thumbnail} alt={item.item.title} />
                                                         </div>
-                                                        <div>
-                                                            <div>
-                                                                <span>{item.item.title}</span>
-                                                                <div style={{ color: 'grey', fontSize: '13px' }}>
-                                                                    {item.item.description}
-                                                                </div>
+                                                        <div
+                                                            style={{
+                                                                display: 'flex',
+                                                                flexDirection: 'column',
+                                                                justifyContent: 'center',
+                                                            }}
+                                                        >
+                                                            <span>{item.item.title}</span>
+                                                            <div
+                                                                style={{
+                                                                    color: '#b6b6b6',
+                                                                    fontSize: '12px',
+                                                                    fontWeight: 400,
+                                                                }}
+                                                            >
+                                                                {item.item.description}
+                                                            </div>
 
+                                                            <div
+                                                                style={{
+                                                                    display: 'flex',
+                                                                    gap: 10,
+                                                                    fontSize: '12px',
+                                                                    fontWeight: 500,
+                                                                }}
+                                                            >
                                                                 {item.item.category}
-
                                                                 <div>x{item.quantity}</div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="allOrder__List-Right" style={{ color: '#ee4d2d' }}>
-                                                        {total(item)}
-                                                    </div>
+                                                    <h3 style={{ color: '#ee4d2d' }}>{total(item)}$</h3>
                                                 </div>
                                                 // </Link>
                                             );

@@ -1,50 +1,54 @@
-.about__top {
-    margin-left: 135px;
-    display: flex;
-    margin-top: 85px;
-}
-
-.about__top p {
-    font-weight: bold;
+.favorite__main-container {
+    margin-top: 70px;
 }
 
 .favorite__main {
-    margin: 80px 135px 140px 135px;
+    margin-top: 70px;
     display: flex;
     justify-content: space-between;
-    gap: 40px
+    gap: 30px
 }
 
 .f__main-left {
-    width: calc(100% - 10%)
+    width: calc(70% - 20px)
 }
 
 
 .f__main-right {
-    width: calc(360px - 20px);
-    border: 1px solid grey;
+    height: 100%;
+    padding: 30px 10px;
+    width: calc(30% - 20px);
+    border: 1px solid rgb(202, 202, 202);
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.title__favorite {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .f__main-right h2 {
-    margin-top: 10px;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
-    margin: auto;
 }
 
 .total__cost {
-    margin-top: 40px;
 
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .total__costNumber {
-    margin: 10px 20px 40px 20px;
     height: 32px;
     background-color: grey;
     color: #fff;
@@ -62,17 +66,33 @@
     background-color: #000;
 }
 
+
+
 /* ******************************************* */
-@media screen and (max-width:900px) {
+@media screen and (max-width:1024px) {
+    .f__main-left {
+        width: 100%
+    }
+
+    .f__main-right {
+        display: none;
+    }
+
     .favorite__main {
         margin: 80px 35px 40px 35px;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        align-items: center;
         gap: 40px
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
+
+    .favorite__main-container {
+        display: none;
+    }
+
     .favorite__main {
         margin: 80px 35px 40px 35px;
         display: flex;
@@ -80,14 +100,7 @@
         gap: 40px
     }
 
-    .cart__btn button {
-        width: 100px;
-        height: 40px;
-        background-color: #fff;
-        border: 1px solid grey;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+
 
     .f__main-right {
         width: calc(360px - 20px);

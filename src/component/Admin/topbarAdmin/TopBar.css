@@ -9,16 +9,16 @@
 
 .topbarWrapper__admin {
     height: 100%;
-    padding: 0px 20px;
+    margin: 20px 0px 40px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    width: 100%;
 }
 
 .logo-admin__admin {
     font-weight: bold;
-    font-size: 30px;
-    color: darkblue;
+    font-size: 25px;
+    color: rgb(0, 0, 0);
     cursor: pointer;
 }
 
@@ -54,4 +54,46 @@
     height: 40px;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.menu-admin__main {
+    width: 100%;
+    font-size: 16;
+}
+
+.menu-admin__main ul {
+    display: flex;
+    gap: 40px;
+    display: none;
+    width: 100%;
+    justify-content: center;
+
+}
+
+.menu-admin__main ul li {
+    list-style: none;
+
+}
+
+.navLink {
+    font-weight: 400;
+
+}
+
+.navLink:hover {
+    color: #555;
+    font-weight: 600;
+}
+
+.menu-admin__li {
+
+    font-weight: 700;
+
+}
+
+@media screen and (max-width:1024px) {
+    .menu-admin__main ul {
+        display: block;
+        display: flex;
+    }
 }

@@ -1,3 +1,7 @@
+/* .confirm__main {
+    margin-top: 70px;
+}
+
 .my__top {
     display: flex;
     justify-content: space-between;
@@ -38,7 +42,8 @@
 }
 
 .confirm__container {
-    margin-top: 50px;
+    width: 100%;
+    margin-top: 80px;
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
@@ -46,6 +51,7 @@
 }
 
 .confirm-listItems {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -54,7 +60,6 @@
 }
 
 .confirm-Items {
-    width: 900px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -80,17 +85,16 @@
     gap: 9px;
 }
 
-/* ************************************** */
 .confirm__bottom {
     display: flex;
     justify-content: center;
-    gap: 176px;
-    margin-bottom: 140px;
-    margin-top: 40px;
+    gap: 50px;
+    margin-top: 70px;
+    margin-bottom: 40px;
 }
 
 .confirm__bottom-left {
-    width: 34%;
+    width: 50%;
 
 }
 
@@ -98,10 +102,8 @@
     margin-bottom: 24px;
 }
 
-
 .confirm__bottom-right {
-
-    width: 400px;
+    width: 50%;
 }
 
 
@@ -141,7 +143,7 @@
     outline: 3px solid transparent;
 }
 
-/* //************************************* */
+
 .c__b__r-bt1 {
     height: 56px;
     width: 100%;
@@ -176,4 +178,4 @@
 .c__b__r-bt0:hover {
     background-color: #d73211;
     border-color: #ba2b0f;
-}
+} */

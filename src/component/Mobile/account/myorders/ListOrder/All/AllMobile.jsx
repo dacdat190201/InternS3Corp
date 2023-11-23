@@ -4,27 +4,52 @@ import { Link } from 'react-router-dom';
 const AllMobile = ({ props, convertDate }) => {
     return (
         <>
+            {props.length === 0 ? (
+                <>
+                    <div className="ProfileM__container">
+                        <div className="viewCart__ListItem">
+                            <div style={{ marginBottom: 80 }}>
+                                <div className="error__404">
+                                    <div className="error__container">
+                                        <img
+                                            src={require('../../../../../../assets/slide/bags.png')}
+                                            alt="shopping none"
+                                        />
+                                    </div>
+                                    <div className="error-btn">
+                                        <Link to="/products" style={{ color: 'black', textDecoration: 'none' }}>
+                                            <button>Go to Shopping</button>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            ) : null}
             {props.map((item, key) => {
                 return (
                     <div className="ListOrder__Container" key={key}>
                         <div className="ListOrder__top">
-                            <h4>Order ID: {item.id}</h4>
-                            <p> {convertDate(item?.status?.message[0]?.date)}</p>
+                            <div className="titleItem500">Order ID: {item.id}</div>
+                            <div className="titleItem500"> {convertDate(item?.status?.message[0]?.date)}</div>
                         </div>
-                        <p>Tracking Number:123456789</p>
+                        <div className="titleDescrip">Tracking Number:123456789</div>
                         <div className="ListOrder__center">
-                            <h4>Quantity: {item?.item?.cart?.length}</h4>
+                            <div className="titleDescrip">Quantity: {item?.item?.cart?.length}</div>
 
-                            <span>
-                                Total:
-                                <span style={{ color: '#000', fontWeight: 'bold' }}>{item?.item?.item_total}$</span>
-                            </span>
+                            <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                                <div className="titleItem500"> Total:</div>
+                                <div className="PriceName">{item?.item?.total}$</div>
+                            </div>
                         </div>
                         <div className="ListOrder__bottom">
                             <Link to={`/myorder/detail/${item.id}`} className="ListOrder__bottom-btn">
                                 Details
                             </Link>
-                            <div className="ListOrder__bottom-btnTitle">{item?.status?.name}</div>
+                            <div className="titleItem500 ListOrder__bottom-btnTitle">
+                                {item?.status?.name.charAt(0).toUpperCase() + item?.status?.name.slice(1)}
+                            </div>
                         </div>
                     </div>
                 );

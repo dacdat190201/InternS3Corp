@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Discount.css';
 import json from '../../../datafake/chudeData.json';
 import { Link } from 'react-router-dom';
+import BreadcurmbNavigation from '../../../component/common/BreadcurmbNavigation';
 import { ToastContainer, toast } from 'react-toastify';
 const ListDiscount = () => {
     const [data, setData] = useState();
@@ -39,15 +40,8 @@ const ListDiscount = () => {
     return (
         <div className="discount__all">
             <ToastContainer />
-            <hr></hr>
-            <div className="product__container">
-                <div className="product__title">
-                    <Link to={`/products`} style={{ textDecoration: 'none', color: 'black' }}>
-                        Home
-                    </Link>
-                    <p>/ Discounts</p>
-                </div>
-            </div>
+            <BreadcurmbNavigation props="Discount" />
+
             <div className="discount__container">
                 {data &&
                     data.map((item, key) => {
@@ -55,14 +49,16 @@ const ListDiscount = () => {
                             <div className="contai" key={key}>
                                 <div className="coupon-card">
                                     <h3>{item.name}</h3>
-                                    <h5>Describe: {item.describe}.</h5>
+                                    <div className="titleDescrip">Describe: {item.describe}.</div>
                                     <div className="coupon-row">
-                                        <span id="cpnCode">{item.id}</span>
-                                        <span id="cpnBtn" onClick={() => copyCode(item.id)}>
+                                        <div style={{ width: '70%' }} className="titleDescrip" id="cpnCode">
+                                            {item.id}
+                                        </div>
+                                        <div className="titleDescrip" id="cpnBtn" onClick={() => copyCode(item.id)}>
                                             {bttnText}
-                                        </span>
+                                        </div>
                                     </div>
-                                    <p>Date: {item.date}</p>
+                                    <div className="titleDescrip">Date: {item.date}</div>
 
                                     <div className="circle1"></div>
                                     <div className="circle2"></div>

@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { Suspense, useContext, useEffect, useState } from 'react';
 import './OrderDetail.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import AuthContext from '../../../services/auth/context/AuthContext';
-import OdConfirm from './odConfirm/OdConfirm';
-import InfoOrder from './inforOrder/InfoOrder';
+import LoadingComponent from '../../../component/common/LoadingComponent';
+import ConFirmOrder from './confirmOrder/ConFirmOrder';
+const InfoOrder = React.lazy(() => import('./inforOrder/InfoOrder'));
 const OrderDetail = () => {
     const param = useParams();
     const { inforUser, token, confirmInfor, convertDate } = useContext(AuthContext);
@@ -33,26 +34,13 @@ const OrderDetail = () => {
                 return true;
         }
     };
-    // const checkColor = (item) => {
-    //   if (item.status.name === "CONFIRM") {
-    //     setColorActive(" rgb(204, 204, 204)");
-    //   } else if (item.status.name === "awaiting") {
-    //     setColorActive("rgb(45, 194, 88)");
-    //   } else if (item.status.name === "shipping") {
-    //     setColorActive("rgb(175, 40, 111)");
-    //   } else {
-    //     setColorActive("rgb(204, 204, 204)");
-    //   }
-    // };
-    // useEffect(() => {
-    //   checkColor(filter);
-    // }, [checkColor]);
+
     if (!loading) {
         return (
-            <>
+            <div className="orderDetail_main">
                 <div className="my__top">
                     <div className="my__top-title">
-                        <p>My Account</p>&nbsp;/ &nbsp;
+                        <p>My Account /</p> &nbsp;
                         <p style={{ fontWeight: 'bold' }}>Order Detail</p>
                     </div>
                 </div>
@@ -114,12 +102,19 @@ const OrderDetail = () => {
                     </div>
                     <div className="order__detail-bottom">
                         {filter?.status?.name === 'confirm' && (
-                            <OdConfirm confirmInfor={confirmInfor} props={filter} convertDate={convertDate} />
+                            <Suspense fallback={<LoadingComponent loading={true} />}>
+                                <ConFirmOrder confirmInfor={confirmInfor} props={filter} convertDate={convertDate} />
+                                {/* <OdConfirm confirmInfor={confirmInfor} props={filter} convertDate={convertDate} /> */}
+                            </Suspense>
                         )}
-                        {filter?.status?.name !== 'confirm' && <InfoOrder props={filter} convertDate={convertDate} />}
+                        {filter?.status?.name !== 'confirm' && (
+                            <Suspense fallback={<LoadingComponent loading={true} />}>
+                                <InfoOrder props={filter} convertDate={convertDate} />
+                            </Suspense>
+                        )}
                     </div>
                 </div>
-            </>
+            </div>
         );
     } else {
         return '.../loading';

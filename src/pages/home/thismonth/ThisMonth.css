@@ -1,64 +1,90 @@
-.thismonth__top-btn {
-    background-color: #BD4444;
-    color: white;
-    width: 159px;
-    height: 56px;
-    font-family: 'Times New Roman', Times, serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border-radius: 4px;
+.thismonth__container {
+    margin-top: 70px;
 }
-
 
 .thismonth__top-btn:hover {
     background-color: rgb(151, 51, 51);
 }
 
 .bg__thismount {
+    padding: 0 56px;
     max-width: 100%;
-    margin-top: 140px;
+    margin-top: 60px;
     background-color: black;
     height: 500px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+}
+
+.time__countdowsTitle {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
 }
 
 .bg__thismount-img {
-    width: calc(45% - 27px);
-    max-width: 50%;
-    height: auto;
 
+    flex-shrink: 0;
+    /* background: lightgray -99.767px -240.854px / 135.847% 234.327% no-repeat; */
 }
 
 .bg__thismount-content {
     color: #fff;
+    position: absolute;
+    z-index: 1;
+
 }
 
 .bg__thismount-content h4 {
-    color: #00ff66
+    color: #0F6;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
 }
 
-.bg__thismount-content h1 {
-    font-size: 48px;
+.bg__thismount-title {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
 }
+
+/* .bg__thismount-content h1 {
+    font-family: 'Inter';
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 60px;
+    letter-spacing: 1.92px;
+} */
 
 .bg__thismount-content button {
-    width: 171px;
-    height: 56px;
-    background-color: #00ff66;
+    display: inline-flex;
+    padding: 16px 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    background: #0F6;
+    border: none;
+    /* font-family: ; */
+    font-size: 16px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 24px;
     color: #fff;
-    border-radius: 7px;
+}
+
+.bg__thismount-content button:hover {
+
+    background-color: #BD4444
 }
 
 .bg__time {
     display: flex;
     flex-direction: row;
-    margin-top: 32px;
-    margin-bottom: 32px;
     gap: 10px;
+    margin-bottom: 40px;
 }
 
 .bg__time-countdow {
@@ -74,128 +100,107 @@
 
 }
 
+.Thismonth__Shadow {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.Thismonth__Shadow img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.font__bg-time {
+    font-size: 11px;
+    line-height: 18px;
+    margin-top: -5px;
+}
+
 /* ******************************************* */
-@media screen and (max-width:900px) {
 
 
-    .bg__thismount {
-        max-width: 100%;
-        margin-top: 140px;
-        background-color: black;
-        height: 400px;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
-
-    .bg__thismount-img {
-        width: calc(50% - 7.5px);
-        height: 300px;
-
-    }
-
-    .bg__thismount-content {
-        color: #fff;
-    }
-
+@media screen and (max-width: 768px) {
     .bg__thismount-content h4 {
-        color: #00ff66
+        font-size: 12px;
+
     }
 
-    .bg__thismount-content h1 {
-        font-size: 30px;
+    .time__countdowsTitle {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 20px;
     }
 
-    .bg__thismount-content button {
-        width: 100px;
-        height: 36px;
-        background-color: #00ff66;
-        color: #fff;
-        border-radius: 7px;
+    .thismonth__container {
+        margin-top: 10px;
     }
-}
 
-@media screen and (max-width: 767px) {
-    .thismonth__top-btn {
-        width: 82px;
+    .bg__time-countdow {
+        width: 42px;
         height: 42px;
-        font-size: 13px;
+    }
+
+    .bg__thismount-content .md-button {
+        font-size: 14px;
+        padding: 6px 28px;
 
     }
 
     .bg__thismount {
+        padding: 0 20px;
         max-width: 100%;
-        margin-top: 140px;
-        background-color: black;
-        height: 400px;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
-
-    .bg__thismount-img {
-
-        width: calc(50% - 40px);
-        height: 250px;
-
-    }
-
-    .bg__thismount-content {
-        color: #fff;
-    }
-
-    .bg__thismount-content h4 {
-        color: #00ff66
-    }
-
-    .bg__thismount-content h1 {
-        font-size: 30px;
-    }
-
-    .bg__thismount-content button {
-        width: 100px;
-        height: 36px;
-        background-color: #00ff66;
-        color: #fff;
-        border-radius: 7px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .bg__thismount {
-        max-width: 100%;
-        margin-top: 40px;
+        margin-top: 20px;
         background-color: black;
         height: 500px;
         display: flex;
         align-items: center;
-        justify-content: space-around;
+    }
+
+
+    .Thismonth__Shadow img {
+        max-width: 50%;
+        max-height: 50%;
+    }
+
+    .bg__thismount-title {
+        display: flex;
         flex-direction: column;
-    }
-
-    .bg__thismount-img {
-        width: 100%;
-        height: auto;
+        gap: 8px;
 
     }
 
-    .bg__thismount-content {
-        color: #fff;
+    .bg__time {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        margin-bottom: 20px;
     }
 
-    .bg__thismount-content h4 {
-        color: #00ff66
+    .bg__thismount {
+        height: 400px;
     }
 
-    .bg__thismount-content h1 {
-        font-size: 30px;
+    .font__bg-time {
+        font-size: 9px;
+        line-height: 16px;
+        margin-top: -5px;
+
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .time__countdowsTitle {
+        font-size: 10px;
+        font-weight: 600;
+        line-height: normal;
     }
 
-    .bg__thismount-content button {
-        width: 100px;
-        height: 36px;
-        background-color: #00ff66;
-        color: #fff;
-        border-radius: 7px;
+    .font__bg-time {
+        font-size: 8px;
+        line-height: normal;
+
+
     }
 }

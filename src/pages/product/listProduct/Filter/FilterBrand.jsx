@@ -3,7 +3,7 @@ import React from 'react';
 const FilterBrand = () => {
     return (
         <div className="filter__item">
-            <div className="filter-title">Brand</div>
+            <div className="filter-title BreadName">Brand</div>
             <div className=" filter__item-rdo">
                 <div className="filter-rdo">
                     <input type="checkbox" id="chk__adisdas" />

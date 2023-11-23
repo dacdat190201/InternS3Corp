@@ -1,24 +1,14 @@
-.mainProfile {
-    display: flex;
-    justify-content: space-between;
-}
-
-.mainProfile__left {
-    max-width: 950px;
-
-    margin-top: 32px;
-}
-
-.mainProfile__right {
-    max-width: 407px;
+.grid__profile {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-bottom: 140px;
 }
 
 .mainProfile__right-container {
-    margin: 32px 0px 32px 32px;
+    margin: 20px 0px 20px 20px;
 }
 
 .mProfile__card {
-    max-height: 230px;
     border-radius: 10px;
     background-image: linear-gradient(to right top, #01B8E3, #A4B4CB)
 }
@@ -28,7 +18,7 @@
 }
 
 .mProfile__chip-image img {
-    width: 50px
+    width: 40px
 }
 
 .mProfile__card-details {
@@ -36,12 +26,12 @@
 }
 
 .mProfile__card-number {
-    font-size: 25px;
+    font-size: 20px;
     color: #fff
 }
 
 .mProfile__date {
-    font-size: 15px;
+    font-size: 14px;
     padding: 4px 0px;
     color: #fff
 }
@@ -62,17 +52,16 @@
 }
 
 .quick__container {
-    height: 265px;
     border-radius: 10px;
     background-color: #D3E1F5;
     display: flex;
-    gap: 16px;
+    gap: 10px;
     flex-direction: column;
-    padding-left: 23px;
+    padding: 15px;
 }
 
 .quick__input-buton {
-    margin: 23px 23px 0px 0px;
+
     display: flex;
     align-items: center;
 }
@@ -80,7 +69,7 @@
 .quick__input-buton input {
     height: 30px;
     border-radius: 7px;
-    width: 292px;
+    width: 100%;
     border: 1px solid rgb(199, 199, 199);
 }
 
@@ -95,44 +84,39 @@
 }
 
 .quick__debit {
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-right: 23px;
     border: 1px solid rgb(199, 199, 199);
     padding: 5px;
     border-radius: 7px;
 }
 
 .quick__entermount {
-
-    width: 308px;
     background-color: #fff;
     display: flex;
     flex-direction: column;
     color: #A4B4CB;
     font-weight: bold;
-    padding: 10px;
-    height: 51px;
+    padding: 5px;
     border-radius: 7px;
 }
 
 .quick__btn {
-    margin-right: 23px;
+
     display: flex;
     justify-content: space-between;
 }
 
 .quick__btn button {
-    height: 32px;
-    width: 140px;
-    border-radius: 10px;
+    padding: 6px 15px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
 .btn-sendmoney {
     background-image: linear-gradient(to right top, #3E79E5, #01B8E3);
     color: #fff;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 12px;
     border: 1px solid gray;
 }
@@ -140,6 +124,7 @@
 .btn-saveAsDraft {
     color: #3D7AE5;
     border: 1px solid rgb(199, 199, 199);
+    font-size: 12px;
 }
 
 .buttons__container {
@@ -163,8 +148,8 @@
 
 .buttons__Items {
     background-image: linear-gradient(to right top, #3E79E5, #01B8E3);
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -173,7 +158,7 @@
 }
 
 .contacts__container {
-    height: 61px;
+    padding: 10px;
     background-color: #D3E1F5;
     display: flex;
     justify-content: center;

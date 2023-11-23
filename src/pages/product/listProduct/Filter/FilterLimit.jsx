@@ -13,7 +13,7 @@ const FilterLimit = ({ setLimit }) => {
 
     return (
         <div className="filter__item">
-            <div className="filter-title">Limit</div>
+            <div className="filter-title BreadName">Limit</div>
 
             <Box sx={{ width: 300 }}>
                 <Slider

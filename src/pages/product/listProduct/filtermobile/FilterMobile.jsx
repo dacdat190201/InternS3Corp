@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './FilterMobile.css';
 import instance from '../../../../services/axios/axiosDomain/axiosDomain';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 const FilterMobile = () => {
     const [list, setList] = useState();
     let navigate = useNavigate();
@@ -49,33 +49,56 @@ const FilterMobile = () => {
                         })}
                 </select>    
             </div> */}
-            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                <InputLabel id="demo-select-small-label">Categories</InputLabel>
-                <Select
-                    labelId="demo-select-small-label"
-                    id="demo-select-small"
-                    value={age}
-                    label="Age"
-                    onChange={handleChange}
+            <div className="Cate-select btn-group">
+                <button
+                    className="btn btn-secondary btn-lg "
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
                 >
-                    <MenuItem value="products">
-                        <em>All</em>
-                    </MenuItem>
+                    <p className="titleItem500">{param.category.charAt(0).toUpperCase() + param.category.slice(1)}</p>
+                    <KeyboardArrowDownIcon fontSize="medium" />
+                </button>
+                <ul className="Cate-select dropdown-menu p-2">
+                    <li className="dropdown-item">
+                        <Link
+                            className="titleItem500"
+                            style={{ color: 'black', textDecoration: 'none' }}
+                            to={`/products`}
+                        >
+                            All Products
+                        </Link>
+                    </li>
                     {list &&
                         list.map((item, key) => {
                             return (
-                                <MenuItem value={item} key={key}>
-                                    <Link style={{ color: 'black', textDecoration: 'none' }} to={`/${item}`}>
+                                <li className="dropdown-item" key={key}>
+                                    <Link
+                                        className="titleItem500"
+                                        style={{ color: 'black', textDecoration: 'none' }}
+                                        to={`/${item}`}
+                                    >
                                         {item.charAt(0).toUpperCase() + item.slice(1)}
                                     </Link>
-                                </MenuItem>
+                                </li>
                             );
                         })}
-                </Select>
-            </FormControl>
-            <div className="FMC__item">Popularity</div>
-            <div className="FMC__item">Low - High</div>
-            <div className="FMC__item">High - Low</div>
+                </ul>
+            </div>
+            {/* 
+            <select className="select-wrapper shadow-none form-select form-select-lg" onChange={handleChange}>
+                <option value="products">All Products</option>
+                {list &&
+                    list.map((item, key) => {
+                        return (
+                            <option value={item} key={key}>
+                                <Link style={{ color: 'black', textDecoration: 'none' }} to={`/${item}`}>
+                                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                                </Link>
+                            </option>
+                        );
+                    })}
+            </select> */}
         </div>
     );
 };

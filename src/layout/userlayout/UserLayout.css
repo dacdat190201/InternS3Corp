@@ -1,21 +1,9 @@
-.my__container {
-    margin-left: 135px;
-    margin-right: 135px;
-
-}
-
 .home {
     display: flex;
 
 }
 
-.homeContainer {
 
-    width: 85%;
-    max-width: calc(100% - 20px);
-    padding-top: 80px;
-    margin-left: 20px;
-}
 
 @media screen and (max-width:1440px) {
     .my__container {

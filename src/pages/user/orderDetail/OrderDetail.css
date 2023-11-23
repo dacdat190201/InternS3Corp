@@ -1,3 +1,7 @@
+.orderDetail_main {
+  margin-top: 70px;
+}
+
 .my__top {
   display: flex;
   justify-content: space-between;
@@ -8,11 +12,15 @@
 .my__top-title {
   display: flex;
   width: 500px;
-
+  color: var(--Text2, #000);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  opacity: 0.5;
 }
 
 .order__detail {
-  margin: 40px 35px 140px 35px;
+  margin: 80px 0px 140px 0px;
 }
 
 .order__tab-icon {
@@ -22,8 +30,8 @@
 }
 
 .order__detail-icon {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   /* border: 5px solid rgb(45, 194, 88); */
   border: 5px solid rgb(204, 204, 204);
@@ -39,7 +47,7 @@
 }
 
 .order__detail-hr {
-  width: 150px;
+  width: 12%;
   background-color: rgb(204, 204, 204);
   height: 5px;
 }
@@ -50,7 +58,6 @@
 
 .order__tab-title {
   display: flex;
-
   gap: 58px;
   margin-top: 10px;
   margin-left: 165px;
@@ -75,8 +82,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid rgb(233, 233, 233);
+  padding: 20px 0px 10px;
   border-top: 1px solid rgb(233, 233, 233);
 }
 
@@ -90,40 +96,26 @@
   font-weight: bold;
 }
 
-.order__buyThank-btn button {
-  height: 40px;
-  width: 220px;
-  color: #fff;
-  background-color: rgb(238, 77, 45);
-  font-size: 15px;
-  border-radius: 5px;
-  border: 1px solid rgb(187, 187, 187);
+.order__buyThank-btn {
+  color: #000000 !important;
+
 }
 
-.order__buyThank-btn button:hover {
-  background-color: #d73211;
-  border-color: #ba2b0f;
-}
+
 
 .order__buyThank-Contact {
   display: flex;
   justify-content: flex-end;
-  padding: 10px;
+  padding: 10px 0px;
 }
 
-.order__buyThank-Contact button {
-  height: 40px;
-  width: 220px;
-  background-color: rgba(0, 0, 0, 0.02);
-  border: 1px solid rgba(0, 0, 0, 0.09);
+.order__buyThank-Contact {
+  color: #000 !important;
+
 }
 
-.order__buyThank-btnBill button {
-  height: 40px;
-  width: 220px;
-  background-color: #fff;
-  border-radius: 5px;
-  border: 1px solid rgb(104, 104, 104);
+.order__buyThank-btnBill {
+  color: #000 !important;
 }
 
 .order__buyThank-btnBill button:hover {
@@ -134,10 +126,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 10px 0px 20px;
   border-bottom: 3px dashed rgb(153, 153, 153);
 }
 
 .order__detail-bottom {
-  margin-top: 60px;
+  margin-top: 70px;
+}
+
+@media screen and (max-width:768px) {
+  .orderDetail_main {
+    display: none;
+  }
+
 }

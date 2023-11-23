@@ -1,17 +1,11 @@
 .orders__edit-topTitle {
+    margin-top: 20px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-.orders__edit-topTitle button {
-    height: 40px;
-    width: 150px;
-    color: #fff;
-    background-color: rgb(48, 48, 189);
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-}
+
 
 .orders__edit {
     margin-top: 40px;
@@ -22,84 +16,116 @@
 }
 
 .orders__edit-top {
-    width: 405px;
-    border: 1px solid grey;
-    padding: 10px;
+    border-radius: 4px;
+    width: 50%;
+    border: 1px solid rgb(206, 206, 206);
+    padding: 15px;
     box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.2);
+}
+
+.orders__edit-top textarea {
+    width: 100%;
+    height: 100px;
+    border: 1px solid rgb(206, 206, 206);
 }
 
 .orders__edit-topBtn {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .orders__editStatus {
-    background-color: darkblue;
+    border-radius: 4px;
+    padding: 20px;
+    height: 300px;
+    width: 400px;
+    border: 1px solid rgb(218, 218, 218);
     color: #fff;
-    height: 36px;
-    width: 86px;
+
     border-radius: 5px;
 }
 
-.orders__editStatusBtn button {
-    height: 36px;
-    width: 86px;
-    background-color: darkblue;
-    color: #fff;
-    border-radius: 5px;
-    border: none;
+.orders__editStatus button {
+    width: 100%;
 }
 
-.orders__edit-top button {
-    height: 36px;
-    width: 100px;
-    background-color: darkblue;
-    color: #fff;
-    border-radius: 5px;
+
+
+.orders__editStatusTop button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 146px;
 }
+
+.orders__editStatusTop .dropdown-menu {
+    animation: .5s slideDropAdmin;
+}
+
+
+@keyframes slideDropAdmin {
+    from {
+        transform: translateY(10%);
+    }
+
+    to {
+        transform: translateY(23%);
+    }
+}
+
+
 
 .orders__edit-inputFile::-webkit-file-upload-button {
+    padding: 8px 28px;
     color: #fff;
-    background-color: darkblue;
-    height: 36px;
-    border-radius: 5px;
+    background-color: #DB4444;
+    border-radius: 4px;
+    border: none;
 }
 
 .edit__infoOrder {
-    height: 300px;
-    width: 500px;
+
     box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.2);
+    padding: 30px;
 }
 
 .edit__infoOrder-input input {
-    height: 32px;
-    margin-bottom: 20px;
+
+    height: 56px;
+    width: 100%;
     border: none;
-    border-bottom: 2px solid grey;
-    margin-left: 10px;
+    border-bottom: 2px solid rgb(224, 224, 224);
+
     outline: none;
 }
 
+.edit__infoOrder-height {
+    height: 80px;
+
+}
+
 .edit__infoOrder-input {
+    gap: 20px;
     display: flex;
     justify-content: space-between;
 }
 
 .edit__infoOrder-inputAddress {
-    height: 32px;
-    width: 98%;
+    height: 56px;
+    width: 100%;
     border: none;
-    border-bottom: 2px solid grey;
-    margin-left: 10px;
+    border-bottom: 2px solid rgb(224, 224, 224);
+
     outline: none;
 }
 
 .edit__infoOrder-input input:focus {
-    border-bottom: 2px solid darkblue
+    border-bottom: 2px solid #a6c6e5;
 }
 
 .edit__infoOrder-inputAddress:focus {
-    border-bottom: 2px solid darkblue
+    border-bottom: 2px solid #a6c6e5;
 }
 
 .edit__infoOrder-btn {
@@ -108,14 +134,13 @@
 }
 
 .edit__infoOrder-btn button {
-    height: 26px;
-    width: 106px;
+    padding: 8px 32px;
     margin-top: 20px;
     color: #fff;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    background-color: darkblue;
+    background-color: #DB4444;
 }
 
 .inOrder__bottom {
@@ -125,8 +150,7 @@
 .inOrder__title {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
+    margin: 20px 0px;
 }
 
 .inOrder__title h3 {
@@ -139,20 +163,31 @@
 }
 
 .inOrder__left {
-    width: 400px;
+    width: 30%;
 
 }
 
 .inOrder__right {
-    flex: 1;
     gap: 15px;
-    padding: 35px;
+    padding: 0px 35px 35px;
     border-left: 1px solid rgb(211, 211, 211);
+    max-height: 400px;
+    overflow-x: auto;
 }
 
 .inOrder__right-center {
+    margin: 5px 0px;
     display: flex;
     gap: 10px;
+    align-items: center;
+}
+
+.inOrder__right-center h3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .odConfirm__total-container {
@@ -197,7 +232,7 @@
 .allorder__search input {
     padding: 10px;
     background-color: rgb(209, 209, 209);
-    width: 98.5%;
+    width: 100%;
     border: none;
 }
 
@@ -210,149 +245,110 @@
 }
 
 /* ****************************************************** */
-.allorder__container {
-    margin-top: 30px;
-    margin-bottom: 30px;
-
-}
-
-.allOrder__List {
-    margin: 0px 35px 50px 35px;
-
-}
-
-.allOrder__List-top {
-    height: 56px;
+.ItemOrder__Top {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 0px;
     border-bottom: 1px solid rgb(204, 204, 204);
 }
 
-.allOrder__Top-Right {
-    display: flex;
-    gap: 8px;
-}
-
-
-
-.order__Top-newUpdate {
-    background-color: #af260b;
-    position: absolute;
-    display: none;
-}
-
-.order__Top-i:hover>.order__Top-newUpdate {
-    background-color: #af260b;
-    display: block;
-}
-
-.allOrder__Top-Left {
+.ItemOrder__Top-left {
     display: flex;
     gap: 8px;
     align-items: center;
-    font-weight: bold;
-}
-
-.allOrder__Top-Left button {
-    color: #fff;
-    font-weight: bold;
-    background-color: #ee4d2d;
-    width: 70px;
-    height: 25px;
-    border-color: rgb(196, 196, 196);
-    border-radius: 5px;
-
 
 }
 
-.allOrder__center-List {
+.ItemOrder__Top-right {
     display: flex;
     align-items: center;
+    gap: 8px;
+}
+
+.ItemOrder__center {
+    padding: 10px 0px;
+    border-top: 1px solid rgb(216, 216, 216);
+    border-bottom: 1px solid rgb(216, 216, 216);
+    display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid rgb(204, 204, 204);
+    align-items: center;
 }
 
-.all__Left-img {
+.ItemOrder__center-left {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.center__left-img {
     width: 82px;
     height: 82px;
-    padding: 10px;
-    border: 1px solid rgb(196, 196, 196);
-    margin-bottom: 5px;
-    margin-top: 5px;
+    background-color: aliceblue;
 }
 
-
-
-.all__Left-img img {
-    width: 100%;
+.center__left-img img {
+    max-width: 100%;
     height: 100%;
+    object-fit: contain;
 }
 
-.allOrder__List-Left {
+.center__left-content {
+    height: 82px;
     display: flex;
-    width: 100%;
-    gap: 10px;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.allOrder__List-Left span {
+.ItemOrder__center-left span {
+    font-size: 12px;
+    color: grey
+}
+
+.ItemOrder__center-left p {
+    font-size: 12px;
+    color: grey
+}
+
+.ItemOrder__center-right {
+    color: #ee4d2d;
     font-weight: 500;
 }
 
-.allOrder__bottom {
-    color: #ee4d2d;
-    margin-top: 32px;
-
-    border-bottom: 1px solid rgb(204, 204, 204);
+.bottom__Subtotal {
+    border-bottom: 1px solid rgb(216, 216, 216);
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
 }
 
-.allOrder__Alltotal {
+.bottom__Subtotal i {
+    margin-right: 8px;
+}
+
+.bottom__Subtotal span {
+    border-right: 1px solid rgb(216, 216, 216);
+    padding: 10px;
+    padding-right: 20px;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 12px;
+    font-weight: 500;
     display: flex;
-    gap: 8px;
+    align-items: center;
+}
+
+.bottom__Subtotal p {
+    width: 27%;
+    display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-.allOrder-totalTitle {
-
-    color: black;
-}
-
-.allOrder-totalNumber {
-    font-size: 22px;
-    font-weight: 600;
-}
-
-.allOrder__button {
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 32px;
-}
-
-.allOrde__button-right {
-    display: flex;
-    gap: 8px;
-}
-
-.allOrde__button-right button {
-    width: 150px;
-    height: 40px;
-    border-radius: 5px;
-    border: 1px solid rgb(197, 197, 197);
-    cursor: pointer;
-}
-
-.all__button-buy {
-    width: 150px;
-    height: 40px;
-    background-color: #ee4d2d;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-.all__button-buy:hover {
-    background-color: #af260b;
+.bottom__total-Please {
+    padding: 10px;
+    padding-left: 20px;
+    border: 1px solid rgb(255, 196, 0);
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 12px;
+    font-weight: 500;
 }

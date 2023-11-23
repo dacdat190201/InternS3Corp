@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './Confirm.css';
-import Navbar from '../../../../component/UI/myaccount/nav/Navbar';
 import AuthContext from '../../../../services/auth/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import CancelConfirm from '../cancel/CancelConfirm';
@@ -20,25 +19,15 @@ const Confirm = () => {
     }, [inforUser, navigate]);
 
     return (
-        <>
+        <div className="confirm__main">
             <div className="my__top">
                 <div className="my__top-title">
-                    <p>My Account</p>&nbsp;/ &nbsp;
+                    <p>My Account /</p> &nbsp;
                     <p>View Cart /&nbsp;Checkout /&nbsp;</p>
                     <p style={{ fontWeight: 'bold' }}>Confirm</p>
                 </div>
             </div>
-            <div className="checkout__ship" style={{ marginTop: '40px' }}>
-                <div className="checkout__ship-item">
-                    <i className="fa-regular fa-clipboard"></i>
-                </div>
-                <div className="checkout__ship-hr" style={{ backgroundColor: '#DB4444' }}></div>
-                <div className="checkout__ship-item">
-                    <i className="fa-solid fa-check"></i>
-                </div>
-                <div className="checkout__ship-hr"></div>
-                <div className="checkout__ship-item">3</div>
-            </div>
+
             <div className="confirm__container">
                 <div className="confirm-listItems">
                     {inforUser[0]?.item?.cart.map((item, key) => {
@@ -54,7 +43,7 @@ const Confirm = () => {
                                         <br></br>x{item?.quantity}
                                     </div>
                                 </div>
-                                <div style={{ color: 'red' }}>${subtotal(item)}</div>
+                                <div style={{ color: 'red' }}>{subtotal(item)}$</div>
                             </div>
                         );
                     })}
@@ -66,18 +55,17 @@ const Confirm = () => {
                             fontWeight: 'bold',
                         }}
                     >
-                        Total: {inforUser[0].item.total}
+                        Total: {inforUser[0].item.total}$
                     </div>
                 </div>
             </div>
 
             <h2>Buyer Infor</h2>
-
             <div className="confirm__bottom">
                 {!click ? (
                     <>
                         <div className="confirm__bottom-left">
-                            <h3>Delivery address</h3>
+                            <div className="BreadName">Delivery address</div>
                             <div className="confirm__left-inputContai">
                                 <div className="left_inputcontai-input">
                                     <label>First Name</label>
@@ -123,7 +111,7 @@ const Confirm = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

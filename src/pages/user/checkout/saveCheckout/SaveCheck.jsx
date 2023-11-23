@@ -3,8 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../../../../services/auth/context/AuthContext';
 import json from '../../../../datafake/chudeData.json';
 import emailjs from '@emailjs/browser';
+import ButtonView from '../../../../component/common/ButtonView';
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { CLIENT_ID } from '../../../../services/config/Config';
+import { ShowAlert, ShowError } from '../../../../utils/ToastAlert';
 const SaveCheck = () => {
     const { getCartTotal, cartItems, addInfor, token, clearCart, changeHistory, history } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -26,15 +28,15 @@ const SaveCheck = () => {
 
     const getDiscount = () => {
         if (!text) {
-            alert('Please enter discount code');
+            ShowError('Please enter discount code');
             setDis(0);
         } else if (!discount.find((item) => item.id === text)) {
-            alert('No discount code found');
+            ShowError('No discount code found');
             setDis(0);
         } else {
             if (discount.find((item) => item.allowance < getCartTotal())) {
                 setDis(discount.find((item) => item.id === text));
-            } else alert('The condition is not satisfied');
+            } else ShowError('The condition is not satisfied');
         }
     };
     const allTotal = () => {
@@ -47,7 +49,7 @@ const SaveCheck = () => {
         return item.item.price * item.quantity;
     };
     // ... state
-    useEffect(() => emailjs.init('lKX4rEAkNvWvc6ljz'), []);
+    useEffect(() => emailjs.init('rs02wz8JPvIUnJrNB'), []);
     //value form
     //Change primary history
     const handleConfirm = (item) => {
@@ -56,10 +58,10 @@ const SaveCheck = () => {
 
     useEffect(() => {
         if (success) {
-            alert('Payment successful!!');
+            ShowAlert('Payment successful!!');
             console.log('Order successful . Your order id is--', orderID);
         }
-    }, [success]);
+    }, [orderID, success]);
     // creates a paypal order
     const createOrder = (data, actions) => {
         return actions.order
@@ -82,8 +84,8 @@ const SaveCheck = () => {
 
     // check Approval
     const onApprove = (data, actions) => {
-        const serviceId = 'service_at226mk';
-        const templateId = 'template_dqu6x0y';
+        const serviceId = 'service_k19plts';
+        const templateId = 'template_7pzoq0l';
         try {
             setLoading(true);
             emailjs.send(serviceId, templateId, {
@@ -126,9 +128,9 @@ const SaveCheck = () => {
             });
 
             clearCart();
-            alert('email successfully sent check inbox');
+            ShowAlert('email successfully sent check inbox');
         } catch (error) {
-            alert('404 @gmail.com ***');
+            ShowError('404 @gmail.com ***');
         } finally {
             setLoading(false);
         }
@@ -145,9 +147,9 @@ const SaveCheck = () => {
     // Add these
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(123456);
-        const serviceId = 'service_at226mk';
-        const templateId = 'template_dqu6x0y';
+
+        const serviceId = 'service_k19plts';
+        const templateId = 'template_7pzoq0l';
 
         try {
             setLoading(true);
@@ -189,11 +191,12 @@ const SaveCheck = () => {
                     message: [{ title: 'Please confirm your order', date: new Date() }],
                 },
             });
-
-            clearCart();
-            alert('email successfully sent check inbox');
+            setTimeout(() => {
+                ShowAlert('email successfully sent check inbox');
+                clearCart();
+            }, 500);
         } catch (error) {
-            alert('404 @gmail.com ***');
+            ShowAlert('404 @gmail.com ***');
         } finally {
             setLoading(false);
         }
@@ -205,55 +208,104 @@ const SaveCheck = () => {
     return (
         <>
             <div className="checkout-form">
-                <form className="form__input">
+                <div className="form-floating shadow-none ">
                     <input
                         type="text"
-                        placeholder="First Name *"
+                        defaultValue={history[0].first_name}
                         name="first_name"
-                        value={history[0].first_name}
                         autoComplete="given-name"
+                        className="form-control shadow-none"
                     />
-
-                    <input type="text" placeholder="Last Name" name="company_name" value={history[0].company_name} />
-
+                    <label className="text-secondary" htmlFor="Name">
+                        First Name <span className="text-danger">*</span>
+                    </label>
+                </div>
+                <div className="form-floating shadow-none ">
                     <input
                         type="text"
-                        placeholder="Street Address"
-                        name="address"
-                        value={history[0].address}
-                        autoComplete="address"
+                        defaultValue={history[0].company_name}
+                        name="company_name"
+                        className="form-control shadow-none"
                     />
+                    <label className="text-secondary" htmlFor="Name">
+                        Last Name <span className="text-danger">*</span>
+                    </label>
+                </div>
+                <div className="form-floating shadow-none ">
+                    <input
+                        type="text"
+                        defaultValue={history[0].address}
+                        name="address"
+                        autoComplete="address"
+                        className="form-control shadow-none"
+                    />
+                    <label className="text-secondary" htmlFor="Name">
+                        Address <span className="text-danger">*</span>
+                    </label>
+                </div>
+                <div className="form-floating shadow-none ">
+                    <input
+                        type="text"
+                        defaultValue={history[0].address}
+                        name="town_city"
+                        className="form-control shadow-none"
+                    />
+                    <label className="text-secondary" htmlFor="Name">
+                        Town City <span className="text-danger">*</span>
+                    </label>
+                </div>
 
-                    <input type="text" placeholder="Âprtment floor, etc" name="etx-input" value={history[0].address} />
-                    <input type="text" placeholder="Town/City" name="town_city" value={history[0].town_city} />
+                <div className="form-floating shadow-none ">
+                    <input
+                        type="text"
+                        defaultValue={history[0].town_city}
+                        name="etx-input"
+                        className="form-control shadow-none"
+                    />
+                    <label className="text-secondary" htmlFor="Name">
+                        Apartment floor, etc <span className="text-danger">*</span>
+                    </label>
+                </div>
+                <div className="form-floating shadow-none ">
+                    <input
+                        type="text"
+                        defaultValue={history[0].phone_number}
+                        name="phone_number"
+                        className="form-control shadow-none"
+                    />
+                    <label className="text-secondary" htmlFor="Name">
+                        Phone Number <span className="text-danger">*</span>
+                    </label>
+                </div>
+                <div className="form-floating shadow-none ">
+                    <input
+                        type="text"
+                        defaultValue={history[0].my_email}
+                        name="my_email"
+                        className="form-control shadow-none"
+                    />
+                    <label className="text-secondary" htmlFor="Name">
+                        Email Address <span className="text-danger">*</span>
+                    </label>
+                </div>
 
-                    <input type="text" placeholder="Phone Number" name="phone_number" value={history[0].phone_number} />
-
-                    <input type="text" placeholder="Email Address" name="my_email" value={history[0].my_email} />
-                </form>
                 <div className="checkout-label">
-                    <button
-                        onClick={() => handleConfirm(history[0])}
-                        style={{
-                            backgroundColor: '#BD4444',
-                            padding: '6px 12px 6px 12px ',
-                            border: 'none',
-                            borderRadius: 4,
-                            color: '#fff',
-                        }}
-                    >
-                        Change
-                    </button>
+                    <div onClick={() => handleConfirm(history[0])}>
+                        <ButtonView props="Change" />
+                    </div>
                 </div>
             </div>
-            <div>
+            <div className="checkout-list-main">
                 <div className="checkout-list">
                     <div className="checkout-listItems">
                         {cartItems.map((item, key) => {
                             return (
                                 <div className="checkout-Items" key={key}>
                                     <div className="Items__Right">
-                                        <img src={item.item.thumbnail} alt={item.item.title} />
+                                        <div className="Item__right-img">
+                                            {' '}
+                                            <img src={item.item.thumbnail} alt={item.item.title} />
+                                        </div>
                                         <div>{item.item.title}</div>
                                     </div>
                                     <div>{subtotal(item)}</div>
@@ -285,48 +337,65 @@ const SaveCheck = () => {
                             <div style={{ fontWeight: 'bold' }}>Total:</div>
                             <div style={{ fontWeight: 'bold' }}>{allTotal()}</div>
                         </div>
-                        <hr></hr>
                     </div>
                     <div style={{ marginBottom: '32px' }}>
-                        <div className="rdo__bank">
-                            <div>
+                        <div className="rdo__bank" style={{ marginBottom: '32px' }}>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 16,
+                                }}
+                            >
                                 <input
                                     type="radio"
-                                    value="Paypal"
+                                    defaultValue="Paypal"
                                     name="gender"
                                     onClick={(e) => setCheckRdo(e.target.value)}
                                 />
-                                Bank
+                                <div> Paypal</div>
                             </div>
                             <img src={require('../../../../assets/logo/Visa.png')} alt="vissa" />
                         </div>
-                        <input
-                            type="radio"
-                            value="Cash on delivery"
-                            name="gender"
-                            onClick={(e) => setCheckRdo(e.target.value)}
-                            defaultChecked
-                        />
-                        Cash on delivery
+                        <div className="rdo__bank">
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 16,
+                                }}
+                            >
+                                <input
+                                    type="radio"
+                                    defaultValue="Cash on delivery"
+                                    name="gender"
+                                    onClick={(e) => setCheckRdo(e.target.value)}
+                                    defaultChecked
+                                />
+                                <div> Cash on delivery</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className="cart-coupon">
+                <div className="Checkout__coupon">
                     <input
                         type="text"
                         placeholder="Coupon Code"
                         onChange={(e) => setText(e.target.value)}
                         name="couponCode"
                     />
-                    <button onClick={() => getDiscount()}>Apply Coupon</button>
+                    <div onClick={() => getDiscount()}>
+                        <ButtonView props="Apply Coupon" />
+                    </div>
                 </div>
-                <div className="button__placeOrder">
+                <div style={{ marginTop: 10 }} className="button__placeOrder-link">
                     <Link to="/discounts" target="_blank" style={{ fontSize: 13, color: 'black' }}>
                         Get Coupon
                     </Link>
                 </div>
                 <div className="button__placeOrder">
                     {checkRdo === 'Paypal' ? (
-                        <>
+                        <div style={{ marginTop: 32 }}>
                             <PayPalScriptProvider options={{ 'client-id': CLIENT_ID }}>
                                 <div>
                                     <PayPalButtons
@@ -337,11 +406,11 @@ const SaveCheck = () => {
                                     />
                                 </div>
                             </PayPalScriptProvider>
-                        </>
+                        </div>
                     ) : (
-                        <button disabled={loading} onClick={handleSubmit}>
-                            Place Order
-                        </button>
+                        <div disabled={loading} onClick={handleSubmit}>
+                            <ButtonView props="  Place Order" />
+                        </div>
                     )}
                 </div>
             </div>

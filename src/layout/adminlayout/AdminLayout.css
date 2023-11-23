@@ -1,5 +1,5 @@
-.bg {
-    background-color: white;
+.container-md {
+    /* background-color: rgb(59, 59, 59); */
 }
 
 .container-admin {
@@ -7,7 +7,22 @@
     margin-top: 10px;
 }
 
-.orthers {
-    flex: 4;
-    margin-right: 20px;
+.container-admin-grid {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 30px;
+
+}
+
+@media screen and (max-width:1024px) {
+    .sidebar__admin {
+        display: none;
+    }
+
+    .container-admin-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+
+    }
 }

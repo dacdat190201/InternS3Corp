@@ -1,8 +1,17 @@
+.search__container-main {
+    margin-top: 70px;
+}
+
+.search__product-main {
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+}
+
 .searchpage__container {
-    margin-top: 80px;
-    margin-bottom: 80px;
-    margin-left: 135px;
-    margin-right: 135px;
+    margin-top: 70px;
+
 }
 
 .list__container {
@@ -48,44 +57,67 @@
     transition: all ease 0.3s;
 }
 
-
-@media screen and (max-width:900px) {
-
-    .searchpage__container {
-        margin-top: 80px;
-        margin-bottom: 80px;
-        margin-left: 35px;
-        margin-right: 35px;
-    }
+.Pro__Item-body2 {
+    height: 100%;
 }
 
-@media screen and (max-width: 767px) {
+.search__bottom {
+    margin-top: 140px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
 
-    .sale_product-search {
-        padding: 10px;
-        max-width: 175px;
-        height: 270px;
+@media screen and (max-width:1024px) {
+    .search__product-main {
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+
+    .search__bottom {
+        margin-top: 70px;
+        margin-bottom: 30px;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex: auto;
+        justify-content: center;
+        width: 100%;
+    }
 
-        border-radius: 15px;
-        box-shadow: rgba(38, 38, 51, 0.1) 0px 4px 16px, rgba(38, 38, 51, 0.1) 0px 8px 24px, rgba(38, 38, 51, 0.1) 0px 16px 56px;
+}
+
+@media screen and (max-width: 768px) {
+    .search__container-main {
+        margin-top: 0px;
     }
 
     .searchpage__container {
-        margin-top: 80px;
-        margin-bottom: 80px;
-        margin-left: 5px;
-        margin-right: 0px;
+        margin-top: 30px;
+
     }
 
-    .list__container {
+    .search__bottom {
+        margin-top: 40px;
         display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
+        justify-content: center;
+        width: 100%;
+    }
 
+    .search__product-main {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+
+
+}
+
+@media screen and (max-width: 480px) {
+
+    .search__product-main {
+
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 20px;
     }
 
 

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './NavbarMobile.css';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import StorefrontOutlinedIcon from '@mui/icons-material/StorefrontOutlined';
-import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { Link } from 'react-router-dom';
 import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
@@ -45,14 +44,6 @@ const NavbarMobile = () => {
                 >
                     <AccountCircleOutlinedIcon />
                     Account
-                </Link>
-                <Link
-                    to="/home"
-                    className={activeMenu === 'more' ? 'NavbarMobile__Click' : 'NavbarMC__ListItem'}
-                    onClick={() => setActiveMenu('store')}
-                >
-                    <MoreHorizOutlinedIcon />
-                    More
                 </Link>
             </div>
         </div>

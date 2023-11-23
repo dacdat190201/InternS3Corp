@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AuthContext from '../context/AuthContext';
 import moment from 'moment';
+import { ShowAlert } from '../../../utils/ToastAlert';
 // import jwt_decode from "jwt-decode";
 
 const AuthProvider = ({ children }) => {
@@ -44,7 +45,7 @@ const AuthProvider = ({ children }) => {
         } else {
             setCartItems([...cartItems, { ...payload }]);
         }
-        alert('Successfully Added!');
+        ShowAlert('Successfully Added!');
     };
     const removeCart = (payload) => {
         const rm = cartItems.filter((item) => item.item.id !== payload);
@@ -84,7 +85,7 @@ const AuthProvider = ({ children }) => {
             setFavorites([...favorites, { ...payload }]);
         }
 
-        alert('Successfully Added!');
+        ShowAlert('Successfully Added!');
     };
     const getLengthFavorites = () => {
         return favorites.length;
@@ -214,6 +215,7 @@ const AuthProvider = ({ children }) => {
                 }
             }),
         );
+        ShowAlert('Successfully Update Status !');
     };
     const updateInfo = (payload, id) => {
         let index = inforUser.findIndex((item) => item.id === Number(id));
@@ -245,6 +247,7 @@ const AuthProvider = ({ children }) => {
                 }
             }),
         );
+        ShowAlert('Successfully Update !');
     };
     const updateStatusInfo = (status, id) => {
         let index = inforUser.findIndex((item) => item.id === Number(id));
@@ -272,6 +275,7 @@ const AuthProvider = ({ children }) => {
                 }
             }),
         );
+        ShowAlert('Successfully Update !');
     };
     const addressShipping = (payload, id) => {
         const update = inforUser.find((item) => item.id === Number(id));
@@ -292,6 +296,7 @@ const AuthProvider = ({ children }) => {
                 }
             }),
         );
+        ShowAlert('Successfully !');
     };
     // **********************CONVERT DATE***************************
     const convertDate = (payload) => {
@@ -329,7 +334,7 @@ const AuthProvider = ({ children }) => {
     };
     const role = () => {
         setToken({ ...token, role: 'admin' });
-        alert('role admin ready');
+        ShowAlert('Role admin ready');
     };
     const value = {
         login,

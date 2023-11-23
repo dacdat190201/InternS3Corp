@@ -1,25 +1,31 @@
 import React, { Suspense } from 'react';
 import './Home.css';
 import ThisMonth from '../thismonth/ThisMonth';
-import FooHead from '../../../component/UI/header/fooHead/FooHead';
+// import FooHead from '../../../component/UI/header/fooHead/FooHead';
 import Arrival from '../arrival/Arrival';
-import { CircularProgress } from '@mui/material';
 import Thumbnail from '../thumbnail/Thumbnail';
-const Categories = React.lazy(() => import('../categories/Categories'));
-const Sale = React.lazy(() => import('../FlashSale/Sale'));
+import OurProduct from '../ourproduct/OurProduct';
+import Categories from '../categories/Categories';
+import Sale from '../FlashSale/Sale';
+import LoadingComponent from '../../../component/common/LoadingComponent';
+const FooHead = React.lazy(() => import('../../../component/UI/header/fooHead/FooHead'));
+// const Categories = React.lazy(() => import('../categories/Categories'));
+// const Sale = React.lazy(() => import('../FlashSale/Sale'));
 function Home() {
     return (
-        <div>
-            <FooHead />
+        <div className="home__container">
+            <Suspense fallback={<LoadingComponent loading={true} />}>
+                <FooHead />
+            </Suspense>
             <div className="home__main">
                 <Thumbnail />
-                <Suspense fallback={<CircularProgress />}>
-                    <Sale />
-                </Suspense>
-                <Suspense fallback={<CircularProgress />}>
-                    <Categories />
-                </Suspense>
+
+                <Sale />
+
+                <Categories />
+
                 <ThisMonth />
+                <OurProduct />
                 <Arrival />
             </div>
         </div>

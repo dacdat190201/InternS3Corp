@@ -12,7 +12,7 @@ const Thumbnail = () => {
             <div className="thumbnail__listItem">
                 <div className="thumbnail__listItem-Item">
                     <img
-                        src="https://cdn2.cellphones.com.vn/insecure/rs:fill:690:300/q:80/plain/https://dashboard.cellphones.com.vn/storage/uob-bank-iphone5-sli.png"
+                        src="https://cdn2.cellphones.com.vn/insecure/rs:fill:690:300/q:10/plain/https://dashboard.cellphones.com.vn/storage/ideapad%20gaming.jpg"
                         alt="iphone151"
                     />
                 </div>

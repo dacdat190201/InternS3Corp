@@ -1,16 +1,15 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import SearchIcon from '@mui/icons-material/Search';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../../../../pages/404error/Error.css';
 import AuthContext from '../../../../services/auth/context/AuthContext';
 import { Tab, Tabs } from '@mui/material';
 import './MyOrder.css';
 import '../viewcart/ViewCartMobile.css';
 import AllMobile from './ListOrder/All/AllMobile';
-
+import BarBack from '../../../common/BarBack';
 const MyOrder = () => {
     const { token, inforUser, convertDate } = useContext(AuthContext);
-    const ref = useRef();
+
     const navigate = useNavigate();
     const [value, setValue] = useState(0);
     const handleChange = (event, newValue) => {
@@ -20,7 +19,6 @@ const MyOrder = () => {
         if (!token.token) {
             navigate('/');
         }
-        ref.current?.scrollIntoView({ behavior: 'smooth' });
     }, [token.token, navigate]);
     const confirmMobile = inforUser.filter((item) => item.status.name === 'confirm');
     const awaitingMobile = inforUser.filter((item) => item.status.name === 'awaiting');
@@ -29,15 +27,9 @@ const MyOrder = () => {
     const completedMobile = inforUser.filter((item) => item.status.name === 'completed');
 
     return (
-        <div className="ProfileM__container" ref={ref}>
-            <div className="ViewCart__Top">
-                <Link style={{ color: 'black' }} to={'/profile'}>
-                    <ArrowBackIosIcon />
-                </Link>
-                <SearchIcon />
-            </div>
-            <h2>My Orders</h2>
-            <div className="MyOrder">
+        <div className="ProfileM__container">
+            <BarBack title={'My Order'} link="profile" />
+            <div className="MyOrder" link="profile">
                 <Tabs
                     value={value}
                     onChange={handleChange}

@@ -1,9 +1,9 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import './ListProduct.css';
-import { Pagination, Stack } from '@mui/material';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Pagination, Stack } from '@mui/material';
+// import Product from './Product';
+import LoadingComponent from '../../../../component/common/LoadingComponent';
 const Product = React.lazy(() => import('./Product'));
-
 const ListProduct = ({ pagination, props, setSkip }) => {
     const [page, setPage] = useState(1);
     const handleChange = (event, value) => {
@@ -17,24 +17,11 @@ const ListProduct = ({ pagination, props, setSkip }) => {
     return (
         <div className="filter__container">
             <div className="filter__top">
-                <div className="filter__title-product">
-                    Showing {props?.limit} Result from total {props?.total} || {page}
+                <div className="filter__title-product BreadName">
+                    Showing {props?.limit} Result from total {props?.total} | {page}
                 </div>
-                {/* <div>
-                    <select
-                        className="filter-btnClear"
-                        id="filter-btnClear"
-                        //onClick={(e) => handle(e)}
-                    >
-                        <option value="null">Popularity</option>
-
-                        <option value="desc">Desc</option>
-
-                        <option value="asc">Asc</option>
-                    </select>
-                </div> */}
             </div>
-            {/* ********************** */}
+
             <div className="list__product-main">
                 <Suspense fallback={<CircularProgress />}>
                     <Product props={props} />
@@ -48,6 +35,8 @@ const ListProduct = ({ pagination, props, setSkip }) => {
                         variant="outlined"
                         color="primary"
                         page={page}
+                        defaultPage={6}
+                        siblingCount={0}
                         onChange={handleChange}
                     />
                 </Stack>

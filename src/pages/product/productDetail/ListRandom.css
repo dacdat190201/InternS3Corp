@@ -1,26 +1,166 @@
-.listRandom {
-    margin-left: 135px;
-    margin-right: 135px;
-}
-
 .listRamdom__container {
     margin-top: 60px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 60px;
-    box-shadow: 25px 0 20px -20px rgba(129, 129, 129, 0.45), -25px 0 20px -20px rgba(136, 136, 136, 0.45);
-    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+
+
 }
 
-.sale__product-like:hover path {
+.sale__subItem-rd {
+    text-decoration: none;
+    color: #000;
+    position: relative;
+}
+
+.sale__subItem-top-rd {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    padding: 10px;
+
+}
+
+.sale__subItem-discount-rd {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    width: 55px;
+    height: 26px;
+    border-radius: 4px;
+    background: #DB4444;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+
+}
+
+.sale__subItem-svg-rd {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 15px;
+
+}
+
+.sale__subItem-img-rd {
+    margin: auto;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sale__subItem-img-rd img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    background-color: aliceblue;
+}
+
+.sale__subItem-btn-rd {
+    top: 208px;
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+    padding: 0px 0px 0px 1px;
+    transition: all 0.1s ease-out;
+    z-index: -10;
+}
+
+.sale__subItem-button-rd {
+    display: none;
+    height: 41px;
+    border-radius: 0px 0px 4px 4px;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sale__subItem-rd:hover .sale__subItem-btn-rd {
+    cursor: pointer;
+    transition: all 0.1s ease-out;
+    z-index: 0;
+}
+
+
+.sale__subItem-title-rd {
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    padding-bottom: 10px;
+
+}
+
+.sale__subItem-title-rd .titleItem500 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.sale__subItem-rating-rd {
+    display: flex;
+    color: yellow
+}
+
+.sale__subItem-rating-rd .titleSubItem600 {
+    color: #000;
+    opacity: 0.5;
+}
+
+.sale__subItem-svg-rd:hover .svg__eyes-rd path {
     stroke: #fff;
-    fill: #BD4444;
+    fill: #DB4444;
+    transition: all ease 0.3s;
+}
+
+.svg__like-rd path {
     transition: all ease 0.3s;
 }
 
 /* ******************************************* */
-@media screen and (min-width: 768px) and (max-width:900px) {
+@media screen and (max-width:1024px) {
+    .listRamdom__container {
+        margin-top: 60px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+
+
+
+    }
+
+}
+
+@media screen and (max-width:768px) {
+    .listRandom {
+        margin-top: 30px;
+    }
+
+    .listRamdom__container {
+        margin-top: 30px;
+
+    }
+}
+
+@media screen and (max-width:480px) {
+    .listRamdom__container {
+        grid-template-columns: repeat(1, 1fr);
+
+    }
+
+}
+
+/* @media screen and (max-width: 767px) {
     .listRandom {
         margin-left: 35px;
         margin-right: 35px;
@@ -30,29 +170,10 @@
         margin-top: 60px;
         display: flex;
         flex-wrap: wrap;
-
     }
+} */
 
-    .sale_product {
-        margin-bottom: 10px;
-    }
-
-}
-
-@media screen and (max-width: 767px) {
-    .listRandom {
-        margin-left: 35px;
-        margin-right: 35px;
-    }
-
-    .listRamdom__container {
-        margin-top: 60px;
-        display: flex;
-        flex-wrap: wrap;
-    }
-}
-
-@media screen and (max-width: 480px) {
+/* @media screen and (max-width: 480px) {
     .listRandom {
         margin-left: 10px;
         margin-right: 10px;
@@ -69,4 +190,4 @@
     .sale_product {
         margin-bottom: 20px;
     }
-}
+} */

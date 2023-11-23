@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../../../../../services/auth/context/AuthContext';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import BarBack from '../../../../common/BarBack';
 import AddIcon from '@mui/icons-material/Add';
 import './ShippingSave.css';
 import GppGoodOutlinedIcon from '@mui/icons-material/GppGoodOutlined';
@@ -9,7 +9,6 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 const ShippingSave = () => {
     const { token, history, changeHistory } = useContext(AuthContext);
     const index = history.find((item) => item.primary === true);
-    const ref = useRef();
     const navigate = useNavigate();
     const [item, setItem] = useState('');
 
@@ -17,7 +16,6 @@ const ShippingSave = () => {
         if (!token.token) {
             navigate('/');
         }
-        ref.current?.scrollIntoView({ behavior: 'smooth' });
     }, [token.token, navigate]);
     const [open, setOpen] = useState(false);
     const handleConfirm = () => {
@@ -34,32 +32,28 @@ const ShippingSave = () => {
     };
 
     return (
-        <div className="checkoutMobile" ref={ref}>
-            <div className="ViewCart__Top">
-                <Link style={{ color: 'black' }} to={'/viewcart'}>
-                    <ArrowBackIosIcon />
-                </Link>
-                <h4>Shipping Address</h4>
-                <div></div>
+        <div className="checkoutMobile">
+            <div>
+                <BarBack title="Shipping Addresses" link={'viewcart/checkout'} />
             </div>
             {index ? (
                 <div
                     className="shippingSave__List"
                     style={{
-                        boxShadow: ' #DB3022 0px 1px 2px 0px, #DB3022 0px 1px 8px 0px',
+                        boxShadow: ' grey 0px 1px 2px 0px, grey 0px 1px 8px 0px',
                     }}
                 >
                     <div className="shippingSave__Items">
                         <div className="shippingSave-Ileft">
-                            <p>
+                            <div className="titleItem500">
                                 {index?.first_name}&nbsp;
                                 {index?.company_name}
-                            </p>
-                            <span>{index?.address}</span>
-                            <br></br>
-                            <span>{index?.town_city}</span>
-                            <br></br>
-                            <span>{index?.my_email}</span>
+                            </div>
+                            <div className="titleSubItem600">{index?.address}</div>
+
+                            <div className="titleSubItem600">{index?.town_city}</div>
+
+                            <div className="titleSubItem600">{index?.my_email}</div>
                         </div>
                         <div to={'/myaccount/ShippingSave'} className="shippingSave-Iright">
                             <p>
@@ -73,29 +67,39 @@ const ShippingSave = () => {
                     <div
                         className="shippingSave__List"
                         style={{
-                            boxShadow: ' #DB3022 0px 1px 2px 0px, #DB3022 0px 1px 8px 0px',
+                            boxShadow: ' grey 0px 1px 2px 0px, grey 0px 1px 8px 0px',
                         }}
                     >
-                        <div className="shippingSave__Items">Nothing exists</div>
+                        <div className="titleItem500 shippingSave__Items">Nothing exists</div>
                     </div>
                 </>
             )}
 
-            <div style={{ fontSize: 13, marginTop: 10 }}>List Address</div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className="NamePanel">List Address</div>
+                <div className="ShippingSave__Icon">
+                    <Link to={'/address'} className="ShippingSave__IconButton">
+                        <AddIcon />
+                    </Link>
+                </div>
+            </div>
             {history.map((item, key) => {
                 return (
                     <div className="shippingSave__List" key={key}>
                         <div className="shippingSave__Items">
                             <div className="shippingSave-Ileft">
-                                <p>
+                                <div className="titleItem500">
                                     {item?.first_name}&nbsp;
                                     {item?.company_name}
-                                </p>
-                                <span>{item?.address}</span>
-                                <br></br>
-                                <span>HCM</span>
+                                </div>
+                                <div className="titleSubItem600">{item?.address}</div>
+
+                                <div className="titleSubItem600">{item?.town_city}</div>
                             </div>
-                            <div to={'/myaccount/ShippingSave'} className="shippingSave-Iright">
+                            <div
+                                to={'/myaccount/ShippingSave'}
+                                style={{ color: '#DB4444', fontSize: 14, fontWeight: 500 }}
+                            >
                                 <p>Edit</p>
                             </div>
                         </div>
@@ -106,16 +110,14 @@ const ShippingSave = () => {
                                 setItem(item);
                                 handleChange(e);
                             }}
+                            checked={item?.primary}
                         />
+
                         <span>Use as the shipping address</span>
                     </div>
                 );
             })}
-            <div className="ShippingSave__Icon">
-                <Link to={'/address'} className="ShippingSave__IconButton">
-                    <AddIcon />
-                </Link>
-            </div>
+
             <Dialog
                 open={open}
                 onClose={handleClose}

@@ -1,3 +1,8 @@
+.cate__page {
+    margin-top: 70px;
+
+}
+
 .cate_main {
     display: flex;
     gap: 30px;
@@ -6,16 +11,22 @@
     margin-bottom: 70px;
 }
 
+.cate__midle {
+    margin-bottom: 60px;
+}
+
 .cate__list {
-    border: 2px solid grey;
+    border: 1px solid rgba(0, 0, 0, 0.30);
     width: 170px;
     height: 145px;
-    border-radius: 10px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: content-box;
+
 }
+
 
 .cate__item {
     display: flex;
@@ -23,19 +34,53 @@
     justify-content: center;
     gap: 16px;
     align-items: center;
-    transition: 0.5s;
+
+}
+
+.cate__item h3 {
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 130px;
 }
 
 .cate__list:hover {
     background-color: #BD4444;
-    color: white
+    color: white;
+    border: 1px solid #BD4444;
 }
 
-.cate__list:hover .cate__item {
-    color: white
+
+
+.cate__list:hover .cate__item h3 {
+    color: white;
+
+
 }
 
-@media screen and (max-width: 767px) {
+/* .cate__list:hover svg {
+    fill: #fff;
+    transition: all ease 0.3s;
+} */
+
+.cate__list:hover img {
+
+    filter: invert(100%)
+}
+
+@media screen and (max-width: 1024px) {
+    .cate__item h3 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 80px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
     .cate__item {
         width: 120px;
         height: 85px;
@@ -50,5 +95,14 @@
 
     .cate__page {
         display: none;
+
     }
+
+    .cate__item h3 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 80px;
+    }
+
 }

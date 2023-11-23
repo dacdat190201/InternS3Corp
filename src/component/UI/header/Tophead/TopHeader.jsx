@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './TopHeader.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 function TopHeader() {
     const navigate = useNavigate();
+    const [value, setValue] = useState('');
+    // useEffect(() => {
+    //     navigate(`/${value}`);
+    // }, [value]);
     const handle = (value) => {
-        navigate(`/${value}`);
+        setValue(value);
     };
+    // console.log(handle());
     return (
         <div className="headerTop">
             <div className="headerTopLeft">
                 <div className="header-sologan">
                     Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
                 </div>
-                <h4 className="header-now">ShopNow</h4>
+                <div className="header-now">
+                    <Link to={'/products'} style={{ TextDecoder: 'none', color: '#fff' }}>
+                        ShopNow
+                    </Link>
+                </div>
             </div>
-            <div className="headerTop__Right">
+            {/* <div className="headerTop__Right">
                 <select
                     className="headerTop_Right-Selectbox"
                     id="select__HeaderTop"
@@ -31,7 +40,7 @@ function TopHeader() {
                         fill="white"
                     />
                 </svg>
-            </div>
+            </div> */}
         </div>
     );
 }

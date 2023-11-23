@@ -1,25 +1,14 @@
-.home__main {
-    margin-top: 140px;
-    margin-left: 135px;
-    margin-right: 135px;
+.home__container {
+    margin-bottom: 140px;
+}
+
+@media screen and (max-width: 768px) {
+    .home__container {
+        margin-bottom: 40px;
+    }
+
 }
 
 /* 
 ******************************************
 *******************MEDIA******************* */
-@media screen and (min-width: 768px) and (max-width:900px) {
-    .home__main {
-        margin-left: 40px;
-        margin-right: 40px;
-    }
-}
-
-@media screen and (max-width: 767px) {
-
-    .home__main {
-        margin-top: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        border-top: 1px solid #000;
-    }
-}
