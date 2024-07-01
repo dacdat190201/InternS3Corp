@@ -22,7 +22,7 @@ function Home() {
 
                 <Sale />
 
-                <Categories />
+                {/* <Categories /> */}
 
                 <ThisMonth />
                 <OurProduct />

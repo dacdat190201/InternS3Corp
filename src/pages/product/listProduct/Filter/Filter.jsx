@@ -61,7 +61,7 @@ const Filter = ({ setLimit, param }) => {
                                         }
                                         onClick={() => setSelectedList({ id: item })}
                                     >
-                                        {item.charAt(0).toUpperCase() + item.slice(1)}
+                                        {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
                                     </Link>
                                     <div
                                         className={

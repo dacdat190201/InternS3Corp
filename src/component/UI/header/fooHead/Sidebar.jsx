@@ -32,7 +32,7 @@ function Sidebar() {
                 <ul className="menu_midle_list">
                     <li className="menu_midle_item">
                         <div className="menu_midle_item-i" style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
-                            <Link className="nav_midle_link-i" to={`/${category[15]}`}>
+                            <Link className="nav_midle_link-i" to={`/${category[15].name}`}>
                                 <h3>Woman's Fashion</h3>
                             </Link>
 
@@ -55,29 +55,29 @@ function Sidebar() {
                         <ul className="menu2_list">
                             <li className="menu2_li">
                                 <Link className="nav_midle_link" to={`/${category[14]}`}>
-                                    <h3>{category[14].charAt(0).toUpperCase() + category[14].slice(1)}</h3>
+                                    <h3>{category[14].name.charAt(0).toUpperCase() + category[14].name.slice(1)}</h3>
                                 </Link>
                             </li>
                             <li className="menu2_li">
                                 <Link className="nav_midle_link" to={`/${category[13]}`}>
-                                    <h3>{category[13].charAt(0).toUpperCase() + category[13].slice(1)}</h3>
+                                    <h3>{category[13].name.charAt(0).toUpperCase() + category[13].name.slice(1)}</h3>
                                 </Link>
                             </li>
                             <li className="menu2_li">
                                 <Link className="nav_midle_link" to={`/${category[9]}`}>
-                                    <h3>{category[9].charAt(0).toUpperCase() + category[9].slice(1)}</h3>
+                                    <h3>{category[9].name.charAt(0).toUpperCase() + category[9].name.slice(1)}</h3>
                                 </Link>
                             </li>
                             <li className="menu2_li">
                                 <Link className="nav_midle_link" to={`/${category[8]}`}>
-                                    <h3>{category[8].charAt(0).toUpperCase() + category[8].slice(1)}</h3>
+                                    <h3>{category[8].name.charAt(0).toUpperCase() + category[8].name.slice(1)}</h3>
                                 </Link>
                             </li>
                         </ul>
                         {/* ************************************************ */}
                     </li>
                     <li className="menu_midle_item">
-                        <Link to={`/${category[10]}`} className="nav_midle_link">
+                        <Link to={`/${category[10].name}`} className="nav_midle_link">
                             <h3>Men's Fashion</h3>
                         </Link>
 
@@ -99,7 +99,7 @@ function Sidebar() {
                         return (
                             <li className="menu_midle_item" key={key}>
                                 <Link to={`/${item}`} className="nav_midle_link">
-                                    <h3>{item.charAt(0).toUpperCase() + item.slice(1)}</h3>
+                                    <h3>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</h3>
                                 </Link>
                             </li>
                         );

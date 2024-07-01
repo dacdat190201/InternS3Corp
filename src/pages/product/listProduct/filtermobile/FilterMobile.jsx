@@ -78,7 +78,7 @@ const FilterMobile = () => {
                                         style={{ color: 'black', textDecoration: 'none' }}
                                         to={`/${item}`}
                                     >
-                                        {item.charAt(0).toUpperCase() + item.slice(1)}
+                                        {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
                                     </Link>
                                 </li>
                             );
