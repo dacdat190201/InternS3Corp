@@ -38,7 +38,7 @@ export default function Footer() {
                             <h3>
                                 111 Bijoy sarani, Dhaka,<br></br> DH 1515, Bangladesh.
                             </h3>
-                            <h3>dacdat@gmail.com</h3>
+                            <h3>email@gmail.com</h3>
                             <h3>09665-8888-9999 </h3>
                         </div>
                     </li>

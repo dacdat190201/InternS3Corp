@@ -40,8 +40,8 @@ function ContactContent() {
                         <div className="Pop16-500 text-black">Write to US</div>
                     </div>
                     <h3>Fill out our form and we will contact you within 24 hours.</h3>
-                    <h3>Email: dacdat@gmail.com</h3>
-                    <h3>Email: h@s3corp.com.vn</h3>
+                    <h3>Email: email@gmail.com</h3>
+                    <h3>Email: h@email.com.vn</h3>
                 </div>
             </div>
             <div className="contact-right">
