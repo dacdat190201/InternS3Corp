@@ -54,22 +54,22 @@ function Sidebar() {
                         {/* **********************men2*************** */}
                         <ul className="menu2_list">
                             <li className="menu2_li">
-                                <Link className="nav_midle_link" to={`/${category[14]}`}>
+                                <Link className="nav_midle_link" to={`/${category[14].name}`}>
                                     <h3>{category[14].name.charAt(0).toUpperCase() + category[14].name.slice(1)}</h3>
                                 </Link>
                             </li>
                             <li className="menu2_li">
-                                <Link className="nav_midle_link" to={`/${category[13]}`}>
+                                <Link className="nav_midle_link" to={`/${category[13].name}`}>
                                     <h3>{category[13].name.charAt(0).toUpperCase() + category[13].name.slice(1)}</h3>
                                 </Link>
                             </li>
                             <li className="menu2_li">
-                                <Link className="nav_midle_link" to={`/${category[9]}`}>
+                                <Link className="nav_midle_link" to={`/${category[9].name}`}>
                                     <h3>{category[9].name.charAt(0).toUpperCase() + category[9].name.slice(1)}</h3>
                                 </Link>
                             </li>
                             <li className="menu2_li">
-                                <Link className="nav_midle_link" to={`/${category[8]}`}>
+                                <Link className="nav_midle_link" to={`/${category[8].name}`}>
                                     <h3>{category[8].name.charAt(0).toUpperCase() + category[8].name.slice(1)}</h3>
                                 </Link>
                             </li>
